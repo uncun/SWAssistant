@@ -2164,44 +2164,20 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
             page_bind();
         }
         GAME.parseTracker = function (track) {
-            GAME.socket.emit('ga', {
-                a: 22,
-                type: 3
-            });
-            track.sort((a, b) => a.want.type - b.want.type);
-            var con = '';
-            let zwykle_html_dsa = '';
-            let codzienne_html_dsa = '';
-            let main_quest = ``;
-            var any = false;
-            if (track && track.length) {
-                var con='';
-                if(track&&track.length){
-                    var len=track.length;
-                    con+='<div class="sekcja">'+LNG.lab181+'</div>';
-                    for(var i=0;i<len;i++){
-                        var qn=track[i].header;
-                        if(qn&&qn.length>20) qn=qn.slice(0,20)+'...';
-                        codzienne_html_dsa+='<div id="track_quest_'+track[i].qb_id+'" class="qtrack"><div class="sep2"></div><b>'+qn+'</b> '+this.quest_want(track[i].want,track[i].qb_id)+'</div>';
-                    }
+            var con='';
+            if(track&&track.length){
+                var len=track.length;
+                con+='<div class="sekcja">'+LNG.lab181+'</div>';
+                for(var i=0;i<len;i++){
+                    var qn=track[i].header;
+                    if(qn&&qn.length>20) qn=qn.slice(0,20)+'...';
+                    con+='<div id="track_quest_'+track[i].qb_id+'" class="qtrack"><div class="sep2"></div><b>'+qn+'</b> '+this.quest_want(track[i].want,track[i].qb_id)+'</div>';
                 }
             }
-            if (any) {
-                con += codzienne_html_dsa;
-                con += zwykle_html_dsa;
-                $('#drag_con').html(`${main_quest}${con}`);
-                $('#drag_con').removeClass('scroll');
-                $('#quest_track_con').show();
-                if (!kws.settings.hide_tracker) {
-                    $('#drag_con').show();
-                } else {
-                    $('#drag_con').hide();
-                }
-            } else {
-                $('#quest_track_con').hide();
-            }
-            // kws.markDaily();
+            con+='<div class="clr"></div>';
+            $('#quest_track_con').html(con);
         }
+        
         GAME.getEmpDetails = function (petd) {
             kws.findWorker(petd, (el) => {
                 let emp_local = parseInt(el.attr("data-emp_local"));
