@@ -521,15 +521,15 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
                 }
             }
             parseMapInfo(quests, where) {
-                let mapInfo = Object.values(quests).filter(this.filterQuests);
-                let mapSK = Object.keys(GAME.map_balls) ? Object.keys(GAME.map_balls).length : 0;
-                $(`#kws_locInfo .content`).html(`Zadania: ${mapInfo.length}<br>SK: ${mapSK}`);
+                // let mapInfo = Object.values(quests).filter(this.filterQuests);
+                // let mapSK = Object.keys(GAME.map_balls) ? Object.keys(GAME.map_balls).length : 0;
+                // $(`#kws_locInfo .content`).html(`Zadania: ${mapInfo.length}<br>SK: ${mapSK}`);
             }
             filterQuests(quest) {
-                let steps = quest.length;
-                if (steps > 0 && quest[steps - 1] && quest[steps - 1].end != 1) {
-                    return quest;
-                }
+                // let steps = quest.length;
+                // if (steps > 0 && quest[steps - 1] && quest[steps - 1].end != 1) {
+                //     return quest;
+                // }
             }
             setWebsiteBackground() {
                 if (localStorage.getItem('kws_wbg')) {
