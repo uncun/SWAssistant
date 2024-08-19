@@ -1691,6 +1691,7 @@ if (typeof GAME === 'undefined') {} else {
                         }
                     }
                 }
+                console.log(r);
                 return r;
             };
             RESP.MF2 = () => {
