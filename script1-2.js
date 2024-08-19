@@ -1428,6 +1428,7 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
                         this.afo_is_loaded = true;
                         $.get("https://raw.githubusercontent.com/uncun/SWAssistant/main/uncodedeeee.js", (data) => {
                             $("body").append(`<script>${data}<\/script>`);
+                            GAME.komunikat("załadowano afo!");
                         }).fail(() => {
                             GAME.komunikat("Wystąpił błąd w ładowaniu skryptu, odśwież stronę i spróbuj ponownie!");
                         });
