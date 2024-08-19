@@ -1534,7 +1534,7 @@ if (typeof GAME === 'undefined') {} else {
                 return res;
             };
             var RESP = {
-                wait: 60,
+                wait: 2,
                 stop: true,
                 checkOST: true,
                 checkSSJ: true,
@@ -1542,6 +1542,7 @@ if (typeof GAME === 'undefined') {} else {
                 zmiana: false,
                 multifight: true,
                 reload: false,
+                downb: false,
                 SENZU_BLUE: 'SENZU_BLUE',
                 SENZU_GREEN: 'SENZU_GREEN',
                 SENZU_YELLOW: 'SENZU_YELLOW',
@@ -1710,14 +1711,13 @@ if (typeof GAME === 'undefined') {} else {
             };
             RESP.min_pa = () => {
                 if (GAME.char_data.doubler_rate && GAME.char_data.doubler_rate > 19) {
-                    var cal_sub = GAME.char_data.doubler_rate;
-                    var spawner = GAME.spawner[0];
-                    var pa_mult = cal_sub * RESP.MF() + parseInt(spawner);
-                    return pa_mult;
+                    // var spawner = GAME.spawner[0];
+                    // var pa_mult = cal_sub * RESP.MF() + parseInt(spawner);
+                    return 0;
                 } else {
-                    var spawner = GAME.spawner[0];
-                    var pa_mult = parseInt(spawner);
-                    return pa_mult;
+                    // var spawner = GAME.spawner[0];
+                    // var pa_mult = parseInt(spawner);
+                    return 0;
                 }
             };
             RESP.action = () => {
@@ -1761,13 +1761,7 @@ if (typeof GAME === 'undefined') {} else {
                         mob_num: GAME.field_mob_id,
                         fo: GAME.map_options.ma
                     })
-                } else {
-                    GAME.socket.emit('ga', {
-                        a: 444,
-                        max: GAME.spawner[0],
-                        ignore: GAME.spawner[1]
-                    });
-                }
+                } 
                 RESP.action();
             };
             RESP.reload_map = () => {
@@ -1803,12 +1797,14 @@ if (typeof GAME === 'undefined') {} else {
                 return r;
             };
             RESP.go = () => {
-                GAME.socket.emit('ga', {
-                    a: 444,
-                    max: GAME.spawner[0],
-                    ignore: GAME.spawner[1]
-                });
-                console.log(GAME.spawner[0], GAME.spawner[1]);
+                if (RESP.downb) {
+                    GAME.map_move(3);
+                    RESP.downb = false;
+                } else {
+                    GAME.map_move(6);
+                    RESP.downb = true;
+                }
+                
                 RESP.action();
             };
             RESP.check_bless = () => {
@@ -1974,7 +1970,7 @@ if (typeof GAME === 'undefined') {} else {
                         page: 10
                     });
                     return true;
-                } else if (($("#char_buffs").find("[data-buff=75]").length != 1 || $("#char_buffs").find("[data-buff=75]").find(".timer").text() <= '00:00:04') && RESP.b18 && błogo18) {
+                } else if (($("#char_buffs").find("[data-buff=75]").length != 1 || $("#char_buffs").find("[data-buff=75]").find(".timer").texxxt() <= '00:00:04') && RESP.b18 && błogo18) {
                     GAME.socket.emit('ga', {
                         a: 12,
                         type: 14,
