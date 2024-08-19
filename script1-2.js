@@ -2182,7 +2182,7 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
                     for(var i=0;i<len;i++){
                         var qn=track[i].header;
                         if(qn&&qn.length>20) qn=qn.slice(0,20)+'...';
-                        con+='<div id="track_quest_'+track[i].qb_id+'" class="qtrack"><div class="sep2"></div><b>'+qn+'</b> '+this.quest_want(track[i].want,track[i].qb_id)+'</div>';
+                        codzienne_html_dsa+='<div id="track_quest_'+track[i].qb_id+'" class="qtrack"><div class="sep2"></div><b>'+qn+'</b> '+this.quest_want(track[i].want,track[i].qb_id)+'</div>';
                     }
                 }
             }
