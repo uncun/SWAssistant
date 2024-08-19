@@ -2175,20 +2175,15 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
             let main_quest = ``;
             var any = false;
             if (track && track.length) {
-                var len = track.length;
-                for (var i = 0; i < len; i++) {
-                    any = true;
-                    var qn = track[i].header;
-                    if (qn.length > 15) qn = qn.slice(0, 15) + '...';
-                    // let attroqq = $(`#page_game_qb #qb_list #quest_log_tr${track[i].qb_id}`).find(`.qb_right:contains("[ Codzienne ]")`).length;
-                    // if (track[i].m == 1) {
-                    //     main_quest += `<div id="" class="qtrack option" data-option="go_teleport" data-loc="${track[i].loc}"><div class="sep3"></div><b style="color:orange;">${qn}</b> ${this.quest_want(track[i].want, track[i].qb_id)}</div>`;
-                    // } else if (attroqq == 1) {
-                    //     codzienne_html_dsa += `<div id="" class="qtrack option" data-option="go_teleport" data-loc="${track[i].loc}"><div class="sep2"></div><b style="color:#63aaff;" >${qn}</b> ${this.quest_want(track[i].want, track[i].qb_id)}</div>`;
-                    // } else {
-                        zwykle_html_dsa += `<div id="track_quest_${track[i].qb_id}" </div>`;
-                    // }
-                    console.log(zwykle_html_dsa)
+                var con='';
+                if(track&&track.length){
+                    var len=track.length;
+                    con+='<div class="sekcja">'+LNG.lab181+'</div>';
+                    for(var i=0;i<len;i++){
+                        var qn=track[i].header;
+                        if(qn&&qn.length>20) qn=qn.slice(0,20)+'...';
+                        con+='<div id="track_quest_'+track[i].qb_id+'" class="qtrack"><div class="sep2"></div><b>'+qn+'</b> '+this.quest_want(track[i].want,track[i].qb_id)+'</div>';
+                    }
                 }
             }
             if (any) {
