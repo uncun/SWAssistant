@@ -67,12 +67,12 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
                     background: linear-gradient(0deg, rgba(247,121,12,1) 0%, rgba(252,238,54,1) 100%);
                     border: 0px solid #973804;
                 }`);
-                this.addToCSS(`button#changeProfilePrev { position:  top: 275px; right: 75px; background: linear-gradient(0deg, rgba(252,238,54,1) 0%, rgba(247,121,12,1) 100%); border: 2px solid #973804; border-radius: 5px; width: 52px; }`);
+                this.addToCSS(`button#changeProfilePrev { position: absolute; top: 275px; right: 75px; background: linear-gradient(0deg, rgba(252,238,54,1) 0%, rgba(247,121,12,1) 100%); border: 2px solid #973804; border-radius: 5px; width: 52px; }`);
                 this.addToCSS(`button#changeProfilePrev:hover {
                     background: linear-gradient(0deg, rgba(247,121,12,1) 0%, rgba(252,238,54,1) 100%);
                     border: 0px solid #973804;
                 }`);
-                this.addToCSS(`.kws_additional_top_bar{float:left !important; position:  z-index: -1; display: none} .kws_additional_top_bar_section{color:white;padding:3px 5px 3px 5px;border-radius:5px;margin-right:8px;user-select:none;}`);
+                this.addToCSS(`.kws_additional_top_bar{float:left !important; position: absolute; z-index: -1; display: none} .kws_additional_top_bar_section{color:white;padding:3px 5px 3px 5px;border-radius:5px;margin-right:8px;user-select:none;}`);
                 $("#top_bar").append(`<div class="kws_top_bar"></div>`);
                 $("#top_bar").append(`<div class="kws_additional_top_bar"></div>`);
                 $("#bless_type_2").click();
@@ -86,8 +86,8 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
                 $('.MoveIcon[data-option="map_multi_pvp"]').after('<div class="MoveIcon bigg option" data-option="map_quest_skip" data-toggle="tooltip" data-original-title="<div class=tt>Opcja Dalej w otwartym zadaniu jeśli jest jedna. Atakuje bosy w zadaniach i zamyka raport z walki. W zadaniu nuda wybiera opcję na zabicie mobków. W zadaniu subki wybiera opcję za 100k. Zamyka komunikaty. Zbiera zasób na którym stoimy.<br />Klawisz skrótu:<b class=orange>X</b></div>"><img src="https://i.imgur.com/wuK91VF.png"></div>');
                 $('.MoveIcon[data-option="map_quest_skip"]').after('<div class="MoveIcon bigg option" data-option="map_quest_skip_time" data-toggle="tooltip" data-original-title="<div class=tt>Używanie zegarków w zadaniach<br />Klawisz skrótu:<b class=orange>N</b></div>"><img src="https://i.imgur.com/9YCvJKe.png"></div>');
                 $('.MoveIcon[data-option="map_quest_skip_time"]').after('<div class="MoveIcon bigg option" data-option="map_alternative_pilot" data-toggle="tooltip" data-original-title="<div class=tt>Ukryje pilota, pokazuje inną klawiaturę<br />Klawisz skrótu:<b class=orange>=</b></div>"><img src="https://up.be3.ovh/upload/1709400449.png"></div>');
-                $("#changeProfile").before('<button id="changeProfilePrev" class="btn_small_gold" data-option="prevChar">Prev</button>');
-                $("#changeProfile").after('<button id="changeProfileNext" class="btn_small_gold" data-option="nextChar">Next</button>');
+                $("#changeProfile").before('<button id="changeProfilePrev" class="option" data-option="prevChar">Prev</button>');
+                $("#changeProfile").after('<button id="changeProfileNext" class="option" data-option="nextChar">Next</button>');
                 this.auto_abyss_interval = false;
                 this.auto_arena = false;
                 this.additionalTopBarVisible = false;
