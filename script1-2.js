@@ -62,12 +62,12 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
                 this.addToCSS(`.spawn_switch{cursor:pointer;}`);
                 this.addToCSS(`.quest_roll1{position:absolute; width:50px; height:50px; background:url('/gfx/layout/dice.png') 0 0; top:-25px; left:25px; cursor:pointer; filter:drop-shadow(0px 0px 10px lime)} .quest_roll2{position:absolute; width:50px; height:50px; background:url('/gfx/layout/dice.png') 0 0; top:-25px; left:75px; cursor:pointer; filter:drop-shadow(0px 0px 10px #00fdff)} .quest_roll3{position:absolute; width:50px; height:50px; background:url('/gfx/layout/dice.png') 0 0; top:-25px; left:125px; cursor:pointer; filter:drop-shadow(0px 0px 10px #ff0000)} .quest_roll:hover{background:url('/gfx/layout/dice.png') 0 -45px;} .quest_roll1:hover{background:url('/gfx/layout/dice.png') 0 -45px;} .quest_roll2:hover{background:url('/gfx/layout/dice.png') 0 -45px;} .quest_roll3:hover{background:url('/gfx/layout/dice.png') 0 -45px;}`);
                 this.addToCSS(`#lastmap_bar { top: 115px !important; }`);
-                this.addToCSS(`button#changeProfileNext { position: absolute; top: 125px; left: 139px; ; border: none; border-radius: 5px; width: 52px; }`);
+                this.addToCSS(`button#changeProfileNext { position: absolute; top: 125px; left: 139px; ; border: none;  }`);
                 // this.addToCSS(`button#changeProfileNext:hover {
                 //     background: linear-gradient(0deg, rgba(247,121,12,1) 0%, rgba(252,238,54,1) 100%);
                 //     border: 0px solid #973804;
                 // }`);
-                this.addToCSS(`button#changeProfilePrev { position: absolute; top: 125px; left: 150px; border: none; border-radius: 5px; width: 52px; }`);
+                this.addToCSS(`button#changeProfilePrev { position: absolute; top: 125px; left: 150px; border: none;  }`);
                 // this.addToCSS(`button#changeProfilePrev:hover {
                 //     background: linear-gradient(0deg, rgba(247,121,12,1) 0%, rgba(252,238,54,1) 100%);
                 //     border: 0px solid #973804;
@@ -86,7 +86,7 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
                 $('.MoveIcon[data-option="map_multi_pvp"]').after('<div class="MoveIcon bigg option" data-option="map_quest_skip" data-toggle="tooltip" data-original-title="<div class=tt>Opcja Dalej w otwartym zadaniu jeśli jest jedna. Atakuje bosy w zadaniach i zamyka raport z walki. W zadaniu nuda wybiera opcję na zabicie mobków. W zadaniu subki wybiera opcję za 100k. Zamyka komunikaty. Zbiera zasób na którym stoimy.<br />Klawisz skrótu:<b class=orange>X</b></div>"><img src="https://i.imgur.com/wuK91VF.png"></div>');
                 $('.MoveIcon[data-option="map_quest_skip"]').after('<div class="MoveIcon bigg option" data-option="map_quest_skip_time" data-toggle="tooltip" data-original-title="<div class=tt>Używanie zegarków w zadaniach<br />Klawisz skrótu:<b class=orange>N</b></div>"><img src="https://i.imgur.com/9YCvJKe.png"></div>');
                 $('.MoveIcon[data-option="map_quest_skip_time"]').after('<div class="MoveIcon bigg option" data-option="map_alternative_pilot" data-toggle="tooltip" data-original-title="<div class=tt>Ukryje pilota, pokazuje inną klawiaturę<br />Klawisz skrótu:<b class=orange>=</b></div>"><img src="https://up.be3.ovh/upload/1709400449.png"></div>');
-                $("#changeProfile").before('<button id="changeProfilePrev" class="option" data-option="prevChar">Prev</button>');
+                $("#changeProfileNext").after('<button id="changeProfilePrev" class="option" data-option="prevChar">Prev</button>');
                 $("#changeProfile").after('<button id="changeProfileNext" class="option" data-option="nextChar">Next</button>');
                 this.auto_abyss_interval = false;
                 this.auto_arena = false;
