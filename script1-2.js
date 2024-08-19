@@ -2186,7 +2186,7 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
                     // } else if (attroqq == 1) {
                     //     codzienne_html_dsa += `<div id="" class="qtrack option" data-option="go_teleport" data-loc="${track[i].loc}"><div class="sep2"></div><b style="color:#63aaff;" >${qn}</b> ${this.quest_want(track[i].want, track[i].qb_id)}</div>`;
                     // } else {
-                        zwykle_html_dsa += `<div id="track_quest_${track[i].qb_id}" class="qtrack option" data-option="go_teleport" data-loc="${track[i].loc}"><div class="sep2"></div><b>${qn}</b> ${this.quest_want(track[i].want, track[i].qb_id)}</div>`;
+                        zwykle_html_dsa += `<div id="track_quest_${track[i].qb_id}" class="qtrack option" "><div class="sep2"></div><b>${qn}</b> ${this.quest_want(track[i].want, track[i].qb_id)}</div>`;
                     // }
                     console.log(zwykle_html_dsa)
                 }
