@@ -63,15 +63,15 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
                 this.addToCSS(`.quest_roll1{position:absolute; width:50px; height:50px; background:url('/gfx/layout/dice.png') 0 0; top:-25px; left:25px; cursor:pointer; filter:drop-shadow(0px 0px 10px lime)} .quest_roll2{position:absolute; width:50px; height:50px; background:url('/gfx/layout/dice.png') 0 0; top:-25px; left:75px; cursor:pointer; filter:drop-shadow(0px 0px 10px #00fdff)} .quest_roll3{position:absolute; width:50px; height:50px; background:url('/gfx/layout/dice.png') 0 0; top:-25px; left:125px; cursor:pointer; filter:drop-shadow(0px 0px 10px #ff0000)} .quest_roll:hover{background:url('/gfx/layout/dice.png') 0 -45px;} .quest_roll1:hover{background:url('/gfx/layout/dice.png') 0 -45px;} .quest_roll2:hover{background:url('/gfx/layout/dice.png') 0 -45px;} .quest_roll3:hover{background:url('/gfx/layout/dice.png') 0 -45px;}`);
                 this.addToCSS(`#lastmap_bar { top: 115px !important; }`);
                 this.addToCSS(`button#changeProfileNext { position: absolute; top: 125px; right: 139px; ; border: none; border-radius: 5px; width: 52px; }`);
-                this.addToCSS(`button#changeProfileNext:hover {
-                    background: linear-gradient(0deg, rgba(247,121,12,1) 0%, rgba(252,238,54,1) 100%);
-                    border: 0px solid #973804;
-                }`);
+                // this.addToCSS(`button#changeProfileNext:hover {
+                //     background: linear-gradient(0deg, rgba(247,121,12,1) 0%, rgba(252,238,54,1) 100%);
+                //     border: 0px solid #973804;
+                // }`);
                 this.addToCSS(`button#changeProfilePrev { position: absolute; top: 125px; right: 159px; border: none; border-radius: 5px; width: 52px; }`);
-                this.addToCSS(`button#changeProfilePrev:hover {
-                    background: linear-gradient(0deg, rgba(247,121,12,1) 0%, rgba(252,238,54,1) 100%);
-                    border: 0px solid #973804;
-                }`);
+                // this.addToCSS(`button#changeProfilePrev:hover {
+                //     background: linear-gradient(0deg, rgba(247,121,12,1) 0%, rgba(252,238,54,1) 100%);
+                //     border: 0px solid #973804;
+                // }`);
                 this.addToCSS(`.kws_additional_top_bar{float:left !important; position: absolute; z-index: -1; display: none} .kws_additional_top_bar_section{color:white;padding:3px 5px 3px 5px;border-radius:5px;margin-right:8px;user-select:none;}`);
                 $("#top_bar").append(`<div class="kws_top_bar"></div>`);
                 $("#top_bar").append(`<div class="kws_additional_top_bar"></div>`);
