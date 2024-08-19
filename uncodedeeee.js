@@ -891,11 +891,11 @@ if (typeof GAME === 'undefined') {} else {
                     if (!a) a = Object.keys(GAME).find(z => GAME[z] && GAME[z]['1_1']);
                     return a;
                 }
-                Object.defineProperty(GAME, 'mapcell', {
-                    get: function() {
-                        return GAME[f()];
-                    }
-                });
+                // Object.defineProperty(GAME, 'mapcell', {
+                //     get: function() {
+                //         return GAME[f()];
+                //     }
+                // });
             })();
             GAME.emit = function(order, data, force) {
                 if (!this.is_loading || force) {
