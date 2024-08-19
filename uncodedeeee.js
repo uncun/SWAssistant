@@ -1611,101 +1611,6 @@ if (typeof GAME === 'undefined') {} else {
                 } else if ((!RESP.checkOST && RESP.checkOST_timer <= GAME.getTime()) || (RESP.jaka == 1 && RESP.checkOST_timer <= GAME.getTime())) {
                     RESP.checkOST_timer = GAME.getTime() + 60;
                     return true;
-                } else if (RESP.checkSSJ && GAME.quick_opts.ssj && $("#ssj_bar").css("display") === "none") {
-                    GAME.socket.emit(`ga`, {
-                        a: 18,
-                        type: 5,
-                        tech_id: GAME.quick_opts.ssj[0]
-                    });
-                    return true;
-                } else if (RESP.checkSSJ && $('#ssj_status').text() <= '00:00:03' && GAME.quick_opts.ssj) {
-                    return true;
-                } else if ($('#ssj_status').text() == "--:--:--" && GAME.quick_opts.ssj) {
-                    GAME.socket.emit(`ga`, {
-                        a: 18,
-                        type: 6
-                    });
-                    return true;
-                } else if ($("#train_uptime").find('.timer').length == 0 && !GAME.is_training && RESP.code) {
-                    GAME.socket.emit('ga', {
-                        a: 8,
-                        type: 2,
-                        stat: 1,
-                        duration: 1
-                    });
-                    setTimeout(() => {
-                        GAME.socket.emit('ga', {
-                            a: 8,
-                            type: 5,
-                            apud: 'vzaaa'
-                        });
-                    }, 1600);
-                    return true;
-                } else if (GAME.is_training && $("#train_uptime").find('.timer').length == 0 && RESP.code) {
-                    GAME.socket.emit('ga', {
-                        a: 8,
-                        type: 5,
-                        apud: 'vzaaa'
-                    });
-                    return true;
-                } else if (GAME.is_training && $("#train_uptime").find('.timer').length == 1 && RESP.code) {
-                    GAME.socket.emit('ga', {
-                        a: 8,
-                        type: 3
-                    });
-                    return true;
-                } else if (GAME.is_training && RESP.code) {
-                    GAME.socket.emit('ga', {
-                        a: 8,
-                        type: 3
-                    });
-                    return true;
-                } else if (imp == GAME.char_id && RESP.buff_imp && buff && buff_id < 4) {
-                    GAME.socket.emit('ga', {
-                        a: 50,
-                        type: 6,
-                        buff: buff_id
-                    });
-                    return true;
-                } else if (imp == GAME.char_id && RESP.buff_imp && buff && buff_id < 7 && ((emp == 1 || emp == 3) && who_win)) {
-                    GAME.socket.emit('ga', {
-                        a: 50,
-                        type: 6,
-                        buff: buff_id
-                    });
-                    return true;
-                } else if (imp == GAME.char_id && RESP.buff_imp && buff && buff_id < 7 && ((emp == 2 || emp == 4) && !who_win)) {
-                    GAME.socket.emit('ga', {
-                        a: 50,
-                        type: 6,
-                        buff: buff_id
-                    });
-                    return true;
-                } else if ((RESP.buff_clan || RESP.buff_imp) && $("#server_time").text() > '00:05:00' && $("#server_time").text() < '01:00:00' && typeof this.loaded == 'undefined') {
-                    this.loaded = true;
-                    setTimeout(() => {
-                        GAME.socket.emit('ga', {
-                            a: 50,
-                            type: 0,
-                            empire: GAME.char_data.empire
-                        });
-                    }, 300);
-                    setTimeout(() => {
-                        GAME.emitOrder({
-                            a: 39,
-                            type: 0
-                        });
-                    }, 600);
-                    setTimeout(() => {
-                        GAME.emitOrder({
-                            a: 39,
-                            type: 23
-                        });
-                    }, 900);
-                    return true;
-                } else if (RESP.buff_clan && GAME.klan_data != undefined && abut.length && !isDisabled) {
-                    $(" .newBtn.activate_all_clan_buffs").click();
-                    return true;
                 }
                 return false;
             };
@@ -1713,17 +1618,17 @@ if (typeof GAME === 'undefined') {} else {
                 if (GAME.char_data.doubler_rate && GAME.char_data.doubler_rate > 19) {
                     // var spawner = GAME.spawner[0];
                     // var pa_mult = cal_sub * RESP.MF() + parseInt(spawner);
-                    return 0;
+                    return 1000;
                 } else {
                     // var spawner = GAME.spawner[0];
                     // var pa_mult = parseInt(spawner);
-                    return 0;
+                    return 1000;
                 }
             };
             RESP.action = () => {
                 console.log('resp action');
                 if (!RESP.stop) {
-                    if (!RESP.check() && !RESP.check_bless()) {
+                    if (!RESP.check()) {
                         setTimeout(() => {
                             if (RESP.MF() > 0) {
                                 RESP.fight();
@@ -1741,6 +1646,7 @@ if (typeof GAME === 'undefined') {} else {
             };
             RESP.fight = () => {
                 console.log('resp fight');
+                GAME.socket.emit(`ga`,{a:13,mob_num:0,fo:GAME.map_options.ma});
                 if (RESP.reload) {
                     setTimeout(() => {
                         GAME.maploaded = false;
@@ -1807,180 +1713,7 @@ if (typeof GAME === 'undefined') {} else {
                 
                 RESP.action();
             };
-            RESP.check_bless = () => {
-                var błogo1 = $("#ekw_page_items").find("div[data-base_item_id=1801]").attr("data-item_id");
-                var błogo2 = $("#ekw_page_items").find("div[data-base_item_id=1628]").attr("data-item_id");
-                var błogo3 = $("#ekw_page_items").find("div[data-base_item_id=1630]").attr("data-item_id");
-                var błogo4 = $("#ekw_page_items").find("div[data-base_item_id=1796]").attr("data-item_id");
-                var błogo5 = $("#ekw_page_items").find("div[data-base_item_id=1794]").attr("data-item_id");
-                var błogo6 = $("#ekw_page_items").find("div[data-base_item_id=1792]").attr("data-item_id");
-                var błogo7 = $("#ekw_page_items").find("div[data-base_item_id=1790]").attr("data-item_id");
-                var błogo8 = $("#ekw_page_items").find("div[data-base_item_id=1745]").attr("data-item_id");
-                var błogo9 = $("#ekw_page_items").find("div[data-base_item_id=1608]").attr("data-item_id");
-                var błogo10 = $("#ekw_page_items").find("div[data-base_item_id=1559]").attr("data-item_id");
-                var błogo11 = $("#ekw_page_items").find("div[data-base_item_id=1795]").attr("data-item_id");
-                var błogo12 = $("#ekw_page_items").find("div[data-base_item_id=1793]").attr("data-item_id");
-                var błogo13 = $("#ekw_page_items").find("div[data-base_item_id=1753]").attr("data-item_id");
-                var błogo14 = $("#ekw_page_items").find("div[data-base_item_id=1752]").attr("data-item_id");
-                var błogo15 = $("#ekw_page_items").find("div[data-base_item_id=1751]").attr("data-item_id");
-                var błogo16 = $("#ekw_page_items").find("div[data-base_item_id=1742]").attr("data-item_id");
-                var błogo17 = $("#ekw_page_items").find("div[data-base_item_id=1747]").attr("data-item_id");
-                var błogo18 = $("#ekw_page_items").find("div[data-base_item_id=1746]").attr("data-item_id");
-                if (GAME.ekw_page != 10) {
-                    GAME.ekw_page = 10;
-                    GAME.socket.emit('ga', {
-                        a: 12,
-                        page: 10,
-                        used: 1
-                    });
-                    return true;
-                } else if (($("#char_buffs").find("[data-buff=100]").length != 1 || $("#char_buffs").find("[data-buff=100]").find(".timer").text() <= '00:00:04') && RESP.b1 && błogo1 && RESP.bless) {
-                    GAME.socket.emit('ga', {
-                        a: 12,
-                        type: 14,
-                        iid: parseInt(błogo1),
-                        page: 10
-                    });
-                    return true;
-                } else if (($("#char_buffs").find("[data-buff=53]").length != 1 || $("#char_buffs").find("[data-buff=53]").find(".timer").text() <= '00:00:04') && RESP.b2 && błogo2 && RESP.bless) {
-                    GAME.socket.emit('ga', {
-                        a: 12,
-                        type: 14,
-                        iid: parseInt(błogo2),
-                        page: 10
-                    });
-                    return true;
-                } else if (($("#char_buffs").find("[data-buff=55]").length != 1 || $("#char_buffs").find("[data-buff=55]").find(".timer").text() <= '00:00:04') && RESP.b3 && błogo3 && RESP.bless) {
-                    GAME.socket.emit('ga', {
-                        a: 12,
-                        type: 14,
-                        iid: parseInt(błogo3),
-                        page: 10
-                    });
-                    return true;
-                } else if (($("#char_buffs").find("[data-buff=96]").length != 1 || $("#char_buffs").find("[data-buff=96]").find(".timer").text() <= '00:00:04') && RESP.b4 && błogo4 && RESP.bless) {
-                    GAME.socket.emit('ga', {
-                        a: 12,
-                        type: 14,
-                        iid: parseInt(błogo4),
-                        page: 10
-                    });
-                    return true;
-                } else if (($("#char_buffs").find("[data-buff=94]").length != 1 || $("#char_buffs").find("[data-buff=94]").find(".timer").text() <= '00:00:04') && RESP.b5 && błogo5 && RESP.bless) {
-                    GAME.socket.emit('ga', {
-                        a: 12,
-                        type: 14,
-                        iid: parseInt(błogo5),
-                        page: 10
-                    });
-                    return true;
-                } else if (($("#char_buffs").find("[data-buff=92]").length != 1 || $("#char_buffs").find("[data-buff=92]").find(".timer").text() <= '00:00:04') && RESP.b6 && błogo6 && RESP.bless) {
-                    GAME.socket.emit('ga', {
-                        a: 12,
-                        type: 14,
-                        iid: parseInt(błogo6),
-                        page: 10
-                    });
-                    return true;
-                } else if (($("#char_buffs").find("[data-buff=90]").length != 1 || $("#char_buffs").find("[data-buff=90]").find(".timer").text() <= '00:00:04') && RESP.b7 && błogo7 && RESP.bless) {
-                    GAME.socket.emit('ga', {
-                        a: 12,
-                        type: 14,
-                        iid: parseInt(błogo7),
-                        page: 10
-                    });
-                    return true;
-                } else if (($("#char_buffs").find("[data-buff=74]").length != 1 || $("#char_buffs").find("[data-buff=74]").find(".timer").text() <= '00:00:04') && RESP.b8 && błogo8 && RESP.bless) {
-                    GAME.socket.emit('ga', {
-                        a: 12,
-                        type: 14,
-                        iid: parseInt(błogo8),
-                        page: 10
-                    });
-                    return true;
-                } else if (($("#char_buffs").find("[data-buff=52]").length != 1 || $("#char_buffs").find("[data-buff=52]").find(".timer").text() <= '00:00:04') && RESP.b9 && błogo9 && RESP.bless) {
-                    GAME.socket.emit('ga', {
-                        a: 12,
-                        type: 14,
-                        iid: parseInt(błogo9),
-                        page: 10
-                    });
-                    return true;
-                } else if (($("#char_buffs").find("[data-buff=50]").length != 1 || $("#char_buffs").find("[data-buff=50]").find(".timer").text() <= '00:00:04') && RESP.b10 && błogo10 && RESP.bless) {
-                    GAME.socket.emit('ga', {
-                        a: 12,
-                        type: 14,
-                        iid: parseInt(błogo10),
-                        page: 10
-                    });
-                    return true;
-                } else if (($("#char_buffs").find("[data-buff=95]").length != 1 || $("#char_buffs").find("[data-buff=95]").find(".timer").text() <= '00:00:04') && RESP.b11 && błogo11) {
-                    GAME.socket.emit('ga', {
-                        a: 12,
-                        type: 14,
-                        iid: parseInt(błogo11),
-                        page: 10
-                    });
-                    return true;
-                } else if (($("#char_buffs").find("[data-buff=93]").length != 1 || $("#char_buffs").find("[data-buff=93]").find(".timer").text() <= '00:00:04') && RESP.b12 && błogo12) {
-                    GAME.socket.emit('ga', {
-                        a: 12,
-                        type: 14,
-                        iid: parseInt(błogo12),
-                        page: 10
-                    });
-                    return true;
-                } else if (($("#char_buffs").find("[data-buff=82]").length != 1 || $("#char_buffs").find("[data-buff=82]").find(".timer").text() <= '00:00:04') && RESP.b13 && błogo13) {
-                    GAME.socket.emit('ga', {
-                        a: 12,
-                        type: 14,
-                        iid: parseInt(błogo13),
-                        page: 10
-                    });
-                    return true;
-                } else if (($("#char_buffs").find("[data-buff=81]").length != 1 || $("#char_buffs").find("[data-buff=81]").find(".timer").text() <= '00:00:04') && RESP.b14 && błogo14) {
-                    GAME.socket.emit('ga', {
-                        a: 12,
-                        type: 14,
-                        iid: parseInt(błogo14),
-                        page: 10
-                    });
-                    return true;
-                } else if (($("#char_buffs").find("[data-buff=80]").length != 1 || $("#char_buffs").find("[data-buff=80]").find(".timer").text() <= '00:00:04') && RESP.b15 && błogo15) {
-                    GAME.socket.emit('ga', {
-                        a: 12,
-                        type: 14,
-                        iid: parseInt(błogo15),
-                        page: 10
-                    });
-                    return true;
-                } else if (($("#char_buffs").find("[data-buff=71]").length != 1 || $("#char_buffs").find("[data-buff=71]").find(".timer").text() <= '00:00:04') && RESP.b16 && błogo16) {
-                    GAME.socket.emit('ga', {
-                        a: 12,
-                        type: 14,
-                        iid: parseInt(błogo16),
-                        page: 10
-                    });
-                    return true;
-                } else if (($("#char_buffs").find("[data-buff=76]").length != 1 || $("#char_buffs").find("[data-buff=76]").find(".timer").text() <= '00:00:04') && RESP.b17 && błogo17) {
-                    GAME.socket.emit('ga', {
-                        a: 12,
-                        type: 14,
-                        iid: parseInt(błogo17),
-                        page: 10
-                    });
-                    return true;
-                } else if (($("#char_buffs").find("[data-buff=75]").length != 1 || $("#char_buffs").find("[data-buff=75]").find(".timer").texxxt() <= '00:00:04') && RESP.b18 && błogo18) {
-                    GAME.socket.emit('ga', {
-                        a: 12,
-                        type: 14,
-                        iid: parseInt(błogo18),
-                        page: 10
-                    });
-                    return true;
-                }
-                return false;
-            };
+
             RESP.getSenzu = (type) => {
                 switch (type) {
                     case RESP.SENZU_BLUE:
