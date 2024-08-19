@@ -2179,6 +2179,7 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
                 for (var i = 0; i < len; i++) {
                     any = true;
                     var qn = track[i].header;
+                    console.log(qn, track)
                     if (qn.length > 15) qn = qn.slice(0, 15) + '...';
                     let attroqq = $(`#page_game_qb #qb_list #quest_log_tr${track[i].qb_id}`).find(`.qb_right:contains("[ Codzienne ]")`).length;
                     if (track[i].m == 1) {
