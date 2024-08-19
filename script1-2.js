@@ -49,7 +49,7 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
                 this.addToCSS(`#player_list_con .glory_rank.war{animation:none !important;background-color:rgb(22 83 106);box-shadow:0px 0px 7px 0px rgb(0 253 255);} .player_clan.enemy img{animation:none !important;box-shadow:0px 0px 10px 1px rgb(0 253 255);}`);
                 this.addToCSS(`.better_chat_loading{filter:sepia(1) hue-rotate(270deg);} .better_chat_loading:hover{filter:sepia(1) hue-rotate(90deg);} .chat_icon.load:hover{background:url(/gfx/layout/ikonyChat.png) -90px 0px !important;}`);
                 this.addToCSS(`#upg_menu button[data-page="game_buffs"]{display:block !important;}`);
-                // this.addToCSS(`.qtrack{width:400px;} #drag_con.scroll .qtrack{width:383px;} #quest_track_con #drag_tracker{user-select:none;} #quest_track_con .sep2{height:14px;} #quest_track_con .sep3{height:14px;}`);
+                this.addToCSS(`.qtrack{width:400px;} #drag_con.scroll .qtrack{width:383px;} #quest_track_con #drag_tracker{user-select:none;} #quest_track_con .sep2{height:14px;} #quest_track_con .sep3{height:14px;}`);
                 this.addToCSS(`.option.ls.spawner{ position:absolute; top:60px; right:40px; background-size: 100% 100%; border: solid #6f6f6f 1px; }`);
                 this.addToCSS(`#kws_minimap_settings{ margin:10px 0px 0px 0px; border-top:solid white 1px; padding-top:10px; } #field_sett #field_options{ height:407px; } #minimap_con{ ${this.minimap.side == 1 ? `left: -4px; right: unset;` : this.minimap.side == 2 ? `left: -210px; right: unset;` : ""} opacity: ${this.minimap.opacity / 100} } #minimap_range{ width:150px; display:inline-block; vertical-align:middle;} .smin_butt{background: #31313a69 !important; border: solid #ffffff4d 1px !important; width:auto !important; height:32px !important; line-height: 30px; display: inline-block; text-align: center; font-family: 'Play', sans-serif; font-size: 13px; font-weight: Bold; color: #fff; text-decoration: none; text-transform: uppercase; border: none; padding: 0 10px; border-radius: 5px; cursor: pointer; text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000; margin-top:2px; float:none !important;} .smin_input{background: #040e13; height: 31px; border: solid #ffffff4d 1px !important; display: inline-block; text-align:center; font-size: 13px; color: #305779; font-family: 'Play', sans-serif; vertical-align: middle;border-radius: 5px;}`);
                 this.addToCSS(`#kws_locInfo{background:url("/gfx/layout/tloPilot.png");position: absolute;top: 220px;z-index: 2;width: 204px;padding: 5px;border-radius: 5px;border-image: url(/gfx/layout/mapborder.png) 7 8 7 7 fill;border-style: solid;border-width: 7px 8px 7px 7px; display:${this.minimap.loc_info == 0 ? `none` : `block`}} #kws_locInfo .sekcja{position:absolute;top:-20px;left:0px;background:url("https://i.imgur.com/Mi3kUpg.png");background-size:100% 100%;width:190px;}`);
@@ -521,15 +521,15 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
                 }
             }
             parseMapInfo(quests, where) {
-                // let mapInfo = Object.values(quests).filter(this.filterQuests);
-                // let mapSK = Object.keys(GAME.map_balls) ? Object.keys(GAME.map_balls).length : 0;
-                // $(`#kws_locInfo .content`).html(`Zadania: ${mapInfo.length}<br>SK: ${mapSK}`);
+                let mapInfo = Object.values(quests).filter(this.filterQuests);
+                let mapSK = Object.keys(GAME.map_balls) ? Object.keys(GAME.map_balls).length : 0;
+                $(`#kws_locInfo .content`).html(`Zadania: ${mapInfo.length}<br>SK: ${mapSK}`);
             }
             filterQuests(quest) {
-                // let steps = quest.length;
-                // if (steps > 0 && quest[steps - 1] && quest[steps - 1].end != 1) {
-                //     return quest;
-                // }
+                let steps = quest.length;
+                if (steps > 0 && quest[steps - 1] && quest[steps - 1].end != 1) {
+                    return quest;
+                }
             }
             setWebsiteBackground() {
                 if (localStorage.getItem('kws_wbg')) {
@@ -741,14 +741,14 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
                 }
             }
             markDaily() {
-                // let daily = ["ZADANIE PVM", "Zadanie PvP", "ROZWÓJ PLANETY ", "ZADANIE IMPERIUM", "ZADANIE KLANOWE", "NAJLEPSZY KUCHA...", "REPUTACJA", "SYMBOL WYMIARÓW", "WYMIANA CHI", "ERMITA", "Nuda", "DOSTAWCA", "BOSKA MOC", "ROZGRZEWKA", "BOSKI ULEPSZACZ", "CZAS PODRÓŻNIKÓ...", "STRAŻNIK PORZĄD...", "CODZIENNY INSTY...", "HIPER SCALACZ", "DZIWNY MEDYK"];
-                // daily = daily.map(item => item.trim().toLowerCase());
-                // $('#quest_track_con .qtrack b').each(function () {
-                //     let zawartoscB = $(this).text().trim().toLowerCase();
-                //     if (daily.includes(zawartoscB)) {
-                //         $(this).css("color", "#63aaff");
-                //     }
-                // });
+                let daily = ["ZADANIE PVM", "Zadanie PvP", "ROZWÓJ PLANETY ", "ZADANIE IMPERIUM", "ZADANIE KLANOWE", "NAJLEPSZY KUCHA...", "REPUTACJA", "SYMBOL WYMIARÓW", "WYMIANA CHI", "ERMITA", "Nuda", "DOSTAWCA", "BOSKA MOC", "ROZGRZEWKA", "BOSKI ULEPSZACZ", "CZAS PODRÓŻNIKÓ...", "STRAŻNIK PORZĄD...", "CODZIENNY INSTY...", "HIPER SCALACZ", "DZIWNY MEDYK"];
+                daily = daily.map(item => item.trim().toLowerCase());
+                $('#quest_track_con .qtrack b').each(function () {
+                    let zawartoscB = $(this).text().trim().toLowerCase();
+                    if (daily.includes(zawartoscB)) {
+                        $(this).css("color", "#63aaff");
+                    }
+                });
             }
             wojny2() {
                 var aimp = $("#e_admiral_player").find("[data-option=show_player]").attr("data-char_id");
@@ -2164,47 +2164,47 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
             page_bind();
         }
         GAME.parseTracker = function (track) {
-            // GAME.socket.emit('ga', {
-            //     a: 22,
-            //     type: 3
-            // });
-            // track.sort((a, b) => a.want.type - b.want.type);
-            // var con = '';
-            // let zwykle_html_dsa = '';
-            // let codzienne_html_dsa = '';
-            // let main_quest = ``;
-            // var any = false;
-            // if (track && track.length) {
-            //     var len = track.length;
-            //     for (var i = 0; i < len; i++) {
-            //         any = true;
-            //         var qn = track[i].header;
-            //         if (qn.length > 15) qn = qn.slice(0, 15) + '...';
-            //         let attroqq = $(`#page_game_qb #qb_list #quest_log_tr${track[i].qb_id}`).find(`.qb_right:contains("[ Codzienne ]")`).length;
-            //         if (track[i].m == 1) {
-            //             main_quest += `<div id="track_quest_${track[i].qb_id}" class="qtrack option" data-option="go_teleport" data-loc="${track[i].loc}"><div class="sep3"></div><b style="color:orange;">${qn}</b> ${this.quest_want(track[i].want, track[i].qb_id)}</div>`;
-            //         } else if (attroqq == 1) {
-            //             codzienne_html_dsa += `<div id="track_quest_${track[i].qb_id}" class="qtrack option" data-option="go_teleport" data-loc="${track[i].loc}"><div class="sep2"></div><b style="color:#63aaff;" >${qn}</b> ${this.quest_want(track[i].want, track[i].qb_id)}</div>`;
-            //         } else {
-            //             zwykle_html_dsa += `<div id="track_quest_${track[i].qb_id}" class="qtrack option" data-option="go_teleport" data-loc="${track[i].loc}"><div class="sep2"></div><b>${qn}</b> ${this.quest_want(track[i].want, track[i].qb_id)}</div>`;
-            //         }
-            //     }
-            // }
-            // if (any) {
-            //     con += codzienne_html_dsa;
-            //     con += zwykle_html_dsa;
-            //     $('#drag_con').html(`${main_quest}${con}`);
-            //     $('#drag_con').removeClass('scroll');
-            //     $('#quest_track_con').show();
-            //     if (!kws.settings.hide_tracker) {
-            //         $('#drag_con').show();
-            //     } else {
-            //         $('#drag_con').hide();
-            //     }
-            // } else {
-            //     // $('#quest_track_con').hide();
-            // }
-            // kws.markDaily();
+            GAME.socket.emit('ga', {
+                a: 22,
+                type: 3
+            });
+            track.sort((a, b) => a.want.type - b.want.type);
+            var con = '';
+            let zwykle_html_dsa = '';
+            let codzienne_html_dsa = '';
+            let main_quest = ``;
+            var any = false;
+            if (track && track.length) {
+                var len = track.length;
+                for (var i = 0; i < len; i++) {
+                    any = true;
+                    var qn = track[i].header;
+                    if (qn.length > 15) qn = qn.slice(0, 15) + '...';
+                    let attroqq = $(`#page_game_qb #qb_list #quest_log_tr${track[i].qb_id}`).find(`.qb_right:contains("[ Codzienne ]")`).length;
+                    if (track[i].m == 1) {
+                        main_quest += `<div id="track_quest_${track[i].qb_id}" class="qtrack option" data-option="go_teleport" data-loc="${track[i].loc}"><div class="sep3"></div><b style="color:orange;">${qn}</b> ${this.quest_want(track[i].want, track[i].qb_id)}</div>`;
+                    } else if (attroqq == 1) {
+                        codzienne_html_dsa += `<div id="track_quest_${track[i].qb_id}" class="qtrack option" data-option="go_teleport" data-loc="${track[i].loc}"><div class="sep2"></div><b style="color:#63aaff;" >${qn}</b> ${this.quest_want(track[i].want, track[i].qb_id)}</div>`;
+                    } else {
+                        zwykle_html_dsa += `<div id="track_quest_${track[i].qb_id}" class="qtrack option" data-option="go_teleport" data-loc="${track[i].loc}"><div class="sep2"></div><b>${qn}</b> ${this.quest_want(track[i].want, track[i].qb_id)}</div>`;
+                    }
+                }
+            }
+            if (any) {
+                con += codzienne_html_dsa;
+                con += zwykle_html_dsa;
+                $('#drag_con').html(`${main_quest}${con}`);
+                $('#drag_con').removeClass('scroll');
+                $('#quest_track_con').show();
+                if (!kws.settings.hide_tracker) {
+                    $('#drag_con').show();
+                } else {
+                    $('#drag_con').hide();
+                }
+            } else {
+                // $('#quest_track_con').hide();
+            }
+            kws.markDaily();
         }
         GAME.getEmpDetails = function (petd) {
             kws.findWorker(petd, (el) => {
