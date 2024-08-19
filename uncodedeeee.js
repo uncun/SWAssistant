@@ -1630,11 +1630,8 @@ if (typeof GAME === 'undefined') {} else {
                 if (!RESP.stop) {
                     if (!RESP.check()) {
                         setTimeout(() => {
-                            if (RESP.MF() > 0) {
-                                RESP.fight();
-                            } else {
-                                RESP.go();
-                            }
+                            RESP.fight();
+                            RESP.go();
                         }, RESP.wait);
                     } else {
                         setTimeout(() => {
