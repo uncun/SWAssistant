@@ -1424,16 +1424,16 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
                     }
                 });
                 $("body").on("click", ".qlink.load_afo", () => {
-                    // if (typeof this.afo_is_loaded == 'undefined') {
-                    //     this.afo_is_loaded = true;
-                    //     $.get("https://raw.githubusercontent.com/uncun/SWAssistant/main/uncodedeeee.js", (data) => {
-                    //         $("body").append(`<script>${data}<\/script>`);
-                    //     }).fail(() => {
-                    //         GAME.komunikat("Wystąpił błąd w ładowaniu skryptu, odśwież stronę i spróbuj ponownie!");
-                    //     });
-                    // } else {
+                    if (typeof this.afo_is_loaded == 'undefined') {
+                        this.afo_is_loaded = true;
+                        $.get("https://raw.githubusercontent.com/uncun/SWAssistant/main/uncodedeeee.js", (data) => {
+                            $("body").append(`<script>${data}<\/script>`);
+                        }).fail(() => {
+                            GAME.komunikat("Wystąpił błąd w ładowaniu skryptu, odśwież stronę i spróbuj ponownie!");
+                        });
+                    } else {
                         GAME.komunikat("Wystąpił błąd w ładowaniu skryptu, odśwież stronę i spróbuj ponownie!");
-                    // }
+                    }
                 });
 
                 $("body").on("click", ".qlink.go_to_emp", (el) => {
