@@ -62,12 +62,12 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
                 this.addToCSS(`.spawn_switch{cursor:pointer;}`);
                 this.addToCSS(`.quest_roll1{position:absolute; width:50px; height:50px; background:url('/gfx/layout/dice.png') 0 0; top:-25px; left:25px; cursor:pointer; filter:drop-shadow(0px 0px 10px lime)} .quest_roll2{position:absolute; width:50px; height:50px; background:url('/gfx/layout/dice.png') 0 0; top:-25px; left:75px; cursor:pointer; filter:drop-shadow(0px 0px 10px #00fdff)} .quest_roll3{position:absolute; width:50px; height:50px; background:url('/gfx/layout/dice.png') 0 0; top:-25px; left:125px; cursor:pointer; filter:drop-shadow(0px 0px 10px #ff0000)} .quest_roll:hover{background:url('/gfx/layout/dice.png') 0 -45px;} .quest_roll1:hover{background:url('/gfx/layout/dice.png') 0 -45px;} .quest_roll2:hover{background:url('/gfx/layout/dice.png') 0 -45px;} .quest_roll3:hover{background:url('/gfx/layout/dice.png') 0 -45px;}`);
                 this.addToCSS(`#lastmap_bar { top: 115px !important; }`);
-                this.addToCSS(`button#changeProfileNext { position: absolute; top: 125px; left: 139px; border: none; background: none; font-family: 'Roboto', sans-serif;  display: block; vertical-align: middle;  }`);
+                this.addToCSS(`button#changeProfileNext { position: absolute; top: 125px; left: 139px; border: none; background: none; color: #9FBAD2;font-family: 'Roboto', sans-serif;  display: block; vertical-align: middle;  }`);
                 // this.addToCSS(`button#changeProfileNext:hover {
                 //     background: linear-gradient(0deg, rgba(247,121,12,1) 0%, rgba(252,238,54,1) 100%);
                 //     border: 0px solid #973804;
                 // }`);
-                this.addToCSS(`button#changeProfilePrev { position: absolute; top: 100px; left: 139px; border: none; background: none; font-family: 'Roboto', sans-serif;  display: block; vertical-align: middle;   }`);
+                this.addToCSS(`button#changeProfilePrev { position: absolute; top: 100px; left: 139px; border: none; background: none; color: #9FBAD2; font-family: 'Roboto', sans-serif;  display: block; vertical-align: middle;   }`);
                 // this.addToCSS(`button#changeProfilePrev:hover {
                 //     background: linear-gradient(0deg, rgba(247,121,12,1) 0%, rgba(252,238,54,1) 100%);
                 //     border: 0px solid #973804;
