@@ -1585,6 +1585,7 @@ if (typeof GAME === 'undefined') {} else {
                 loc: GAME.char_data.loc
             };
             RESP.check = () => {
+                console.log('checking resp');
                 let imp = $("#leader_player").find("[data-option=show_player]").attr("data-char_id");
                 let emp = GAME.char_data.empire;
                 let buff = $(".emp_buff .pull-right").find("button").attr("data-option") == "activate_emp_buff";
@@ -1720,6 +1721,7 @@ if (typeof GAME === 'undefined') {} else {
                 }
             };
             RESP.action = () => {
+                console.log('resp action');
                 if (!RESP.stop) {
                     if (!RESP.check() && !RESP.check_bless()) {
                         setTimeout(() => {
@@ -1738,6 +1740,7 @@ if (typeof GAME === 'undefined') {} else {
                 }
             };
             RESP.fight = () => {
+                console.log('resp fight');
                 if (RESP.reload) {
                     setTimeout(() => {
                         GAME.maploaded = false;
@@ -1805,6 +1808,7 @@ if (typeof GAME === 'undefined') {} else {
                     max: GAME.spawner[0],
                     ignore: GAME.spawner[1]
                 });
+                console.log(GAME.spawner[0], GAME.spawner[1]);
                 RESP.action();
             };
             RESP.check_bless = () => {
