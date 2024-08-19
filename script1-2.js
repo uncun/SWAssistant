@@ -2194,15 +2194,15 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
                 con += codzienne_html_dsa;
                 con += zwykle_html_dsa;
                 $('#drag_con').html(`${main_quest}${con}`);
-                $('#drag_con').removeClass('scroll');
+                // $('#drag_con').removeClass('scroll');
                 $('#quest_track_con').show();
-                if (!kws.settings.hide_tracker) {
+                // if (!kws.settings.hide_tracker) {
                     $('#drag_con').show();
-                } else {
-                    $('#drag_con').hide();
-                }
+                // } else {
+                //     $('#drag_con').hide();
+                // }
             } else {
-                // $('#quest_track_con').hide();
+                $('#quest_track_con').hide();
             }
             kws.markDaily();
         }
