@@ -67,12 +67,12 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
                     background: linear-gradient(0deg, rgba(247,121,12,1) 0%, rgba(252,238,54,1) 100%);
                     border: 0px solid #973804;
                 }`);
-                this.addToCSS(`button#changeProfilePrev { position: absolute; top: 275px; right: 75px; background: linear-gradient(0deg, rgba(252,238,54,1) 0%, rgba(247,121,12,1) 100%); border: 2px solid #973804; border-radius: 5px; width: 52px; }`);
+                this.addToCSS(`button#changeProfilePrev { position:  top: 275px; right: 75px; background: linear-gradient(0deg, rgba(252,238,54,1) 0%, rgba(247,121,12,1) 100%); border: 2px solid #973804; border-radius: 5px; width: 52px; }`);
                 this.addToCSS(`button#changeProfilePrev:hover {
                     background: linear-gradient(0deg, rgba(247,121,12,1) 0%, rgba(252,238,54,1) 100%);
                     border: 0px solid #973804;
                 }`);
-                this.addToCSS(`.kws_additional_top_bar{float:left !important; position: absolute; z-index: -1; display: none} .kws_additional_top_bar_section{color:white;padding:3px 5px 3px 5px;border-radius:5px;margin-right:8px;user-select:none;}`);
+                this.addToCSS(`.kws_additional_top_bar{float:left !important; position:  z-index: -1; display: none} .kws_additional_top_bar_section{color:white;padding:3px 5px 3px 5px;border-radius:5px;margin-right:8px;user-select:none;}`);
                 $("#top_bar").append(`<div class="kws_top_bar"></div>`);
                 $("#top_bar").append(`<div class="kws_additional_top_bar"></div>`);
                 $("#bless_type_2").click();
