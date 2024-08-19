@@ -67,7 +67,7 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
                 //     background: linear-gradient(0deg, rgba(247,121,12,1) 0%, rgba(252,238,54,1) 100%);
                 //     border: 0px solid #973804;
                 // }`);
-                this.addToCSS(`button#changeProfilePrev { position: absolute; top: 125px; left: 159px; border: none; border-radius: 5px; width: 52px; }`);
+                this.addToCSS(`button#changeProfilePrev { position: absolute; top: 125px; left: 150px; border: none; border-radius: 5px; width: 52px; }`);
                 // this.addToCSS(`button#changeProfilePrev:hover {
                 //     background: linear-gradient(0deg, rgba(247,121,12,1) 0%, rgba(252,238,54,1) 100%);
                 //     border: 0px solid #973804;
