@@ -887,10 +887,10 @@ if (typeof GAME === 'undefined') {} else {
             }(function() {
                 let a;
 
-                function f() {
-                    if (!a) a = Object.keys(GAME).find(z => GAME[z] && GAME[z]['1_1']);
-                    return a;
-                }
+                // function f() {
+                //     if (!a) a = Object.keys(GAME).find(z => GAME[z] && GAME[z]['1_1']);
+                //     return a;
+                // }
                 // Object.defineProperty(GAME, 'mapcell', {
                 //     get: function() {
                 //         return GAME[f()];
