@@ -2202,7 +2202,7 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
                     $('#drag_con').hide();
                 }
             } else {
-                $('#quest_track_con').hide();
+                // $('#quest_track_con').hide();
             }
             kws.markDaily();
         }
