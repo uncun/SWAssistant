@@ -1371,7 +1371,8 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
                             GAME.socket.emit('ga', {
                                 a: 22,
                                 type: 7,
-                                id:GAME.quest_action_qid,cnt:15000
+                                id: GAME.quest_action_qid,
+                                cnt: GAME.quest_action_max
                             });
                         } else if (event.key === "2") {
                             GAME.socket.emit('ga', {
