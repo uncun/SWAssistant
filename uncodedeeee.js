@@ -1614,14 +1614,15 @@ if (typeof GAME === 'undefined') {} else {
                     RESP.checkOST_timer = GAME.getTime() + 60;
                     return true;
                 } else if (RESP.code ) {
+                    if (document.getElementById('ekw_space').textContent - document.getElementById('ekw_used').textContent > 100)
+                        return false;
                     RESP.DestroyNormal();
                     return true;
                 }
                 return false;
             };
             RESP.DestroyNormal = () => {
-                if (document.getElementById('ekw_space').textContent - document.getElementById('ekw_used').textContent > 100)
-                    return;
+  
                 let activePageElement = document.querySelector('.ekw_pag.option.active');
                 let activePage = activePageElement.getAttribute('data-page');
 
