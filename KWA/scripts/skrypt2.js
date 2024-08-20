@@ -1,5 +1,4 @@
-Nowość! Skróty klawiszowe. … Skróty klawiszowe Dysku zostały zaktualizowane, aby umożliwić nawigację przy użyciu pierwszych liter
-//Konfiguracja
+
 var wait = 2; //szybkość skryptu 1-1000 im mniejsza wartość tym szybciej
 var maxDown = 0; // ustawić 0 jeśli nie używane, maksymalna wartość na mapie do której ma się poruszać postać w dół
 var maxUp = 0; // ustawić 0 jeśli nie używane, maksymalna wartość na mapie do której ma się poruszać postać w górę
