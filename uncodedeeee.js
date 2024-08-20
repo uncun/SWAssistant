@@ -1619,7 +1619,7 @@ if (typeof GAME === 'undefined') {} else {
                 return false;
             };
             RESP.DestroyNormal = () => {
-                var items=[];
+                
                 let activePageElement = document.querySelector('.ekw_pag.option.active');
                 let activePage = activePageElement.getAttribute('data-page');
 
@@ -1629,6 +1629,7 @@ if (typeof GAME === 'undefined') {} else {
                 RESP.DestroyItemsAtPage(1);
             };
             RESP.DestroyItemsAtPage = (klasa) => {
+                var items=[];
                 $('#ekw_page_items .nonstackable[data-class="'+klasa+'"]').each(function( index ) {
 					items.push(parseInt($(this).data('item_id')));
 				});
