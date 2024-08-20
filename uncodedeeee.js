@@ -202,12 +202,12 @@ if (typeof GAME === 'undefined') {} else {
                 $("#pvp_Panel input[name=pvp_capt]").val(PVP.clan_list);
                 $("#pvp_Panel input[name=speed_capt]").val(PVP.speed);
                 $(document).bind('keydown', '1', function() {
-                    if (JQS.chm.is(":focus") == false) {
-                        if ($(".gh_resp .gh_status").hasClass("green")) {
-                            $('#resp_Panel .resp_resp').click();
-                        }
-                    }
-                    return false;
+                    GAME.socket.emit('ga', {
+                        a: 22,
+                        type: 7,
+                        id:GAME.quest_action_qid,cnt:15000
+                    });
+                    return true;
                 });
                 $('#resp_Panel .resp_bh1').hide();
                 $('#resp_Panel .resp_bh2').hide();
