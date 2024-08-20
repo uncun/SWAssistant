@@ -1615,6 +1615,7 @@ if (typeof GAME === 'undefined') {} else {
                     return true;
                 } else if (RESP.code ) {
                     RESP.DestroyNormal();
+                    return true;
                 }
                 return false;
             };
