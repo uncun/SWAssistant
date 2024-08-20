@@ -1630,6 +1630,7 @@ if (typeof GAME === 'undefined') {} else {
             };
             RESP.DestroyItemsAtPage = (klasa) => {
                 var items=[];
+                
                 $('#ekw_page_items .nonstackable[data-class="'+klasa+'"]').each(function( index ) {
 					items.push(parseInt($(this).data('item_id')));
 				});
