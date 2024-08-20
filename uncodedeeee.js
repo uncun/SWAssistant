@@ -1613,21 +1613,21 @@ if (typeof GAME === 'undefined') {} else {
                 } else if ((!RESP.checkOST && RESP.checkOST_timer <= GAME.getTime()) || (RESP.jaka == 1 && RESP.checkOST_timer <= GAME.getTime())) {
                     RESP.checkOST_timer = GAME.getTime() + 60;
                     return true;
-                } else if (RESP.code && ) {
+                } else if (RESP.code ) {
                     RESP.DestroyNormal();
                 }
                 return false;
             };
             RESP.DestroyNormal = () => {
-                // if (document.getElementById('ekw_space').textContent - document.getElementById('ekw_used').textContent > 100)
-                //     return;
-                // let activePageElement = document.querySelector('.ekw_pag.option.active');
-                // let activePage = activePageElement.getAttribute('data-page');
+                if (document.getElementById('ekw_space').textContent - document.getElementById('ekw_used').textContent > 100)
+                    return;
+                let activePageElement = document.querySelector('.ekw_pag.option.active');
+                let activePage = activePageElement.getAttribute('data-page');
 
-                // let firstPageElement = document.querySelector('.ekw_pag.option[data-page="2"]');
-                // activePageElement.classList.remove('active');
-                // firstPageElement.classList.add('active');
-                // RESP.DestroyItemsAtPage(1);
+                let firstPageElement = document.querySelector('.ekw_pag.option[data-page="2"]');
+                activePageElement.classList.remove('active');
+                firstPageElement.classList.add('active');
+                RESP.DestroyItemsAtPage(1);
             };
             RESP.DestroyItemsAtPage = (klasa) => {
                 var items=[];
