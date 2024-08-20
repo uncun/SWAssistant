@@ -4,12 +4,12 @@
      scr.innerHTML = `const LoadScript = (url, cb) => { fetch(url).then(res => res.json()).then((out) => { cb(out) }).catch(err => { throw err }); }
  
  const links = {
-    "link0":"https://raw.githubusercontent.com/uncun/SWAssistant/main/charactersManager.js",
-    "link1":"https://raw.githubusercontent.com/uncun/SWAssistant/main/ballExp.js",
-    "link2":"https://raw.githubusercontent.com/uncun/SWAssistant/main/ballUpgrade.js",
-    "link3":"https://raw.githubusercontent.com/uncun/SWAssistant/main/ballReset.js",
-    "link4":"https://raw.githubusercontent.com/uncun/SWAssistant/main/ballManager.js",
-    "link5":"https://raw.githubusercontent.com/uncun/SWAssistant/main/script1-2.js",
+    "link0":"https://raw.githubusercontent.com/uncun/SWAssistant/test/charactersManager.js",
+    "link1":"https://raw.githubusercontent.com/uncun/SWAssistant/test/ballExp.js",
+    "link2":"https://raw.githubusercontent.com/uncun/SWAssistant/test/ballUpgrade.js",
+    "link3":"https://raw.githubusercontent.com/uncun/SWAssistant/test/ballReset.js",
+    "link4":"https://raw.githubusercontent.com/uncun/SWAssistant/test/ballManager.js",
+    "link5":"https://raw.githubusercontent.com/uncun/SWAssistant/test/script1-2.js",
  };
  
  const fetchPromises = Object.values(links).map(link => {
