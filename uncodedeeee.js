@@ -277,28 +277,28 @@ if (typeof GAME === 'undefined') {} else {
                 });
                 $('#resp_Panel .resp_normal').click(() => {
                     if (RESP.normal) {
-                        $(".resp_code .resp_status").removeClass("green").addClass("red").html("Off");
+                        $(".resp_normal .resp_status").removeClass("green").addClass("red").html("Off");
                         RESP.normal = false;
                     } else {
-                        $(".resp_code .resp_status").removeClass("red").addClass("green").html("On");
+                        $(".resp_normal .resp_status").removeClass("red").addClass("green").html("On");
                         RESP.normal = true;
                     }
                 });
                 $('#resp_Panel .resp_rare').click(() => {
                     if (RESP.rare) {
-                        $(".resp_code .resp_status").removeClass("green").addClass("red").html("Off");
+                        $(".resp_rare .resp_status").removeClass("green").addClass("red").html("Off");
                         RESP.rare = false;
                     } else {
-                        $(".resp_code .resp_status").removeClass("red").addClass("green").html("On");
+                        $(".resp_rare .resp_status").removeClass("red").addClass("green").html("On");
                         RESP.rare = true;
                     }
                 });
                 $('#resp_Panel .resp_uniq').click(() => {
                     if (RESP.uniq) {
-                        $(".resp_code .resp_status").removeClass("green").addClass("red").html("Off");
+                        $(".resp_uniq .resp_status").removeClass("green").addClass("red").html("Off");
                         RESP.uniq = false;
                     } else {
-                        $(".resp_code .resp_status").removeClass("red").addClass("green").html("On");
+                        $(".resp_uniq .resp_status").removeClass("red").addClass("green").html("On");
                         RESP.uniq = true;
                     }
                 });
