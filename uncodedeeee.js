@@ -1676,6 +1676,7 @@ if (typeof GAME === 'undefined') {} else {
                     console.log("active page:", parseInt(firstPageElement.getAttribute('data-page')));
 
                     window.setTimeout(function() {
+                        var items=[];
                         $('#ekw_page_items .nonstackable[data-class="'+klasa+'"]').each(function( index ) {
                             items.push(parseInt($(this).data('item_id')));
                         });
