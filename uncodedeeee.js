@@ -1703,7 +1703,7 @@ if (typeof GAME === 'undefined') {} else {
                 if (!RESP.stop) {
                     if (!RESP.check()) {
                         setTimeout(() => {
-                            RESP.fight();
+                            // RESP.fight();
                             RESP.go();
                         }, RESP.wait);
                     } else {
