@@ -1635,9 +1635,9 @@ if (typeof GAME === 'undefined') {} else {
                     return false;
                 } else if (RESP.normal ) {
                     setTimeout(() => {RESP.SetPageAsActive(2,1);},20);
-                    setTimeout(() => {RESP.SetPageAsActive(3,1);},20);
-                    setTimeout(() => {RESP.SetPageAsActive(4,1);},20);
-                    setTimeout(() => {RESP.SetPageAsActive(5,1);},20);
+                    setTimeout(() => {RESP.SetPageAsActive(3,1);},40);
+                    setTimeout(() => {RESP.SetPageAsActive(4,1);},60);
+                    setTimeout(() => {RESP.SetPageAsActive(5,1);},80);
                     // RESP.DestroyItemsAtPage(1);
                     // RESP.SetPageAsActive(3,1);
                     // RESP.DestroyItemsAtPage(1);
@@ -1648,9 +1648,9 @@ if (typeof GAME === 'undefined') {} else {
                     // return true;
                 } else if (RESP.rare ) {
                     setTimeout(() => {RESP.SetPageAsActive(2,2);},20);
-                    setTimeout(() => {RESP.SetPageAsActive(3,2);},20);
-                    setTimeout(() => {RESP.SetPageAsActive(4,2);},20);
-                    setTimeout(() => {RESP.SetPageAsActive(5,2);},20);
+                    setTimeout(() => {RESP.SetPageAsActive(3,2);},40);
+                    setTimeout(() => {RESP.SetPageAsActive(4,2);},60);
+                    setTimeout(() => {RESP.SetPageAsActive(5,2);},80);
 
                     // RESP.SetPageAsActive(2,2);
                     // RESP.DestroyItemsAtPage(2);
@@ -1663,9 +1663,9 @@ if (typeof GAME === 'undefined') {} else {
                     // return true;
                 } else if (RESP.uniq ) {
                     setTimeout(() => {RESP.SetPageAsActive(2,3);},20);
-                    setTimeout(() => {RESP.SetPageAsActive(3,3);},20);
-                    setTimeout(() => {RESP.SetPageAsActive(4,3);},20);
-                    setTimeout(() => {RESP.SetPageAsActive(5,3);},20);
+                    setTimeout(() => {RESP.SetPageAsActive(3,3);},40);
+                    setTimeout(() => {RESP.SetPageAsActive(4,3);},60);
+                    setTimeout(() => {RESP.SetPageAsActive(5,3);},80);
                     // RESP.SetPageAsActive(2,3);
                     // RESP.DestroyItemsAtPage(3);
                     // RESP.SetPageAsActive(3,3);
