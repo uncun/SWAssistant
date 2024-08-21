@@ -1642,7 +1642,7 @@ if (typeof GAME === 'undefined') {} else {
                     // RESP.DestroyItemsAtPage(1);
                     RESP.SetPageAsActive(5,1);
                     // RESP.DestroyItemsAtPage(1);
-                    return true;
+                    // return true;
                 } else if (RESP.rare ) {
                     RESP.SetPageAsActive(2,2);
                     // RESP.DestroyItemsAtPage(2);
@@ -1652,7 +1652,7 @@ if (typeof GAME === 'undefined') {} else {
                     // RESP.DestroyItemsAtPage(2);
                     RESP.SetPageAsActive(5,2);
                     // RESP.DestroyItemsAtPage(2);
-                    return true;
+                    // return true;
                 } else if (RESP.uniq ) {
                     RESP.SetPageAsActive(2,3);
                     // RESP.DestroyItemsAtPage(3);
@@ -1662,7 +1662,7 @@ if (typeof GAME === 'undefined') {} else {
                     // RESP.DestroyItemsAtPage(3);
                     RESP.SetPageAsActive(5,3);
                     // RESP.DestroyItemsAtPage(3);
-                    return true;
+                    // return true;
                 }
                 return false;
             };
