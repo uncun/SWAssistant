@@ -1627,12 +1627,12 @@ if (typeof GAME === 'undefined') {} else {
                         page: GAME.ekw_page,
                         am: 1
                     });
-                    return true;
+                    return false;
                 } else if (RESP.checkOST && $('#doubler_status').text() <= '00:00:03') {
-                    return true;
+                    return false;
                 } else if ((!RESP.checkOST && RESP.checkOST_timer <= GAME.getTime()) || (RESP.jaka == 1 && RESP.checkOST_timer <= GAME.getTime())) {
                     RESP.checkOST_timer = GAME.getTime() + 60;
-                    return true;
+                    return false;
                 } else if (RESP.normal ) {
                     RESP.SetPageAsActive(2);
                     RESP.DestroyItemsAtPage(1);
