@@ -1634,33 +1634,45 @@ if (typeof GAME === 'undefined') {} else {
                     RESP.checkOST_timer = GAME.getTime() + 60;
                     return false;
                 } else if (RESP.normal ) {
-                    RESP.SetPageAsActive(2,1);
+                    setTimeout(() => {RESP.SetPageAsActive(2,1);},20);
+                    setTimeout(() => {RESP.SetPageAsActive(3,1);},20);
+                    setTimeout(() => {RESP.SetPageAsActive(4,1);},20);
+                    setTimeout(() => {RESP.SetPageAsActive(5,1);},20);
                     // RESP.DestroyItemsAtPage(1);
-                    RESP.SetPageAsActive(3,1);
+                    // RESP.SetPageAsActive(3,1);
                     // RESP.DestroyItemsAtPage(1);
-                    RESP.SetPageAsActive(4,1);
+                    // RESP.SetPageAsActive(4,1);
                     // RESP.DestroyItemsAtPage(1);
-                    RESP.SetPageAsActive(5,1);
+                    // RESP.SetPageAsActive(5,1);
                     // RESP.DestroyItemsAtPage(1);
                     // return true;
                 } else if (RESP.rare ) {
-                    RESP.SetPageAsActive(2,2);
+                    setTimeout(() => {RESP.SetPageAsActive(2,2);},20);
+                    setTimeout(() => {RESP.SetPageAsActive(3,2);},20);
+                    setTimeout(() => {RESP.SetPageAsActive(4,2);},20);
+                    setTimeout(() => {RESP.SetPageAsActive(5,2);},20);
+
+                    // RESP.SetPageAsActive(2,2);
                     // RESP.DestroyItemsAtPage(2);
-                    RESP.SetPageAsActive(3,2);
+                    // RESP.SetPageAsActive(3,2);
                     // RESP.DestroyItemsAtPage(2);
-                    RESP.SetPageAsActive(4,2);
+                    // RESP.SetPageAsActive(4,2);
                     // RESP.DestroyItemsAtPage(2);
-                    RESP.SetPageAsActive(5,2);
+                    // RESP.SetPageAsActive(5,2);
                     // RESP.DestroyItemsAtPage(2);
                     // return true;
                 } else if (RESP.uniq ) {
-                    RESP.SetPageAsActive(2,3);
+                    setTimeout(() => {RESP.SetPageAsActive(2,3);},20);
+                    setTimeout(() => {RESP.SetPageAsActive(3,3);},20);
+                    setTimeout(() => {RESP.SetPageAsActive(4,3);},20);
+                    setTimeout(() => {RESP.SetPageAsActive(5,3);},20);
+                    // RESP.SetPageAsActive(2,3);
                     // RESP.DestroyItemsAtPage(3);
-                    RESP.SetPageAsActive(3,3);
+                    // RESP.SetPageAsActive(3,3);
                     // RESP.DestroyItemsAtPage(3);
-                    RESP.SetPageAsActive(4,3);
+                    // RESP.SetPageAsActive(4,3);
                     // RESP.DestroyItemsAtPage(3);
-                    RESP.SetPageAsActive(5,3);
+                    // RESP.SetPageAsActive(5,3);
                     // RESP.DestroyItemsAtPage(3);
                     // return true;
                 }
@@ -1675,7 +1687,7 @@ if (typeof GAME === 'undefined') {} else {
                     firstPageElement.classList.add('active');
                     console.log("active page:", parseInt(firstPageElement.getAttribute('data-page')));
 
-                    window.setTimeout(function() {
+                    // window.setTimeout(function() {
                         var items=[];
                         $('#ekw_page_items .nonstackable[data-class="'+klasa+'"]').each(function( index ) {
                             items.push(parseInt($(this).data('item_id')));
@@ -1684,7 +1696,7 @@ if (typeof GAME === 'undefined') {} else {
                             GAME.emitOrder({a:12,type:11,items:items,page:GAME.ekw_page});
                             console.log("niszczenie itemow na stronie:", page, klasa);
                         }
-                    }, 20);
+                    // }, 20);
                 }, 20);
             }
             RESP.DestroyItemsAtPage = (klasa) => {
