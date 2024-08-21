@@ -1666,21 +1666,14 @@ if (typeof GAME === 'undefined') {} else {
                 }
                 return false;
             };
-            RESP.DestroyNormal = () => {
-  
-                let activePageElement = document.querySelector('.ekw_pag.option.active');
-                let firstPageElement = document.querySelector('.ekw_pag.option[data-page="2"]');
-                activePageElement.classList.remove('active');
-                firstPageElement.classList.add('active');
-                console.log("active page:", parseInt(firstPageElement.getAttribute('data-page')));
-                RESP.DestroyItemsAtPage(1);
-            };
+
             RESP.SetPageAsActive = (page) => {
                 window.setTimeout(function() {
                     let activePageElement = document.querySelector('.ekw_pag.option.active');
                     let firstPageElement = document.querySelector('.ekw_pag.option[data-page="'+page+'"]');
                     activePageElement.classList.remove('active');
                     firstPageElement.classList.add('active');
+                    console.log("active page:", parseInt(firstPageElement.getAttribute('data-page')));
                 }, 20);
             }
             RESP.DestroyItemsAtPage = (klasa) => {
