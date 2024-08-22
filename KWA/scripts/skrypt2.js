@@ -33,41 +33,51 @@ var max_Senzu = Math.floor(GAME.char_data.pr_max/100*2*(1+GAME.getStat(99)/100))
 var refresh_arena = 0;
 //---------------------WYGLAD----------------------------------
 
-const $css = `<style>
-	.gh_btn {
-		height: 26px;
-		line-height: 26px;
-		display: inline-block;
-		text-align: center;
-		width: 103px;
-		color: #030033;
-		text-decoration: none;
-		font-size: 10px;
-		font-weight: Bold;
-		text-transform: uppercase;
-		border: none;
-		cursor: pointer;
-	}</style>`
-const $main = '<div id="gh_game_helper" style="position: fixed; top: 30px; right: 0; padding: 10px; background: rgba(8, 0, 1, 0.9); z-index: 5;"></div>'
-const $resp = '<button id="gh_resp_button" class="gh_btn" style="display: block; margin-bottom: 10px;">Respienie: <span id="gh_resp_status" class="green">ON</span></button>'
+// const $css = `<style>
+// 	.gh_btn {
+// 		height: 26px;
+// 		line-height: 26px;
+// 		display: inline-block;
+// 		text-align: center;
+// 		width: 103px;
+// 		color: #030033;
+// 		text-decoration: none;
+// 		font-size: 10px;
+// 		font-weight: Bold;
+// 		text-transform: uppercase;
+// 		border: none;
+// 		cursor: pointer;
+// 	}</style>`
+// const $main = '<div id="gh_game_helper" style="position: fixed; top: 30px; right: 0; padding: 10px; background: rgba(8, 0, 1, 0.9); z-index: 5;"></div>'
+// const $resp = '<button id="gh_resp_button" class="gh_btn" style="display: block; margin-bottom: 10px;">Respienie: <span id="gh_resp_status" class="green">ON</span></button>'
 
-$('body').append($main).append($css);
-$('#gh_game_helper')
-	.append($resp);
+// $('body').append($main).append($css);
+// $('#gh_game_helper')
+// 	.append($resp);
 
-$('#gh_resp_button').click(() => {
-	if (stop) {
-		$('#gh_resp_status').text('ON').attr('class', 'green');
+// $('#gh_resp_button').click(() => {
+// 	if (stop) {
+// 		$('#gh_resp_status').text('ON').attr('class', 'green');
+// 		stop = false
+// 		start()
+// 	} else {
+// 		$('#gh_resp_status').text('OFF').attr('class', 'red');
+// 		stop = true
+// 	}
+// });
+// //---------------------------------------------------------------------------------------------------------
+
+$('#main_Panel .gh_resp1').click(() => {
+	if ($(".gh_resp1 .gh_status").hasClass("red")) {
+		$(".gh_resp1 .gh_status").removeClass("red").addClass("green").html("On");
 		stop = false
 		start()
 	} else {
-		$('#gh_resp_status').text('OFF').attr('class', 'red');
-		stop = true
+		$(".gh_resp1 .gh_status").removeClass("green").addClass("red").html("Off");
+		$("#resp_Panel").hide();
+		stop = true;
 	}
 });
-//---------------------------------------------------------------------------------------------------------
-
- 
 
 function start(){
 if(!GAME.is_loading && !stop && collectBlueSenzu() && !checkAntyBot() ){
