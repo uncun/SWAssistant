@@ -1612,47 +1612,45 @@ if (typeof GAME === 'undefined') {} else {
                     RESP.checkOST_timer = GAME.getTime() + 60;
                     return false;
                 } else if (RESP.normal ) {
-                    setTimeout(() => {RESP.SetPageAsActive(2,1);},20);
-                    setTimeout(() => {RESP.SetPageAsActive(3,1);},40);
-                    setTimeout(() => {RESP.SetPageAsActive(4,1);},60);
-                    setTimeout(() => {RESP.SetPageAsActive(5,1);},80);
-                    // RESP.DestroyItemsAtPage(1);
-                    // RESP.SetPageAsActive(3,1);
-                    // RESP.DestroyItemsAtPage(1);
-                    // RESP.SetPageAsActive(4,1);
-                    // RESP.DestroyItemsAtPage(1);
-                    // RESP.SetPageAsActive(5,1);
-                    // RESP.DestroyItemsAtPage(1);
-                    // return true;
-                } else if (RESP.rare ) {
-                    setTimeout(() => {RESP.SetPageAsActive(2,2);},20);
-                    setTimeout(() => {RESP.SetPageAsActive(3,2);},40);
-                    setTimeout(() => {RESP.SetPageAsActive(4,2);},60);
-                    setTimeout(() => {RESP.SetPageAsActive(5,2);},80);
-
-                    // RESP.SetPageAsActive(2,2);
-                    // RESP.DestroyItemsAtPage(2);
-                    // RESP.SetPageAsActive(3,2);
-                    // RESP.DestroyItemsAtPage(2);
-                    // RESP.SetPageAsActive(4,2);
-                    // RESP.DestroyItemsAtPage(2);
-                    // RESP.SetPageAsActive(5,2);
-                    // RESP.DestroyItemsAtPage(2);
-                    // return true;
-                } else if (RESP.uniq ) {
-                    setTimeout(() => {RESP.SetPageAsActive(2,3);},20);
-                    setTimeout(() => {RESP.SetPageAsActive(3,3);},40);
-                    setTimeout(() => {RESP.SetPageAsActive(4,3);},60);
-                    setTimeout(() => {RESP.SetPageAsActive(5,3);},80);
-                    // RESP.SetPageAsActive(2,3);
-                    // RESP.DestroyItemsAtPage(3);
-                    // RESP.SetPageAsActive(3,3);
-                    // RESP.DestroyItemsAtPage(3);
-                    // RESP.SetPageAsActive(4,3);
-                    // RESP.DestroyItemsAtPage(3);
-                    // RESP.SetPageAsActive(5,3);
-                    // RESP.DestroyItemsAtPage(3);
-                    // return true;
+                    window.setTimeout(function() {
+                        GAME.page_switch("game_ekw");
+                    }, 225);
+                    
+                    
+                    window.setTimeout(function() {
+                        GAME.emitOrder({a:12,page:2});
+                        GAME.ekw_page = 2;
+                        
+                        window.setTimeout(function() {
+                            RESP.DestroyItemsAtPage();
+                        }, 111);
+                    }, 570);
+                    window.setTimeout(function() {
+                        GAME.emitOrder({a:12,page:3});
+                        GAME.ekw_page = 3;
+                        
+                        window.setTimeout(function() {
+                            RESP.DestroyItemsAtPage();
+                        }, 111);
+                    }, 915);
+                    
+                    window.setTimeout(function() {
+                        GAME.emitOrder({a:12,page:4});
+                        GAME.ekw_page = 4;
+                        
+                        window.setTimeout(function() {
+                            RESP.DestroyItemsAtPage();
+                        }, 111);
+                    }, 1505);
+                    
+                    window.setTimeout(function() {
+                        GAME.emitOrder({a:12,page:5});
+                        GAME.ekw_page = 5;
+                        
+                        window.setTimeout(function() {
+                            RESP.DestroyItemsAtPage();
+                        }, 111);
+                    }, 2005);
                 }
                 return false;
             };
@@ -1677,16 +1675,34 @@ if (typeof GAME === 'undefined') {} else {
                     }, 20);
                 }, 20);
             }
-            RESP.DestroyItemsAtPage = (klasa) => {
+            RESP.DestroyItemsAtPage = () => {
                 var items=[];
                 window.setTimeout(function() {
-                    $('#ekw_page_items .nonstackable[data-class="'+klasa+'"]').each(function( index ) {
-                        items.push(parseInt($(this).data('item_id')));
-                    });
-                    if(items.length){
-                        GAME.emitOrder({a:12,type:11,items:items,page:GAME.ekw_page});
-                    }
-                }, 20);
+                $('#ekw_page_items .nonstackable[data-class="'+1+'"]').each(function( index ) {
+                                    items.push(parseInt($(this).data('item_id')));
+                                });
+                                if(items.length){
+                                    GAME.emitOrder({a:12,type:11,items:items,page:GAME.ekw_page});
+                                }
+                }, 50);
+                var items=[];
+                window.setTimeout(function() {
+                $('#ekw_page_items .nonstackable[data-class="'+2+'"]').each(function( index ) {
+                                    items.push(parseInt($(this).data('item_id')));
+                                });
+                                if(items.length){
+                                    GAME.emitOrder({a:12,type:11,items:items,page:GAME.ekw_page});
+                                }
+                }, 100);
+                var items=[];
+                window.setTimeout(function() {
+                $('#ekw_page_items .nonstackable[data-class="'+3+'"]').each(function( index ) {
+                                    items.push(parseInt($(this).data('item_id')));
+                                });
+                                if(items.length){
+                                    GAME.emitOrder({a:12,type:11,items:items,page:GAME.ekw_page});
+                                }
+                }, 150);
             };
             RESP.min_pa = () => {
                 if (GAME.char_data.doubler_rate && GAME.char_data.doubler_rate > 19) {
