@@ -1,5 +1,5 @@
 
-var wait_resp_resp = 2; //szybkość skryptu 1-1000 im mniejsza wartość tym szybciej
+var wait_resp = 2; //szybkość skryptu 1-1000 im mniejsza wartość tym szybciej
 var maxDown = 0; // ustawić 0 jeśli nie używane, maksymalna wartość na mapie do której ma się poruszać postać w dół
 var maxUp = 0; // ustawić 0 jeśli nie używane, maksymalna wartość na mapie do której ma się poruszać postać w górę
 var maxLeft = 0; // ustawić 0 jeśli nie używane, maksymalna wartość na mapie do której ma się poruszać postać w lewo
