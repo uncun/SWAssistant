@@ -78,7 +78,7 @@ window.setTimeout(start,wait_resp);
 }
 
 function action(){
-	if ($(".resp_uniq .resp_status").hasClass("red"))
+	if ($(".resp_resp1 .resp_status").hasClass("red"))
 		return;
 switch (whatNow) {
 case 0:

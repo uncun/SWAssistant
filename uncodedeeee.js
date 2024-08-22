@@ -242,11 +242,10 @@ if (typeof GAME === 'undefined') {} else {
                     }
                 });
                 
-                $('#resp_Panel .gh_resp1').click(() => {
+                $('#resp_Panel .resp_resp1').click(() => {
                     if ($(".resp_resp1 .resp_status").hasClass("red")) {
                         $(".resp_resp1 .resp_status").removeClass("red").addClass("green").html("On");
                         // stop = false
-                        start()
                     } else {
                         $(".resp_resp1 .resp_status").removeClass("green").addClass("red").html("Off");
                         // $("#resp_Panel").hide();
@@ -1220,51 +1219,51 @@ if (typeof GAME === 'undefined') {} else {
                 return tab;
             };
             PVP.wojny1 = () => {
-                if (PVP.wi) {
-                    var aimp = $("#e_admiral_player").find("[data-option=show_player]").attr("data-char_id");
-                    var imp = $("#leader_player").find("[data-option=show_player]").attr("data-char_id");
-                    if (!PVP.adimp) {
-                        GAME.socket.emit('ga', {
-                            a: 50,
-                            type: 0,
-                            empire: GAME.char_data.empire
-                        });
-                        PVP.adimp = true;
-                        window.setTimeout(PVP.wojny1, 500);
-                    } else if (!GAME.emp_enemies.includes(1) && ![GAME.char_data.empire].includes(1) && (PVP.check_imp().includes(GAME.char_id) || PVP.check_imp2().includes(GAME.char_id) || imp == GAME.char_id || aimp == GAME.char_id)) {
-                        GAME.socket.emit('ga', {
-                            a: 50,
-                            type: 7,
-                            target: 1
-                        });
-                        window.setTimeout(PVP.wojny1, 500);
-                    } else if (!GAME.emp_enemies.includes(2) && ![GAME.char_data.empire].includes(2) && (PVP.check_imp().includes(GAME.char_id) || PVP.check_imp2().includes(GAME.char_id) || imp == GAME.char_id || aimp == GAME.char_id)) {
-                        GAME.socket.emit('ga', {
-                            a: 50,
-                            type: 7,
-                            target: 2
-                        });
-                        window.setTimeout(PVP.wojny1, 500);
-                    } else if (!GAME.emp_enemies.includes(3) && ![GAME.char_data.empire].includes(3) && (PVP.check_imp().includes(GAME.char_id) || PVP.check_imp2().includes(GAME.char_id) || imp == GAME.char_id || aimp == GAME.char_id)) {
-                        GAME.socket.emit('ga', {
-                            a: 50,
-                            type: 7,
-                            target: 3
-                        });
-                        window.setTimeout(PVP.wojny1, 500);
-                    } else if (!GAME.emp_enemies.includes(4) && ![GAME.char_data.empire].includes(4) && (PVP.check_imp().includes(GAME.char_id) || PVP.check_imp2().includes(GAME.char_id) || imp == GAME.char_id || aimp == GAME.char_id)) {
-                        GAME.socket.emit('ga', {
-                            a: 50,
-                            type: 7,
-                            target: 4
-                        });
-                        window.setTimeout(PVP.wojny1, 500);
-                    } else {
-                        window.setTimeout(PVP.start, PVP.wait / PVP.WSPP());
-                    }
-                } else {
-                    window.setTimeout(PVP.start, PVP.wait / PVP.WSPP());
-                }
+                // if (PVP.wi) {
+                //     var aimp = $("#e_admiral_player").find("[data-option=show_player]").attr("data-char_id");
+                //     var imp = $("#leader_player").find("[data-option=show_player]").attr("data-char_id");
+                //     if (!PVP.adimp) {
+                //         GAME.socket.emit('ga', {
+                //             a: 50,
+                //             type: 0,
+                //             empire: GAME.char_data.empire
+                //         });
+                //         PVP.adimp = true;
+                //         window.setTimeout(PVP.wojny1, 500);
+                //     } else if (!GAME.emp_enemies.includes(1) && ![GAME.char_data.empire].includes(1) && (PVP.check_imp().includes(GAME.char_id) || PVP.check_imp2().includes(GAME.char_id) || imp == GAME.char_id || aimp == GAME.char_id)) {
+                //         GAME.socket.emit('ga', {
+                //             a: 50,
+                //             type: 7,
+                //             target: 1
+                //         });
+                //         window.setTimeout(PVP.wojny1, 500);
+                //     } else if (!GAME.emp_enemies.includes(2) && ![GAME.char_data.empire].includes(2) && (PVP.check_imp().includes(GAME.char_id) || PVP.check_imp2().includes(GAME.char_id) || imp == GAME.char_id || aimp == GAME.char_id)) {
+                //         GAME.socket.emit('ga', {
+                //             a: 50,
+                //             type: 7,
+                //             target: 2
+                //         });
+                //         window.setTimeout(PVP.wojny1, 500);
+                //     } else if (!GAME.emp_enemies.includes(3) && ![GAME.char_data.empire].includes(3) && (PVP.check_imp().includes(GAME.char_id) || PVP.check_imp2().includes(GAME.char_id) || imp == GAME.char_id || aimp == GAME.char_id)) {
+                //         GAME.socket.emit('ga', {
+                //             a: 50,
+                //             type: 7,
+                //             target: 3
+                //         });
+                //         window.setTimeout(PVP.wojny1, 500);
+                //     } else if (!GAME.emp_enemies.includes(4) && ![GAME.char_data.empire].includes(4) && (PVP.check_imp().includes(GAME.char_id) || PVP.check_imp2().includes(GAME.char_id) || imp == GAME.char_id || aimp == GAME.char_id)) {
+                //         GAME.socket.emit('ga', {
+                //             a: 50,
+                //             type: 7,
+                //             target: 4
+                //         });
+                //         window.setTimeout(PVP.wojny1, 500);
+                //     } else {
+                //         window.setTimeout(PVP.start, PVP.wait / PVP.WSPP());
+                //     }
+                // } else {
+                //     window.setTimeout(PVP.start, PVP.wait / PVP.WSPP());
+                // }
             };
             PVP.zejdz = () => {
                 GAME.socket.emit('ga', {
