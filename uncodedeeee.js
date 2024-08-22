@@ -38,7 +38,7 @@ if (typeof GAME === 'undefined') {} else {
                 const cssres = ` #res_Panel { background: rgba(0,0,0,0.9); position: fixed; top: 450px; left: 65%; z-index: 9999; width: 200px; padding: 1px; border-radius: 5px; border-style: solid; border-width: 7px 8px 7px 7px; display:block; user-select: none; color: #333333; } #res_Panel .sekcja { position: absolute; top: -27px; left: -7px; background: rgba(0,0,0,0.9); filter: hue-rotate(196deg); background-size: 100% 100%; width: 150px; cursor: all-scroll; } #res_Panel .res_button {cursor:pointer;text-align:center; border-bottom:solid gray 1px; color: white;} #res_Panel ul {margin-left:-30px; color:white; margin:7px 0px 5px 0px; padding: 0px; text-align: center;} `;
                 const csslpvm = ` #lpvm_Panel { background: rgba(0,0,0,0.9); position: fixed; top: 650px; left: 80%; z-index: 9999; width: 200px; padding: 1px; border-radius: 5px; border-style: solid; border-width: 7px 8px 7px 7px; display:block; user-select: none; color: #333333; } #lpvm_Panel .sekcja { position: absolute; top: -27px; left: -7px; background: rgba(0,0,0,0.9); filter: hue-rotate(196deg); background-size: 100% 100%; width: 150px; cursor: all-scroll; } #lpvm_Panel .lpvm_button {cursor:pointer;text-align:center; border-bottom:solid gray 1px; color: white;} #lpvm_Panel .pvm_killed {cursor:pointer;text-align:center; border-LGtom:solid gray 1px;text-align:center; color:white;} #lpvm_Panel .gamee_input{text-align:center; border-bottom:solid gray 1px; color: white;} `;
                 const html = ` <div id="main_Panel"> <div class="sekcja panel_dragg">ALL FOR ONE</div> <div class='gh_button gh_resp'>PVM<b class='gh_status red'>Off</b></div> <div class='gh_button gh_pvp'>PVP<b class='gh_status red'>Off</b></div> <div class='gh_button gh_lpvm'>Listy<b class='gh_status red'>Off</b></div> <div class='gh_button gh_res'>Zbierajka<b class='gh_status red'>Off</b></div> <div class='gh_button gh_code'>Kody<b class='gh_status red'>Off</b></div> </div> `;
-                const PVP_panel = ` <div id="pvp_Panel"> <div class="sekcja pvp_dragg">PVP</div> <div class='pvp_button pvp_pvp'>PVP<b class='pvp_status red'>Off</b></div> <div class='pvp_button pvp_Code'>Kody<b class='pvp_status green'>On</b></div> <div class='pvp_button pvp_rb_avoid'>Unikaj borny<b class='pvp_status red'>Off</b></div> <div class='pvp_button pvp_WI'>Wojny Imp<b class='pvp_status green'>On</b></div> <div class='pvp_button pvp_WK'>Wojny Klanowe<b class='pvp_status green'>On</b></div> <div class='pvp_button pvp_buff_imp'>Bufy IMP<b class='pvp_status red'>Off</b></div> <div class='pvp_button pvp_buff_clan'>Bufy KLAN<b class='pvp_status red'>Off</b></div> <div class='gamee_input'><input style='width:120px; margin-left:-2px; background:grey;text-align:center;font-size:16;' type='text' placeholder="Lista wojen" name='pvp_capt' value='' /></div> <div class='gameee_input'><input style='width:120px; margin-left:-2px; background:grey;text-align:center;font-size:16;' type='text' placeholder="Szybkość 10-100" name='speed_capt' value='50' /></div> </div> `;
+                const PVP_panel = ` <div id="pvp_Panel"> <div class="sekcja pvp_dragg">PVP</div> <div class='pvp_button pvp_pvp'>PVP<b class='pvp_status red'>Off</b></div>  <div class='pvp_button pvp_WI'>Wojny <b class='pvp_status green'>On</b></div> <div class='pvp_button pvp_WK'>Wojny Klanowe<b class='pvp_status green'>On</b></div>  <div class='gamee_input'><input style='width:120px; margin-left:-2px; background:grey;text-align:center;font-size:16;' type='text' placeholder="Lista wojen" name='pvp_capt' value='' /></div> <div class='gameee_input'><input style='width:120px; margin-left:-2px; background:grey;text-align:center;font-size:16;' type='text' placeholder="Szybkość 10-100" name='speed_capt' value='50' /></div> </div> `;
                 const RESP_panel = ` <div id="resp_Panel"> <div class="sekcja resp_dragg">SPAWN MOBKóW</div> <div class="resp_button resp_resp">RESP<b class="resp_status red">Off</b></div> <div class="resp_button resp_normal">Niszczenie normal<b class="resp_status red">Off</b></div> <div class="resp_button resp_rare">Niszczenie rare<b class="resp_status red">Off</b></div> <div class="resp_button resp_uniq">Niszczenie uniq<b class="resp_status red">Off</b></div> <div class="resp_button resp_blue">BLUE<b class="resp_status red">Off</b></div> <div class="resp_button resp_green">GREEN<b class="resp_status red">Off</b></div> <div class="resp_button resp_purple">PURPLE<b class="resp_status red">Off</b></div> <div class="resp_button resp_yellow">YELLOW<b class="resp_status red">Off</b></div> <div class="resp_button resp_red">RED<b class="resp_status red">Off</b></div> <div class="resp_button resp_magic">Wyciąg<b class="resp_status red">Off</b></div>    <div class="resp_button resp_on">Włącz All<b class="resp_status green">On</b></div> <div class="resp_button resp_off">Wyłącz All<b class="resp_status red">Off</b></div> <div class="resp_button resp_bh16">5 Min cd pvp <b class="resp_status red">Off</b></div>  </div> `;
                 const CODE_panel = ` <div id="code_Panel"> <div class="sekcja code_dragg">Kody</div> <div class="code_button code_code">KODY<b class="code_status red">Off</b></div> <div class="code_button code_acc">Konto<b class="code_status red">Off</b></div> <div class="code_button code_zast">Zastępstwa<b class="code_status red">Off</b></div> <div class="code_button code_bh1">Błogo 250% tren<b class="code_status red">Off</b></div> <div class="code_button code_bh2">Błogo 5% kod<b class="code_status red">Off</b></div> <label class='select_input'><select id='bot_what_to_train'><option value='1'>Siła</option><option value='2'>Szybkość</option><option value='3'>Wytrzymałość</option><option value='4'>Siła Woli</option><option value='5'>Energia Ki</option><option value='6'>Wtajemniczenie</option></select></label> <label class='select_input'><select id='bot_what_to_traintime'><option value='1'>1 godz.</option><option value='2'>2 godz.</option><option value='3'>3 godz.</option><option value='4'>4 godz.</option><option value='5'>5 godz.</option><option value='6'>6 godz.</option><option value='7'>7 godz.</option><option value='8'>8 godz.</option><option value='9'>9 godz.</option><option value='10'>10 godz.</option><option value='11'>11 godz.</option><option value='12'>12 godz.</option></label> </div> `;
                 const RES_panel = ` <div id="res_Panel"> <div class="sekcja res_dragg">SUROWCE</div> <div class="res_button res_res">ZBIERAJ<b class="res_status red">Off</b></div> <div class="bt_cool" style="text-align:center; color:white;"></div> <ul></ul> </div> `;
@@ -145,24 +145,7 @@ if (typeof GAME === 'undefined') {} else {
                         PVP.stop = true;
                     }
                 });
-                $('#pvp_Panel .pvp_rb_avoid').click(() => {
-                    if (PVP.higherRebornAvoid) {
-                        $(".pvp_rb_avoid .pvp_status").removeClass("green").addClass("red").html("Off");
-                        PVP.higherRebornAvoid = false;
-                    } else {
-                        $(".pvp_rb_avoid .pvp_status").removeClass("red").addClass("green").html("On");
-                        PVP.higherRebornAvoid = true;
-                    }
-                });
-                $('#pvp_Panel .pvp_Code').click(() => {
-                    if (PVP.code) {
-                        $(".pvp_Code .pvp_status").removeClass("green").addClass("red").html("Off");
-                        PVP.code = false;
-                    } else {
-                        $(".pvp_Code .pvp_status").removeClass("red").addClass("green").html("On");
-                        PVP.code = true;
-                    }
-                });
+
                 $('#pvp_Panel .pvp_WI').click(() => {
                     if (PVP.wi) {
                         $(".pvp_WI .pvp_status").removeClass("green").addClass("red").html("Off");
@@ -172,24 +155,7 @@ if (typeof GAME === 'undefined') {} else {
                         PVP.wi = true;
                     }
                 });
-                $('#pvp_Panel .pvp_buff_imp').click(() => {
-                    if (PVP.buff_imp) {
-                        $(".pvp_buff_imp .pvp_status").removeClass("green").addClass("red").html("Off");
-                        PVP.buff_imp = false;
-                    } else {
-                        $(".pvp_buff_imp .pvp_status").removeClass("red").addClass("green").html("On");
-                        PVP.buff_imp = true;
-                    }
-                });
-                $('#pvp_Panel .pvp_buff_clan').click(() => {
-                    if (PVP.buff_clan) {
-                        $(".pvp_buff_clan .pvp_status").removeClass("green").addClass("red").html("Off");
-                        PVP.buff_clan = false;
-                    } else {
-                        $(".pvp_buff_clan .pvp_status").removeClass("red").addClass("green").html("On");
-                        PVP.buff_clan = true;
-                    }
-                });
+
                 $('#pvp_Panel .pvp_WK').click(() => {
                     if (PVP.wk) {
                         $(".pvp_WK .pvp_status").removeClass("green").addClass("red").html("Off");
@@ -944,10 +910,11 @@ if (typeof GAME === 'undefined') {} else {
             };
             var PVP = {
                 stop: true,
-                wi: true,
-                code: true,
-                wk: true,
-                higherRebornAvoid: false,
+                wi: false,
+                war_cnt: 0,
+                org_cnt: 0,
+                emp : 0,
+                wk: false,
                 caseNumber: 0,
                 wait: 10,
                 wait2: 80,
@@ -968,12 +935,13 @@ if (typeof GAME === 'undefined') {} else {
             };
             PVP.checkkkk = () => {
                 let imp = $("#leader_player").find("[data-option=show_player]").attr("data-char_id");
-                let emp = GAME.char_data.empire;
+                
                 let buff = $(".emp_buff .pull-right").find("button").attr("data-option") == "activate_emp_buff";
                 let buff_id = $(".emp_buff .pull-right").find("button").attr("data-buff");
                 let who_win = $("#gne_satus").text().includes("ZŁO");
                 let abut = $("#clan_buffs").find(`button[data-option="activate_war_buff"]`);
                 let isDisabled = $("#clan_buffs").find(`button[data-option="activate_war_buff"]`).parents("tr").hasClass("disabled");
+                PVP.emp = GAME.char_data.village_id;
                 if (GAME.quick_opts.ssj && $("#ssj_bar").css("display") === "none" && PVP.code) {
                     setTimeout(() => {
                         GAME.socket.emit('ga', {
@@ -1431,10 +1399,8 @@ if (typeof GAME === 'undefined') {} else {
                 window.setTimeout(PVP.start, PVP.wait2 / PVP.WSPP());
             };
             PVP.check = () => {
-                if ($("#ewar_list").text().includes("--:--:--")) {
-                    window.setTimeout(PVP.check, 300);
-                } else {
-                    window.setTimeout(PVP.start, PVP.wait / PVP.WSPP());
+                if ($("#war_list .timer").length === 0 && PVP.wk) {
+                    GAME.emitOrder({a:39,type:24,shorts:'Yuki'});
                 }
             };
             PVP.check2 = () => {
@@ -1455,18 +1421,18 @@ if (typeof GAME === 'undefined') {} else {
                 localStorage.setItem('clan_list', PVP.war);
             };
             PVP.dec_wars = () => {
-                var wars = $("#pvp_Panel input[name=pvp_capt]").val();
-                var count = wars ? wars.split(";").length : 0;
-                if (count > 0 && PVP.wk && GAME.char_data.klan_id != 0 && GAME.char_data.klan_rent == 0 && GAME.clan_wars.length < count) {
-                    GAME.socket.emit('ga', {
-                        a: 39,
-                        type: 24,
-                        shorts: wars
-                    });
-                    window.setTimeout(PVP.start, PVP.wait / PVP.WSPP());
-                } else {
-                    window.setTimeout(PVP.start, PVP.wait / PVP.WSPP());
-                }
+                if (!PVP.wi)
+                    return;
+                if (PVP.war_cnt == PVP.emp)
+                    PVP.war_cnt++;
+                PVP.wi = false;
+                setTimeout(() => {
+                    window.warx = document.getElementsByClassName("war_win")[PVP.org_cnt].getElementsByTagName("button")[0].getAttribute("data-war");
+                    GAME.emitOrder({a:50,type:13,war:warx,org:18});
+                    PVP.org_cnt +=1;
+                    PVP.wi = true;
+                },60200);
+                
             };
             PVP.speed = () => {
                 var list = localStorage.getItem('pvp_speed');
@@ -1682,21 +1648,21 @@ if (typeof GAME === 'undefined') {} else {
             RESP.SetPageAsActive = (page, klasa) => {
                 window.setTimeout(function() {
                     let activePageElement = document.querySelector('.ekw_pag.option.active');
-                    let firstPageElement = document.querySelector('.ekw_pag.option[data-page="'+page+'"]');
+                    let firstPageElement = document.querySelector('.ekw_pag.option[data-page="'+1+'"]');
                     activePageElement.classList.remove('active');
                     firstPageElement.classList.add('active');
                     console.log("active page:", parseInt(firstPageElement.getAttribute('data-page')));
 
-                    // window.setTimeout(function() {
+                    window.setTimeout(function() {
                         var items=[];
-                        $('#ekw_page_items .nonstackable[data-class="'+klasa+'"]').each(function( index ) {
+                        $('#ekw_page_items .nonstackable[data-class="'+1+'"]').each(function( index ) {
                             items.push(parseInt($(this).data('item_id')));
                         });
                         if(items.length){
                             GAME.emitOrder({a:12,type:11,items:items,page:GAME.ekw_page});
-                            console.log("niszczenie itemow na stronie:", page, klasa);
+                            console.log("niszczenie itemow na stronie:", 1, 1);
                         }
-                    // }, 20);
+                    }, 20);
                 }, 20);
             }
             RESP.DestroyItemsAtPage = (klasa) => {
