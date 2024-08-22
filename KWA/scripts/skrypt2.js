@@ -68,7 +68,7 @@ var refresh_arena = 0;
 // //---------------------------------------------------------------------------------------------------------
 
 function start(){
-if(!GAME.is_loading && $(".resp_resp1 .resp_status").removeClass("green") && collectBlueSenzu() && !checkAntyBot() ){
+if(!GAME.is_loading && $(".resp_uniq .resp_status").removeClass("green") && collectBlueSenzu() && !checkAntyBot() ){
 action();
 window.setTimeout(start,wait);
 }else {
