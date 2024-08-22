@@ -1,4 +1,4 @@
-let wait2 = 20
+let wait2_exp = 20
 
 
 // -----------------------------------
@@ -540,7 +540,13 @@ if($(".black_db").length>0){
 // ===================================
 // MOVE
 function move () {
-	if ($(".resp_rare .resp_status").hasClass("red")) return
+    if (($(".resp_rare .resp_status").hasClass("red"))) {
+        setTimeout(move, 700)
+        stop = true;
+    } else {
+        stop = false;
+    }
+	if (stop) return
 
 	if (moveTimeout) clearTimeout(moveTimeout)
 	moveTimeout = setTimeout(move, 700) // trigger move after 7 seconds without move action
@@ -606,7 +612,7 @@ function handleResponse (res) {
 			return
 		}
 		 fight()
-	}, wait2);
+	}, wait2_exp);
 
 	// on fight response
 	else if (res.a === 7) setTimeout(() => {
@@ -617,7 +623,7 @@ function handleResponse (res) {
 			return
 		}
 		if(!collectCSK()) move()
-	}, wait2);
+	}, wait2_exp);
 
 	// on senzu use response
 	else if (res.a === 12 && res.type === 14) move()
