@@ -68,12 +68,12 @@ var refresh_arena = 0;
 // //---------------------------------------------------------------------------------------------------------
 
 $('#main_Panel .gh_resp1').click(() => {
-	if ($(".gh_resp1 .gh_status").hasClass("red")) {
-		$(".gh_resp1 .gh_status").removeClass("red").addClass("green").html("On");
+	if ($(".resp_resp1 .resp_status").hasClass("red")) {
+		$(".resp_resp1 .resp_status").removeClass("red").addClass("green").html("On");
 		stop = false
 		start()
 	} else {
-		$(".gh_resp1 .gh_status").removeClass("green").addClass("red").html("Off");
+		$(".resp_resp1 .resp_status").removeClass("green").addClass("red").html("Off");
 		$("#resp_Panel").hide();
 		stop = true;
 	}
