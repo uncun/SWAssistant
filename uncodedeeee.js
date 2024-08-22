@@ -1623,8 +1623,7 @@ if (typeof GAME === 'undefined') {} else {
                     RESP.checkOST_timer = GAME.getTime() + 60;
                     return false;
                 } else if (RESP.normal) {
-                    let activePageElement = document.querySelector('.ekw_pag.option.active');
-                    let firstPageElement = document.querySelector('.ekw_pag.option[data-page="'+2+'"]');
+                    GAME.emitOrder({a:12,page:GAME.ekw_page});
                     let ekwUsedElement = document.getElementById('ekw_used');
                     let ekwUsedValue = ekwUsedElement.textContent;
                     if (ekwUsedValue < 100) {
