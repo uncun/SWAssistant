@@ -1,5 +1,5 @@
 
-var wait = 2; //szybkość skryptu 1-1000 im mniejsza wartość tym szybciej
+var wait_resp = 2; //szybkość skryptu 1-1000 im mniejsza wartość tym szybciej
 var maxDown = 0; // ustawić 0 jeśli nie używane, maksymalna wartość na mapie do której ma się poruszać postać w dół
 var maxUp = 0; // ustawić 0 jeśli nie używane, maksymalna wartość na mapie do której ma się poruszać postać w górę
 var maxLeft = 0; // ustawić 0 jeśli nie używane, maksymalna wartość na mapie do której ma się poruszać postać w lewo
@@ -226,12 +226,12 @@ function stopIfAnotherPlayer(){
 if(stopIfAnotherPlayerOn){
 //if(Object.keys(GAME.map_players).length <= 2 && GAME.map_players[1499].y >=39){//Sprawdzanie czy na planszy sa inni gracze
 if(Object.keys(GAME.map_players).length <= 0){
-wait = 1;
+wait_resp = 1;
 //scriptOn();
 return true;
 }else{
 //scriptOff();
-wait = 1;
+wait_resp = 1;
 return false;
 }
 }else{
