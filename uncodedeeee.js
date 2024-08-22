@@ -241,6 +241,18 @@ if (typeof GAME === 'undefined') {} else {
                         $('#resp_Panel .resp_off').show();
                     }
                 });
+                
+                $('#resp_Panel .gh_resp1').click(() => {
+                    if ($(".resp_resp1 .resp_status").hasClass("red")) {
+                        $(".resp_resp1 .resp_status").removeClass("red").addClass("green").html("On");
+                        // stop = false
+                        start()
+                    } else {
+                        $(".resp_resp1 .resp_status").removeClass("green").addClass("red").html("Off");
+                        // $("#resp_Panel").hide();
+                        // stop = true;
+                    }
+                });
                 $('#resp_Panel .resp_normal').click(() => {
                     if (RESP.normal) {
                         $(".resp_normal .resp_status").removeClass("green").addClass("red").html("Off");
