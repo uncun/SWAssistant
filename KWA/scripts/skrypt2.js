@@ -67,7 +67,7 @@ var refresh_arena = 0;
 // });
 // //---------------------------------------------------------------------------------------------------------
 
-$('#main_Panel .gh_resp1').click(() => {
+$('#resp_Panel .gh_resp1').click(() => {
 	if ($(".resp_resp1 .resp_status").hasClass("red")) {
 		$(".resp_resp1 .resp_status").removeClass("red").addClass("green").html("On");
 		stop = false
@@ -80,7 +80,7 @@ $('#main_Panel .gh_resp1').click(() => {
 });
 
 function start(){
-if(!GAME.is_loading && !stop && collectBlueSenzu() && !checkAntyBot() ){
+if(!GAME.is_loading && $(".resp_resp1 .resp_status").removeClass("green") && collectBlueSenzu() && !checkAntyBot() ){
 action();
 window.setTimeout(start,wait);
 }else {
