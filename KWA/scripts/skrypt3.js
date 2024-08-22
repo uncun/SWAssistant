@@ -33,6 +33,7 @@ var whatNow = 0;
 var arena_courent = 0;
 var max_Senzu = Math.floor(GAME.char_data.pr_max/100*2*(1+GAME.getStat(99)/100));
 var refresh_arena = 0;
+var reload_needed = false;
 
 while(GAME.mapcell[minX+'_'+Math.floor(mapay/2)].m==0){
 minX++;
@@ -40,9 +41,9 @@ minX++;
 while(GAME.mapcell[minX+'_'+minY].m==0){
 minY++;
 }
-while(GAME.mapcell[minX+'_'+mapay].m==0){
-mapay--;
-}
+// while(GAME.mapcell[minX+'_'+mapay].m==0){
+// mapay--;
+// }
 
  
 
@@ -56,8 +57,20 @@ window.setTimeout(start,wait);
 }
 
 function action(){
-if ($(".resp_rare .resp_status").hasClass("red"))
+if ($(".resp_rare .resp_status").hasClass("red")) {
+    if (Math.sqrt(Object.keys(GAME.mapcell).length) != mapay)
+        reload_needed = true;
     return;
+}
+if (reload_needed) {
+    mapay = Math.sqrt(Object.keys(GAME.mapcell).length);
+    while(GAME.mapcell[minX+'_'+Math.floor(mapay/2)].m==0){
+        minX++;
+    }
+    while(GAME.mapcell[minX+'_'+minY].m==0){
+        minY++;
+    }
+}
 switch (whatNow) {
 case 0:
 whatNow++;
