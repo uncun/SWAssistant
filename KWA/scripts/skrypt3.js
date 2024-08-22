@@ -1,5 +1,3 @@
-Nowość! Skróty klawiszowe. … Skróty klawiszowe Dysku zostały zaktualizowane, aby umożliwić nawigację przy użyciu pierwszych liter
- 
 function kill(){
 
 //Konfiguracja
