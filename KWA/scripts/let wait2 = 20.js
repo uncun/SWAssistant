@@ -1,4 +1,4 @@
-let wait2_exp = 2
+let wait2 = 20
 
 
 // -----------------------------------
@@ -94,22 +94,22 @@ const $main = '<div id="gh_game_helper" style="position: fixed; top: 30px; left:
 const $version = `<span style="position: absolute; bottom: 2px; right: 3px; color: rgb(6, 47, 88); line-height: 1; font-size: 13px; font-weight: 700;">${VERSION}</span>`
 const $exp = '<button id="gh_exp_button" class="gh_btn" style="display: block; margin-bottom: 10px;">Exp: <span id="gh_exp_status" class="red">Off</span></button>'
 
-// $('body').append($main).append($css);
-// $('#gh_game_helper')
-// 	.append($version)
-// 	.append($exp);
+$('body').append($main).append($css);
+$('#gh_game_helper')
+	.append($version)
+	.append($exp);
 
-// /* ACTIONS */
-// $('#gh_exp_button').click(() => {
-// 	if (stop) {
-// 		$('#gh_exp_status').text('On').attr('class', 'green');
-// 		stop = false
-// 		move()
-// 	} else {
-// 		$('#gh_exp_status').text('Off').attr('class', 'red');
-// 		stop = true
-// 	}
-// });
+/* ACTIONS */
+$('#gh_exp_button').click(() => {
+	if (stop) {
+		$('#gh_exp_status').text('On').attr('class', 'green');
+		stop = false
+		move()
+	} else {
+		$('#gh_exp_status').text('Off').attr('class', 'red');
+		stop = true
+	}
+});
 // -----------------------------------
 
 // -----------------------------------
@@ -540,7 +540,7 @@ if($(".black_db").length>0){
 // ===================================
 // MOVE
 function move () {
-	if (($(".resp_rare .resp_status").hasClass("red"))) return
+	if (stop) return
 
 	if (moveTimeout) clearTimeout(moveTimeout)
 	moveTimeout = setTimeout(move, 700) // trigger move after 7 seconds without move action
@@ -598,7 +598,7 @@ function move () {
 // RESPONSE HANDLING
 function handleResponse (res) {
 	// on move response
-	console.log("exp response");
+	console.log("exp response")
 	if (res.a === 4 && res.char_id === GAME.char_id) setTimeout(() => {
 		// when in the cell are some mobs
 		const mobs = areMobsOnField()
@@ -607,7 +607,7 @@ function handleResponse (res) {
 			return
 		}
 		 fight()
-	}, wait2_exp);
+	}, wait2);
 
 	// on fight response
 	else if (res.a === 7) setTimeout(() => {
@@ -618,7 +618,7 @@ function handleResponse (res) {
 			return
 		}
 		if(!collectCSK()) move()
-	}, wait2_exp);
+	}, wait2);
 
 	// on senzu use response
 	else if (res.a === 12 && res.type === 14) move()

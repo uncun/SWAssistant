@@ -1622,7 +1622,9 @@ if (typeof GAME === 'undefined') {} else {
                 } else if ((!RESP.checkOST && RESP.checkOST_timer <= GAME.getTime()) || (RESP.jaka == 1 && RESP.checkOST_timer <= GAME.getTime())) {
                     RESP.checkOST_timer = GAME.getTime() + 60;
                     return false;
-                } else if (RESP.normal ) {
+                } else if (RESP.normal) {
+                    let activePageElement = document.querySelector('.ekw_pag.option.active');
+                    let firstPageElement = document.querySelector('.ekw_pag.option[data-page="'+2+'"]');
                     let ekwUsedElement = document.getElementById('ekw_used');
                     let ekwUsedValue = ekwUsedElement.textContent;
                     if (ekwUsedValue < 100) {
