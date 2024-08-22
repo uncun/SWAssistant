@@ -68,15 +68,18 @@ var refresh_arena = 0;
 // //---------------------------------------------------------------------------------------------------------
 
 function start(){
-if(!GAME.is_loading && $(".resp_uniq .resp_status").hasClass("green") && collectBlueSenzu() && !checkAntyBot() ){
+
+if(!GAME.is_loading && collectBlueSenzu() && !checkAntyBot() ){
 action();
 window.setTimeout(start,wait_resp);
 }else {
-window.setTimeout(start,1000);
+window.setTimeout(start,wait_resp);
 }
 }
 
 function action(){
+	if ($(".resp_uniq .resp_status").hasClass("red"))
+		return;
 switch (whatNow) {
 case 0:
 whatNow++;
