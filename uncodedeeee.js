@@ -1623,6 +1623,16 @@ if (typeof GAME === 'undefined') {} else {
                     RESP.checkOST_timer = GAME.getTime() + 60;
                     return false;
                 } else if (RESP.normal ) {
+                    let ekwUsedElement = document.getElementById('ekw_used');
+                    let ekwUsedValue = ekwUsedElement.textContent;
+                    if (ekwUsedValue < 100) {
+                        window.setTimeout(function() {
+                            GAME.page_switch("game_map");
+                        }, 225);
+                        $(".resp_normal .resp_status").removeClass("green").addClass("red").html("Off");
+                        RESP.normal = false;
+                        return false;
+                    }
                     window.setTimeout(function() {
                         GAME.page_switch("game_ekw");
                     }, 225);
