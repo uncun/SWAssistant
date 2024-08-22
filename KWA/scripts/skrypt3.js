@@ -22,6 +22,7 @@ function kill(){
     var buttonArray = $( "button[data-option='arena_attack']");
     var arenaPlayerIndex = 1;
     var waitArena = 80;
+    var reload_needed = false;
     //---------------------------------------------------------------------------------------------------------
     
     //---------------------WYGLAD----------------------------------
@@ -95,24 +96,28 @@ function kill(){
     
     function action(){
     if ($(".resp_rare .resp_status").hasClass("red")) {
+        reload_needed = true;
         return;
     }
     if ($(".resp_rare .resp_status").hasClass("green")) {
-    setTimeout(() => {
-        GAME.maploaded = false;
-        GAME.prepareMap();
-        mapay = Math.sqrt(Object.keys(GAME.mapcell).length);
-        while(GAME.mapcell[minX+'_'+Math.floor(mapay/2)].m==0){
-            minX++;
-            }
-            while(GAME.mapcell[minX+'_'+minY].m==0){
-            minY++;
-            }
-            while(GAME.mapcell[minX+'_'+mapay].m==0){
-            mapay--;
-            }
-    }, 300);
-
+        if (reload_needed) {
+        setTimeout(() => {
+            GAME.maploaded = false;
+            GAME.prepareMap();
+            mapay = Math.sqrt(Object.keys(GAME.mapcell).length);
+            while(GAME.mapcell[minX+'_'+Math.floor(mapay/2)].m==0){
+                minX++;
+                }
+                while(GAME.mapcell[minX+'_'+minY].m==0){
+                minY++;
+                }
+                while(GAME.mapcell[minX+'_'+mapay].m==0){
+                mapay--;
+                }
+                
+        }, 300);
+        reload_needed = false;
+        }
     }
     switch (whatNow) {
     case 0:
