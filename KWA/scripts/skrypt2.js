@@ -84,7 +84,7 @@ if(!GAME.is_loading && !stop && collectBlueSenzu() && !checkAntyBot() ){
 action();
 window.setTimeout(start,wait);
 }else {
-window.setTimeout(start,wait);
+window.setTimeout(start,1000);
 }
 }
 
