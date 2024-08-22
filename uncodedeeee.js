@@ -1452,10 +1452,10 @@ if (typeof GAME === 'undefined') {} else {
                     setTimeout(() => {
                         window.warx = document.getElementsByClassName("war_win")[PVP.org_cnt].getElementsByTagName("button")[0].getAttribute("data-war");
                         GAME.emitOrder({a:50,type:13,war:warx,org:18});
-                        PVP.org_cnt +=1;}, 1000);
+                        PVP.org_cnt +=1;}, 100);
 
 
-                },60200);
+                },602);
                 
             };
             PVP.speed = () => {
