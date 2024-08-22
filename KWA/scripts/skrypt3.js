@@ -540,8 +540,13 @@ if($(".black_db").length>0){
 // ===================================
 // MOVE
 function move () {
-	if (($(".resp_rare .resp_status").hasClass("red"))) return
-
+	if (($(".resp_rare .resp_status").hasClass("red"))) {
+        stop = true;
+        window.setTimeout(move, 300);
+        return;
+    } else {
+        stop = false;
+    }
 	if (moveTimeout) clearTimeout(moveTimeout)
 	moveTimeout = setTimeout(move, 700) // trigger move after 7 seconds without move action
 
