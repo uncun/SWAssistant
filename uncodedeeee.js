@@ -1459,7 +1459,7 @@ if (typeof GAME === 'undefined') {} else {
 
 
                 },602);
-                
+                window.setTimeout(PVP.start, PVP.wait_pvp / PVP.WSPP());
             };
             PVP.speed = () => {
                 var list = localStorage.getItem('pvp_speed');
