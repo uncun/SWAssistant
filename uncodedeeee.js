@@ -1855,17 +1855,17 @@ if (typeof GAME === 'undefined') {} else {
             RESP.getSenzu = (type) => {
                 switch (type) {
                     case RESP.SENZU_BLUE:
-                        return GAME.quick_opts.senzus.find(senzu => senzu.item_id === 357187);
+                        return GAME.quick_opts.senzus.find(senzu => senzu.item_id === 42);
                     case RESP.SENZU_PURPLE:
-                        return GAME.quick_opts.senzus.find(senzu => senzu.item_id === 357459);
+                        return GAME.quick_opts.senzus.find(senzu => senzu.item_id === 41);
                     case RESP.SENZU_MAGIC:
-                        return GAME.quick_opts.senzus.find(senzu => senzu.item_id === 357455);
+                        return GAME.quick_opts.senzus.find(senzu => senzu.item_id === 30);
                     case RESP.SENZU_GREEN:
-                        return GAME.quick_opts.senzus.find(senzu => senzu.item_id === 357384);
+                        return GAME.quick_opts.senzus.find(senzu => senzu.item_id === 1);
                     case RESP.SENZU_YELLOW:
-                        return GAME.quick_opts.senzus.find(senzu => senzu.item_id === 357192);
+                        return GAME.quick_opts.senzus.find(senzu => senzu.item_id === 29);
                     case RESP.SENZU_RED:
-                        return GAME.quick_opts.senzus.find(senzu => senzu.item_id === 357193);
+                        return GAME.quick_opts.senzus.find(senzu => senzu.item_id === 28);
                 }
             };
             RESP.useSenzu = () => {
@@ -1876,6 +1876,7 @@ if (typeof GAME === 'undefined') {} else {
                 const green = RESP.getSenzu(RESP.SENZU_GREEN);
                 const yellow = RESP.getSenzu(RESP.SENZU_YELLOW);
                 const red = RESP.getSenzu(RESP.SENZU_RED);
+                console
                 switch (RESP.CONF_SENZU) {
                     case RESP.SENZU_BLUE:
                         RESP.useBlue(1);
