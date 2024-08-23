@@ -1417,8 +1417,10 @@ if (typeof GAME === 'undefined') {} else {
             };
             PVP.check2 = () => {
                 if (PVP.checkkkk()) {
+                    console.log("pvp check 1");
                     window.setTimeout(PVP.check2, 1800);
                 } else {
+                    console.log("pvp check 2");
                     window.setTimeout(PVP.start, PVP.wait_pvp / PVP.WSPP());
                 }
             };
