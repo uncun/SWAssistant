@@ -353,22 +353,23 @@ function fight (mob_num = 0) {
 	if (stop) return
 
 	// check if mob exists on field and has no multi fight yet
-	if (GAME.field_mobs[mob_num].ranks[3] && GAME.mf[GAME.field_mobs[mob_num].mob_id] !== 3) fightLegend(mob_num) // kill legend if exists
-	else if (GAME.field_mobs[mob_num].ranks[4]) fightEpic(mob_num) // kill epic if exists
-	else if (GAME.field_mobs[mob_num].ranks[5]) fightMystic(mob_num) // kill mystic if exists
-	else GAME.emitOrder({a: 13, mob_num: mob_num, fo: GAME.map_options.ma}) // multi attack
+	if (GAME.field_mobs[mob_num].ranks[1] && GAME.mf[GAME.field_mobs[mob_num].mob_id] !== 3) fightLegend(mob_num) // kill legend if exists
+	else if (GAME.field_mobs[mob_num].ranks[2]) fightEpic(mob_num) // kill epic if exists
+	else if (GAME.field_mobs[mob_num].ranks[3]) fightMystic(mob_num) // kill mystic if exists
+	else 
+	GAME.emitOrder({a: 13, mob_num: mob_num, fo: GAME.map_options.ma}) // multi attack
 }
 
 function fightLegend (mob_num = 0) {
-	GAME.emitOrder({a: 7, mob_num: mob_num, rank: 3, quick: 1});
+	GAME.emitOrder({a: 7, mob_num: mob_num, rank: 1, quick: 1});
 }
 
 function fightEpic (mob_num = 0) {
-	GAME.emitOrder({a: 7, mob_num: mob_num, rank: 4, quick: 1});
+	GAME.emitOrder({a: 7, mob_num: mob_num, rank: 2, quick: 1});
 }
 
 function fightMystic (mob_num = 0) {
-	GAME.emitOrder({a: 7, mob_num: mob_num, rank: 5, quick: 1});
+	GAME.emitOrder({a: 7, mob_num: mob_num, rank: 3, quick: 1});
 }
 
 function areMobsOnField() {
