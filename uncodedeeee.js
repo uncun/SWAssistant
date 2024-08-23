@@ -927,8 +927,8 @@ if (typeof GAME === 'undefined') {} else {
                 emp : 0,
                 wk: false,
                 caseNumber: 0,
-                wait: 10,
-                wait2: 80,
+                wait_pvp: 10,
+                wait_pvp2: 80,
                 czekajpvp: 160,
                 WSP: 50,
                 licznik: 0,
@@ -1057,10 +1057,11 @@ if (typeof GAME === 'undefined') {} else {
                     }
                     PVP.action();
                 } else if (GAME.is_loading) {
-                    window.setTimeout(PVP.start, PVP.wait / PVP.WSPP());
+                    window.setTimeout(PVP.start, PVP.wait_pvp / PVP.WSPP());
                 } else {}
             };
             PVP.action = () => {
+                console.log("pvp action", PVP.caseNumber)
                 switch (PVP.caseNumber) {
                     case 0:
                         PVP.caseNumber++;
@@ -1137,7 +1138,7 @@ if (typeof GAME === 'undefined') {} else {
                         window.setTimeout(PVP.start, PVP.czekajpvp / PVP.WSPP() / 2);
                     }
                 } else {
-                    window.setTimeout(PVP.start, PVP.wait / PVP.WSPP() * 2);
+                    window.setTimeout(PVP.start, PVP.wait_pvp / PVP.WSPP() * 2);
                 }
                 PVP.licznik = 1;
             };
@@ -1175,7 +1176,7 @@ if (typeof GAME === 'undefined') {} else {
                         window.setTimeout(PVP.kill_players, PVP.czekajpvp / PVP.WSPP());
                     }
                 } else {
-                    window.setTimeout(PVP.start, PVP.wait / PVP.WSPP());
+                    window.setTimeout(PVP.start, PVP.wait_pvp / PVP.WSPP());
                     PVP.licznik = 0;
                     kom_clear();
                 }
@@ -1259,10 +1260,10 @@ if (typeof GAME === 'undefined') {} else {
                         // });
                         window.setTimeout(PVP.wojny1, 500);
                     } else {
-                        window.setTimeout(PVP.start, PVP.wait / PVP.WSPP());
+                        window.setTimeout(PVP.start, PVP.wait_pvp / PVP.WSPP());
                     }
                 } else {
-                    window.setTimeout(PVP.start, PVP.wait / PVP.WSPP());
+                    window.setTimeout(PVP.start, PVP.wait_pvp / PVP.WSPP());
                 }
             };
             PVP.zejdz = () => {
@@ -1314,7 +1315,7 @@ if (typeof GAME === 'undefined') {} else {
                 } else if (x == 14 || x == 2 && PVP.loc < 5 || x == 15 && PVP.loc == 6 || x == 1 || x == 11 && PVP.loc == 5 || x == 2 && PVP.loc == 5) {
                     PVP.go_down();
                 } else {
-                    window.setTimeout(PVP.start, PVP.wait / PVP.WSPP());
+                    window.setTimeout(PVP.start, PVP.wait_pvp / PVP.WSPP());
                 }
             };
             PVP.teleport = () => {
@@ -1327,25 +1328,25 @@ if (typeof GAME === 'undefined') {} else {
                     window.setTimeout(PVP.start, 2000);
                     PVP.tele = false;
                 } else {
-                    window.setTimeout(PVP.start, PVP.wait / PVP.WSPP());
+                    window.setTimeout(PVP.start, PVP.wait_pvp / PVP.WSPP());
                 }
             };
             PVP.check_location = () => {
                 if (GAME.char_data.loc == 351) {
                     PVP.loc = 4;
-                    window.setTimeout(PVP.start, PVP.wait / PVP.WSPP());
+                    window.setTimeout(PVP.start, PVP.wait_pvp / PVP.WSPP());
                 } else if (GAME.char_data.loc == 350) {
                     PVP.loc = 3;
-                    window.setTimeout(PVP.start, PVP.wait / PVP.WSPP());
+                    window.setTimeout(PVP.start, PVP.wait_pvp / PVP.WSPP());
                 } else if (GAME.char_data.loc == 349) {
                     PVP.loc = 2;
-                    window.setTimeout(PVP.start, PVP.wait / PVP.WSPP());
+                    window.setTimeout(PVP.start, PVP.wait_pvp / PVP.WSPP());
                 } else if (GAME.char_data.loc == 348) {
                     PVP.loc = 1;
-                    window.setTimeout(PVP.start, PVP.wait / PVP.WSPP());
+                    window.setTimeout(PVP.start, PVP.wait_pvp / PVP.WSPP());
                 } else {
                     PVP.loc = 7;
-                    window.setTimeout(PVP.start, PVP.wait / PVP.WSPP());
+                    window.setTimeout(PVP.start, PVP.wait_pvp / PVP.WSPP());
                 }
             };
             PVP.cofanie = () => {
@@ -1367,7 +1368,7 @@ if (typeof GAME === 'undefined') {} else {
                     dir: 3,
                     vo: GAME.map_options.vo
                 });
-                window.setTimeout(PVP.start, PVP.wait2 / PVP.WSPP());
+                window.setTimeout(PVP.start, PVP.wait_pvp2 / PVP.WSPP());
             };
             PVP.prawogora = () => {
                 GAME.emitOrder({
@@ -1375,7 +1376,7 @@ if (typeof GAME === 'undefined') {} else {
                     dir: 5,
                     vo: GAME.map_options.vo
                 });
-                window.setTimeout(PVP.start, PVP.wait2 / PVP.WSPP());
+                window.setTimeout(PVP.start, PVP.wait_pvp2 / PVP.WSPP());
             };
             PVP.go_up = () => {
                 GAME.emitOrder({
@@ -1383,7 +1384,7 @@ if (typeof GAME === 'undefined') {} else {
                     dir: 2,
                     vo: GAME.map_options.vo
                 });
-                window.setTimeout(PVP.start, PVP.wait2 / PVP.WSPP());
+                window.setTimeout(PVP.start, PVP.wait_pvp2 / PVP.WSPP());
             };
             PVP.go_down = () => {
                 GAME.emitOrder({
@@ -1391,7 +1392,7 @@ if (typeof GAME === 'undefined') {} else {
                     dir: 1,
                     vo: GAME.map_options.vo
                 });
-                window.setTimeout(PVP.start, PVP.wait2 / PVP.WSPP());
+                window.setTimeout(PVP.start, PVP.wait_pvp2 / PVP.WSPP());
             };
             PVP.go_left = () => {
                 GAME.emitOrder({
@@ -1399,7 +1400,7 @@ if (typeof GAME === 'undefined') {} else {
                     dir: 8,
                     vo: GAME.map_options.vo
                 });
-                window.setTimeout(PVP.start, PVP.wait2 / PVP.WSPP());
+                window.setTimeout(PVP.start, PVP.wait_pvp2 / PVP.WSPP());
             };
             PVP.go_right = () => {
                 GAME.emitOrder({
@@ -1407,7 +1408,7 @@ if (typeof GAME === 'undefined') {} else {
                     dir: 7,
                     vo: GAME.map_options.vo
                 });
-                window.setTimeout(PVP.start, PVP.wait2 / PVP.WSPP());
+                window.setTimeout(PVP.start, PVP.wait_pvp2 / PVP.WSPP());
             };
             PVP.check = () => {
                 if ($("#war_list .timer").length === 0 && PVP.wk) {
@@ -1418,7 +1419,7 @@ if (typeof GAME === 'undefined') {} else {
                 if (PVP.checkkkk()) {
                     window.setTimeout(PVP.check2, 1800);
                 } else {
-                    window.setTimeout(PVP.start, PVP.wait / PVP.WSPP());
+                    window.setTimeout(PVP.start, PVP.wait_pvp / PVP.WSPP());
                 }
             };
             PVP.clan_list = () => {
@@ -1671,6 +1672,13 @@ if (typeof GAME === 'undefined') {} else {
                             RESP.DestroyItemsAtPage();
                         }, 111);
                     }, 2005);
+
+                    const komElements = document.querySelectorAll('#kom_con .kom');
+    
+                    komElements.forEach(kom => {
+                        const closeButton = kom.querySelector('.close_kom');
+                        closeButton.click();
+                    });
                 }
                 //  else if ($(".resp_normal .resp_status").hasClass("green")) {
                 //     GAME.emitOrder({a:12,page:GAME.ekw_page});
