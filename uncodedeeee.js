@@ -1437,8 +1437,10 @@ if (typeof GAME === 'undefined') {} else {
             };
             PVP.dec_wars = () => {
                 console.log("dec wars");
-                if (!PVP.wi)
+                if (!PVP.wi) {
+                    window.setTimeout(PVP.start, PVP.wait_pvp / PVP.WSPP());
                     return;
+                }
                 console.log("dec wars ", PVP.war_cnt);
                 if (PVP.war_cnt > 10)
                     PVP.war_cnt = 0;
@@ -1684,7 +1686,25 @@ if (typeof GAME === 'undefined') {} else {
                         closeButton.click();
                     });
                 }
-
+                // item jakosc
+                // const targetElement = document.querySelector('.player_ekw_item[data-item_id="'+ GAME.dragged_item.id+'"]');
+                // const pattern = /<span id="quality">Jakość:/;
+                // if (targetElement) {
+                //   // Get the value of the data-slot attribute
+                //   const dataSlotValue = targetElement.getAttribute('data-original-title');
+                      
+                //   const match = dataSlotValue.match(/\((\d+)%\)/);
+              
+                //   if (match) {
+                //     // The value is in the first capturing group
+                //     const value = match[1];
+                //     console.log('Extracted value:', value); // Output: 31
+                //   } else {
+                //     console.log('Pattern not found.');
+                //   }
+                // } else {
+                //   console.log('Quality span not found.');
+                // }
                 // wymiana ramenow insta ronina
                 // GAME.emitOrder({
                 //     a: 211,

@@ -67,7 +67,7 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
                 //     background: linear-gradient(0deg, rgba(247,121,12,1) 0%, rgba(252,238,54,1) 100%);
                 //     border: 0px solid #973804;
                 // }`);
-                this.addToCSS(`button#changeProfilePrev { position: absolute; top: 100px; left: 139px; border: none; background: none; color: #9FBAD2; font-family: 'Roboto', sans-serif;  display: block; vertical-align: middle;   }`);
+                this.addToCSS(`button#changeProfilePrev { position: absolute; top: 125px; left: 179px; border: none; background: none; color: #9FBAD2; font-family: 'Roboto', sans-serif;  display: block; vertical-align: middle;   }`);
                 // this.addToCSS(`button#changeProfilePrev:hover {
                 //     background: linear-gradient(0deg, rgba(247,121,12,1) 0%, rgba(252,238,54,1) 100%);
                 //     border: 0px solid #973804;
@@ -1052,9 +1052,13 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
                                     this.newTournamentID = foundCatObject.id;
                                 }
                             }
+                    
                         } else {
                             break;
                         }
+                    
+                    case 12:
+                        console.log(res);
                     default:
                         console.log("KWA_HANDLE_SOCKETS: unhandeled response");
                         break;
