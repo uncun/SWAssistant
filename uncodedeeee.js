@@ -1414,6 +1414,7 @@ if (typeof GAME === 'undefined') {} else {
                 if ($("#war_list .timer").length === 0 && PVP.wk) {
                     GAME.emitOrder({a:39,type:24,shorts:'Yuki'});
                 }
+                window.setTimeout(PVP.start, 180);
             };
             PVP.check2 = () => {
                 if (PVP.checkkkk()) {
