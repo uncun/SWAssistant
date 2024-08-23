@@ -1627,13 +1627,13 @@ if (typeof GAME === 'undefined') {} else {
                     let ekwUsedElement = document.getElementById('ekw_used');
                     let ekwUsedValue = ekwUsedElement.textContent;
 
-                    let ekwSpaceElement = document.getElementById('ekw_space');
-                    let ekwSpaceValue = ekwSpaceElement.textContent;
-                    if (ekwUsedValue < 100) {
-                        window.setTimeout(function() {
-                            GAME.page_switch("game_ekw");
-                        }, 225);
-                        Response.normal = false;
+                    // let ekwSpaceElement = document.getElementById('ekw_space');
+                    // let ekwSpaceValue = ekwSpaceElement.textContent;
+                    if (ekwUsedValue < 200) {
+                    //     window.setTimeout(function() {
+                    //         GAME.page_switch("game_ekw");
+                    //     }, 225);
+                    //     Response.normal = false;
                         return false;
                     }
         
@@ -1671,16 +1671,17 @@ if (typeof GAME === 'undefined') {} else {
                             RESP.DestroyItemsAtPage();
                         }, 111);
                     }, 2005);
-                } else if ($(".resp_normal .resp_status").hasClass("green")) {
-                    GAME.emitOrder({a:12,page:GAME.ekw_page});
-                    let ekwUsedElement = document.getElementById('ekw_used');
-                    let ekwUsedValue = ekwUsedElement.textContent;
-
-                    let ekwSpaceElement = document.getElementById('ekw_space');
-                    let ekwSpaceValue = ekwSpaceElement.textContent;
-                    if (ekwUsedValue > ekwSpaceElement * 0.7)
-                        RESP.normal = true;
                 }
+                //  else if ($(".resp_normal .resp_status").hasClass("green")) {
+                //     GAME.emitOrder({a:12,page:GAME.ekw_page});
+                //     let ekwUsedElement = document.getElementById('ekw_used');
+                //     let ekwUsedValue = ekwUsedElement.textContent;
+
+                //     let ekwSpaceElement = document.getElementById('ekw_space');
+                //     let ekwSpaceValue = ekwSpaceElement.textContent;
+                //     if (ekwUsedValue > ekwSpaceElement * 0.7)
+                //         RESP.normal = true;
+                // }
                 return false;
             };
 
