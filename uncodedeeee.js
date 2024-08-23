@@ -1684,6 +1684,16 @@ if (typeof GAME === 'undefined') {} else {
                         closeButton.click();
                     });
                 }
+
+                // wymiana ramenow insta ronina
+                // GAME.emitOrder({
+                //     a: 211,
+                //     type: 2,
+                //     exchange: 9,
+                //     item: 91
+                // });
+
+
                 //  else if ($(".resp_normal .resp_status").hasClass("green")) {
                 //     GAME.emitOrder({a:12,page:GAME.ekw_page});
                 //     let ekwUsedElement = document.getElementById('ekw_used');
@@ -1856,20 +1866,21 @@ if (typeof GAME === 'undefined') {} else {
             RESP.getSenzu = (type) => {
                 switch (type) {
                     case RESP.SENZU_BLUE:
-                        return GAME.quick_opts.senzus.find(senzu => senzu.item_id === 42);
+                        return GAME.quick_opts.senzus.find(senzu => senzu.item_id === 357187);
                     case RESP.SENZU_PURPLE:
-                        return GAME.quick_opts.senzus.find(senzu => senzu.item_id === 41);
+                        return GAME.quick_opts.senzus.find(senzu => senzu.item_id === 357459);
                     case RESP.SENZU_MAGIC:
-                        return GAME.quick_opts.senzus.find(senzu => senzu.item_id === 30);
+                        return GAME.quick_opts.senzus.find(senzu => senzu.item_id === 357455);
                     case RESP.SENZU_GREEN:
-                        return GAME.quick_opts.senzus.find(senzu => senzu.item_id === 1);
+                        return GAME.quick_opts.senzus.find(senzu => senzu.item_id === 357426);
                     case RESP.SENZU_YELLOW:
-                        return GAME.quick_opts.senzus.find(senzu => senzu.item_id === 29);
+                        return GAME.quick_opts.senzus.find(senzu => senzu.item_id === 357192);
                     case RESP.SENZU_RED:
-                        return GAME.quick_opts.senzus.find(senzu => senzu.item_id === 28);
+                        return GAME.quick_opts.senzus.find(senzu => senzu.item_id === 357193);
                 }
             };
             RESP.useSenzu = () => {
+                console.log("use senzu", RESP.stop);
                 if (RESP.stop) return;
                 const blue = RESP.getSenzu(RESP.SENZU_BLUE);
                 const purple = RESP.getSenzu(RESP.SENZU_PURPLE);
@@ -1877,7 +1888,6 @@ if (typeof GAME === 'undefined') {} else {
                 const green = RESP.getSenzu(RESP.SENZU_GREEN);
                 const yellow = RESP.getSenzu(RESP.SENZU_YELLOW);
                 const red = RESP.getSenzu(RESP.SENZU_RED);
-                console
                 switch (RESP.CONF_SENZU) {
                     case RESP.SENZU_BLUE:
                         RESP.useBlue(1);
@@ -1910,7 +1920,7 @@ if (typeof GAME === 'undefined') {} else {
                 }
                 GAME.socket.emit('ga', {
                     a: 12,
-                    type: 14,
+                    type: 8,
                     iid: blue.id,
                     page: GAME.ekw_page,
                     am: amount
@@ -1923,7 +1933,7 @@ if (typeof GAME === 'undefined') {} else {
                 }
                 GAME.socket.emit('ga', {
                     a: 12,
-                    type: 14,
+                    type: 8,
                     iid: green.id,
                     page: GAME.ekw_page,
                     am: amount
@@ -1936,7 +1946,7 @@ if (typeof GAME === 'undefined') {} else {
                 }
                 GAME.socket.emit('ga', {
                     a: 12,
-                    type: 14,
+                    type: 8,
                     iid: purple.id,
                     page: GAME.ekw_page,
                     am: amount
@@ -1949,7 +1959,7 @@ if (typeof GAME === 'undefined') {} else {
                 }
                 GAME.socket.emit('ga', {
                     a: 12,
-                    type: 14,
+                    type: 8,
                     iid: yellow.id,
                     page: GAME.ekw_page,
                     am: amount
@@ -1962,7 +1972,7 @@ if (typeof GAME === 'undefined') {} else {
                 }
                 GAME.socket.emit('ga', {
                     a: 12,
-                    type: 14,
+                    type: 8,
                     iid: red.id,
                     page: GAME.ekw_page,
                     am: 1
@@ -1975,7 +1985,7 @@ if (typeof GAME === 'undefined') {} else {
                 }
                 GAME.socket.emit('ga', {
                     a: 12,
-                    type: 14,
+                    type: 8,
                     iid: magic.id,
                     page: GAME.ekw_page,
                     am: 1

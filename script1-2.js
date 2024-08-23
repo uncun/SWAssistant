@@ -1631,7 +1631,7 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
                             }
                         }, 500);
                         setTimeout(() => { console.log("KWA_TOURNAMENTS: sign in player");GAME.emitOrder({a: 57, type: 1, tid: this.newTournamentID}); }, 1000);
-                        setTimeout(() => { console.log("KWA_TOURNAMENTS: sign in all pets");GAME.emitOrder({a: 57, type: 4}); }, 1500);
+                        // setTimeout(() => { console.log("KWA_TOURNAMENTS: sign in all pets");GAME.emitOrder({a: 57, type: 4}); }, 1500);
                         setTimeout(() => { console.log("KWA_TOURNAMENTS: clear popups");kom_clear(); }, 2000);
                         setTimeout(() => { this.setTimerForTournamentsReset(); }, 5000);
                     } else {
