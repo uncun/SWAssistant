@@ -1,5 +1,5 @@
 var checked = false;
-var item_id=0;
+var item_id;
 if (typeof GAME === 'undefined' && extrapremium) { } else {
     let Pog = setInterval(() => {
         if (!GAME.pid) { } else {
