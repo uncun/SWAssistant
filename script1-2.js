@@ -88,9 +88,22 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
                 $('.MoveIcon[data-option="map_quest_skip_time"]').after('<div class="MoveIcon bigg option" data-option="map_alternative_pilot" data-toggle="tooltip" data-original-title="<div class=tt>Ukryje pilota, pokazuje inną klawiaturę<br />Klawisz skrótu:<b class=orange>=</b></div>"><img src="https://up.be3.ovh/upload/1709400449.png"></div>');
                 $("#changeProfile").after('<button id="changeProfileNext" class="option" data-option="nextChar">Next</button>');
                 $("#changeProfileNext").after('<button id="changeProfilePrev" class="option" data-option="prevChar">Prev</button>');
-                $("#ekw_item_menu").append('<button id="custom_but" class="option" style="  background: url('/gfx/layout/newbtn2.png') repeat-x 0 0;height: 23px;background-clip: padding-box;line-height: 23px;box-sizing: content-box;display: inline-block;text-align: center;color: #E5D8A5;text-decoration: none;font-size: 12px;font-weight: Bold;text-transform: uppercase;border-style: solid; border-width: 5px; -moz-border-image: url(/gfx/layout/btnborder.png) 5 repeat; -webkit-border-image: url(/gfx/layout/btnborder.png) 5 repeat; -o-border-image: url(/gfx/layout/btnborder.png) 5 repeat; border-image: url(/gfx/layout/btnborder.png) 5 fill repeat;" data-option="customUpgrade">Custom</button>')
+                $("#ekw_item_menu").append('<button id="custom_but" class="option" data-option="customUpgrade">Custom</button>')
                 $("#custom_but").css({
-                    "display": "block"
+                    "height": "23px",
+                    "background-clip": "padding-box",
+                    "line-height": "23px",
+                    "box-sizing": "content-box",
+                    "display": "inline-block",
+                    "text-align": "center",
+                    "color": "#E5D8A5",
+                    "text-decoration": "none",
+                    "font-size": "12px",
+                    "font-weight": "Bold",
+                    "text-transform": "uppercase",
+                    "border-style": "solid",
+                    "border-width": "5px",
+
                 });
 
                 this.auto_abyss_interval = false;
