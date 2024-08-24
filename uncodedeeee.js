@@ -73,15 +73,15 @@ if (typeof GAME === 'undefined') {} else {
                 $("body").append(`<style>${css}</style>${html}`);
                 $("body").append(`<style>${csspvp}</style>${PVP_panel}`);
                 $("body").append(`<style>${cssresp}</style>${RESP_panel}`);
-                $("body").append(`<style>${csscode}</style>${CODE_panel}`);
-                $("body").append(`<style>${cssres}</style>${INNE_panel}`);
+                $("body").append(`<style>${cssinne}</style>${INNE_panel}`);
+                $("body").append(`<style>${cssres}</style>${RES_panel}`);
                 // $("body").append(`<style>${csslpvm}</style>${LPVM_panel}`);
                 $("#pvp_Panel").hide();
                 $("#resp_Panel").hide();
                 $("#code_Panel").hide();
                 $("#res_Panel").hide();
                 $("#lpvm_Panel").hide();
-                $("#inne_panel").hide();
+                $("#inne_panel").append();
                 $("#main_Panel").draggable({
                     handle: ".panel_dragg"
                 });
