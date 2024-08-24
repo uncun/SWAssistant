@@ -1059,7 +1059,7 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
                 $('#ItemPanel .close_item').click(() => {
                     $("#ItemPanel").close();
                 });
-                $("body").on("click", "#close_item", () => {
+                $("body").on("click", "#custom_but", () => {
                     $("#ItemPanel").show();
                     this.item_id = GAME.dragged_item.id;
                     console.log("custom clicked", this.item_id);
