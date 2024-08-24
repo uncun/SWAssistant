@@ -50,27 +50,27 @@ if (typeof GAME === 'undefined') {} else {
                     <div class="inne_button inne_karciana">Karciana<strong class="inne_status red">Off</strong></div>
                     <div class="inne_check ronin_opt1"><select 
                     style="width: 150px; margin-left: -2px; background: grey; text-align: center; font-size: 16;" name="ronin_opt">
-                    <option value="1">Krysztal chakry</option>
-                    <option value="2">Inverter</option>
-                    <option value="3">Ulepszacz</option>
-                    <option value="4">Prowo boss</option>
-                    <option value="5">Misja S</option>
-                    <option value="6">Subka 3x</option>
-                    <option value="7">Zwoj resetu</option>
-                    <option value="8">Zwoj transferu</option>
-                    <option value="9">Zwoj exp</option>
-                    <option value="10">Maly ramen</option>
+                    <option value="82">Krysztal chakry</option>
+                    <option value="83">Inverter</option>
+                    <option value="84">Ulepszacz</option>
+                    <option value="85">Prowo boss</option>
+                    <option value="86">Misja S</option>
+                    <option value="87">Subka 3x</option>
+                    <option value="88">Zwoj resetu</option>
+                    <option value="89">Zwoj transferu</option>
+                    <option value="90">Zwoj exp</option>
+                    <option value="91">Maly ramen</option>
                     </select></div>
                     <div class="inne_check karciana_opt1"><select style="width: 150px; margin-left: -2px; background: grey; text-align: center; font-size: 16;" name="karciana_opt">
-                    <option value="1">Karta dusz</option>
-                    <option value="2">Esencja dusz</option>
-                    <option value="3">Powiekszony ramen</option>
-                    <option value="4">Epicki zwoj</option>
-                    <option value="5">Esencja jakosci</option>
-                    <option value="6">zwoj resetu</option>
-                    <option value="7">zwoj teleportacji</option>
-                    <option value="8">Inverter</option>
-                    <option value="9">Ulepszacz</option>
+                    <option value="122">Karta dusz</option>
+                    <option value="123">Esencja dusz</option>
+                    <option value="124">Powiekszony ramen</option>
+                    <option value="125">Epicki zwoj</option>
+                    <option value="126">Esencja jakosci</option>
+                    <option value="127">zwoj resetu</option>
+                    <option value="128">zwoj teleportacji</option>
+                    <option value="129">Inverter</option>
+                    <option value="130">Ulepszacz</option>
                     </select>
                     </div>
                     <div class="gamee_input insta_capt1"><input style="width: 150px; margin-left: -2px; background: grey; text-align: center; font-size: 16;" name="insta_capt" type="text" value="50" placeholder="Szybkość 10-1000" /></div>
