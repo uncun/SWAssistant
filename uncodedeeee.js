@@ -555,7 +555,7 @@ if (typeof GAME === 'undefined') {} else {
             };
             INNE.check() = () => {
                 INNE.cap_wymiana = $("#inne_Panel input[name=insta_capt]").val();
-            }
+            };
 
             var PVP = {
                 stop: true,
