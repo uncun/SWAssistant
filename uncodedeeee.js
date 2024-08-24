@@ -74,7 +74,7 @@ if (typeof GAME === 'undefined') {} else {
                     </select>
                     <div class="gamee_input"><input style="width: 200px; margin-left: -2px; background: grey; text-align: center; font-size: 16;" name="insta_capt" type="text" value="50" placeholder="Szybkość 10-1000" /></div>
                 </div> `
-                
+
                 $("body").append(`<style>${css}</style>${html}`);
                 $("body").append(`<style>${csspvp}</style>${PVP_panel}`);
                 $("body").append(`<style>${cssresp}</style>${RESP_panel}`);
@@ -156,7 +156,6 @@ if (typeof GAME === 'undefined') {} else {
                     } else {
                         $(".gh_inne .gh_status").removeClass("green").addClass("red").html("Off");
                         $("#inne_Panel").hide();
-                        CODE.stop = true;
                         $(".inne_wymiana .inne_status").removeClass("green").addClass("red").html("Off");
                     }
                 });
