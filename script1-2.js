@@ -68,24 +68,8 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
                 //     border: 0px solid #973804;
                 // }`);
                 this.addToCSS(`button#changeProfilePrev { position: absolute; top: 125px; left: 179px; border: none; background: none; color: #9FBAD2; font-family: 'Roboto', sans-serif;  display: block; vertical-align: middle;   }`);
-                this.addToCSS(`button#CustomUpgrage {  background: url('/gfx/layout/newbtn2.png') repeat-x 0 0;
-                    height: 23px;
-                    background-clip: padding-box;
-                    line-height: 23px;
-                    box-sizing: content-box;
-                    display: inline-block;
-                    text-align: center;
-                    color: #E5D8A5;
-                    text-decoration: none;
-                    font-size: 12px;
-                    font-weight: Bold;
-                    text-transform: uppercase;
-                    border-style: solid; 
-                    border-width: 5px; 
-                    -moz-border-image: url(/gfx/layout/btnborder.png) 5 repeat; 
-                    -webkit-border-image: url(/gfx/layout/btnborder.png) 5 repeat; 
-                    -o-border-image: url(/gfx/layout/btnborder.png) 5 repeat; 
-                    border-image: url(/gfx/layout/btnborder.png) 5 fill repeat; }`);
+                this.addToCSS(`button#CustomUpgrage { border: none; background: none; color: #9FBAD2;font-family: 'Roboto', sans-serif;  display: block; vertical-align: middle;  }`);
+
                 // this.addToCSS(`button#changeProfilePrev:hover {
                 //     background: linear-gradient(0deg, rgba(247,121,12,1) 0%, rgba(252,238,54,1) 100%);
                 //     border: 0px solid #973804;
@@ -107,7 +91,7 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
                 $("#changeProfile").after('<button id="changeProfileNext" class="option" data-option="nextChar">Next</button>');
                 $("#changeProfileNext").after('<button id="changeProfilePrev" class="option" data-option="prevChar">Prev</button>');
                 $("#ekw_item_menu").append('<button id="custom_but" class="ekw_menu_btn option newBtn" data-option="customUpgrade">Custom</button>')
-                $("#custom_but").show();
+                $("#CustomUpgrage").after('<button id="ekw_menu_rer" class="option" data-option="prevChar">Prev</button>');
                 this.auto_abyss_interval = false;
                 this.auto_arena = false;
                 this.additionalTopBarVisible = false;
