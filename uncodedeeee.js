@@ -46,33 +46,35 @@ if (typeof GAME === 'undefined') {} else {
                 const RES_panel = ` <div id="res_Panel"> <div class="sekcja res_dragg">SUROWCE</div> <div class="res_button res_res">ZBIERAJ<b class="res_status red">Off</b></div> <div class="bt_cool" style="text-align:center; color:white;"></div> <ul></ul> </div> `;
                 const LPVM_panel = ` <div id="lpvm_Panel"> <div class="sekcja lpvm_dragg">LISTY GOŃCZE</div> <div class='pvm_killed'>Wykonane listy: <b>0</b></div> <div class="lpvm_button lpvm_lpvm">START<b class="lpvm_status red">Off</b></div> <div class="lpvm_button lpvm_g">G-Born<b class="lpvm_status red">Off</b></div> <div class="lpvm_button lpvm_u">U-Born<b class="lpvm_status red">Off</b></div> <div class="lpvm_button lpvm_s">S-Born<b class="lpvm_status red">Off</b></div> <div class="lpvm_button lpvm_h">H-Born<b class="lpvm_status red">Off</b></div> <div class="lpvm_button lpvm_limit">Limit<b class="lpvm_status red">Off</b></div> <div class='gamee_input'><input style='width:120px; margin-left:-2px; background:grey;text-align:center;font-size:16;' type='text' placeholder="Enter text" name='lpvm_capt' value='60' /></div> </div> `;
                 const INNE_panel = `<div id="inne_panel"> <div class="sekcja inne_dragg">Inne</div> <div class="inne_button inne_wymiana">Wymiana<strong class="inne_status red">Off</strong></div>
-                <div class="inne_button inne_ronin">Ronin<strong class="inne_status red">Off</strong></div>
-                <div class="inne_button inne_karciana">Karciana<strong class="inne_status red">Off</strong></div>
-                <div><label><select name="ronin_opt">
-                <option value="1">Krysztal chakry</option>
-                <option value="2">Inverter</option>
-                <option value="3">Ulepszacz</option>
-                <option value="4">Prowo boss</option>
-                <option value="5">Misja S</option>
-                <option value="6">Subka 3x</option>
-                <option value="7">Zwoj resetu</option>
-                <option value="8">Zwoj transferu</option>
-                <option value="9">Zwoj exp</option>
-                <option value="10">Maly ramen</option>
-                </select></label></div>
-                <div><label><select name="karciana_opt">
-                <option value="1">Karta dusz</option>
-                <option value="2">Esencja dusz</option>
-                <option value="3">Powiekszony ramen</option>
-                <option value="4">Epicki zwoj</option>
-                <option value="5">Esencja jakosci</option>
-                <option value="6">zwoj resetu</option>
-                <option value="7">zwoj teleportacji</option>
-                <option value="8">Inverter</option>
-                <option value="9">Ulepszacz</option>
-                </select></label>
-                <div class="gamee_input"><input style="width: 120px; margin-left: -2px; background: grey; text-align: center; font-size: 16;" name="insta_capt" type="text" value="50" placeholder="Szybkość 10-1000" /></div>
+                    <div class="inne_button inne_ronin">Ronin<strong class="inne_status red">Off</strong></div>
+                    <div class="inne_button inne_karciana">Karciana<strong class="inne_status red">Off</strong></div>
+                    <div class="inne_check"><select 
+                    style="width: 200px; margin-left: -2px; background: grey; text-align: center; font-size: 16;" name="ronin_opt">
+                    <option value="1">Krysztal chakry</option>
+                    <option value="2">Inverter</option>
+                    <option value="3">Ulepszacz</option>
+                    <option value="4">Prowo boss</option>
+                    <option value="5">Misja S</option>
+                    <option value="6">Subka 3x</option>
+                    <option value="7">Zwoj resetu</option>
+                    <option value="8">Zwoj transferu</option>
+                    <option value="9">Zwoj exp</option>
+                    <option value="10">Maly ramen</option>
+                    </select></div>
+                    <div><label><select style="width: 200px; margin-left: -2px; background: grey; text-align: center; font-size: 16;" name="karciana_opt">
+                    <option value="1">Karta dusz</option>
+                    <option value="2">Esencja dusz</option>
+                    <option value="3">Powiekszony ramen</option>
+                    <option value="4">Epicki zwoj</option>
+                    <option value="5">Esencja jakosci</option>
+                    <option value="6">zwoj resetu</option>
+                    <option value="7">zwoj teleportacji</option>
+                    <option value="8">Inverter</option>
+                    <option value="9">Ulepszacz</option>
+                    </select>
+                    <div class="gamee_input"><input style="width: 200px; margin-left: -2px; background: grey; text-align: center; font-size: 16;" name="insta_capt" type="text" value="50" placeholder="Szybkość 10-1000" /></div>
                 </div> `
+                
                 $("body").append(`<style>${css}</style>${html}`);
                 $("body").append(`<style>${csspvp}</style>${PVP_panel}`);
                 $("body").append(`<style>${cssresp}</style>${RESP_panel}`);
