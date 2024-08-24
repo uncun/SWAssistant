@@ -128,6 +128,7 @@ if (typeof GAME === 'undefined') {} else {
                     }
                 });
                 $('#main_Panel .gh_res').click(() => {
+                    console.log("res inne clicked");
                     if ($(".gh_res .gh_status").hasClass("red")) {
                         $(".gh_res .gh_status").removeClass("red").addClass("green").html("On");
                         $("#res_Panel").show();
