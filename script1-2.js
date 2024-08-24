@@ -1474,7 +1474,7 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
                             break;
                     }
                 });
-                $("#secondary_char_stats").append(` <div class="instance" data-toggle="tooltip" data-original-title="<div class=tt>Instancje <br /><span class=&quot;red&quot;><b>Kliknij by wykonać instancje</b></span></div>" class=""><i class="ico a11"></i> <span> <ul><ul/></span></div> <div class="activities" data-toggle="tooltip" data-original-title="<div class=tt>Aktywności <br /><span class=&quot;red&quot;><b>Kliknij by odebrać aktywności</b></span></div>" class=""><i class="ico a12"></i> <span> <ul><ul/></span></div>`);
+                // $("#secondary_char_stats").append(` <div class="instance" data-toggle="tooltip" data-original-title="<div class=tt>Instancje <br /><span class=&quot;red&quot;><b>Kliknij by wykonać instancje</b></span></div>" class=""><i class="ico a11"></i> <span> <ul><ul/></span></div> <div class="activities" data-toggle="tooltip" data-original-title="<div class=tt>Aktywności <br /><span class=&quot;red&quot;><b>Kliknij by odebrać aktywności</b></span></div>" class=""><i class="ico a12"></i> <span> <ul><ul/></span></div>`);
                 $("body").on('change', '.autoExpeCodes input[type=checkbox]', (el) => {
                     let name = $(el.target).attr("name");
                     if (name === 'aeCodes') {
@@ -2413,7 +2413,7 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
         let roll2 = false;
         let roll1 = false;
         let roll3 = false;
-        let version = '3.4.7';
+        let version = '1.0.0';
     }
     )
 }

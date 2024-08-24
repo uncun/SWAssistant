@@ -36,24 +36,52 @@ if (typeof GAME === 'undefined') {} else {
                 const cssresp = ` #resp_Panel { background: rgba(0,0,0,0.9); position: fixed; top: 450px; left: 80%; z-index: 9999; width: 200px; padding: 1px; border-radius: 5px; border-style: solid; border-width: 7px 8px 7px 7px; display:block; user-select: none; color: #333333; } #resp_Panel .sekcja { position: absolute; top: -27px; left: -7px; background: rgba(0,0,0,0.9); filter: hue-rotate(196deg); background-size: 100% 100%; width: 150px; cursor: all-scroll; } #resp_Panel .resp_button {cursor:pointer;text-align:center; border-bottom:solid gray 1px; color: white;} `;
                 const csscode = ` #code_Panel { background: rgba(0,0,0,0.9); position: fixed; top: 450px; left: 80%; z-index: 9999; width: 180px; padding: 1px; border-radius: 5px; border-style: solid; border-width: 7px 8px 7px 7px; display:block; user-select: none; color: #333333; } #code_Panel .sekcja { position: absolute; top: -27px; left: -7px; background: rgba(0,0,0,0.9); filter: hue-rotate(196deg); background-size: 100% 100%; width: 180px; cursor: all-scroll; } #code_Panel .code_button {cursor:pointer;text-align:center; border-bottom:solid gray 1px; color: white;} `;
                 const cssres = ` #res_Panel { background: rgba(0,0,0,0.9); position: fixed; top: 450px; left: 65%; z-index: 9999; width: 200px; padding: 1px; border-radius: 5px; border-style: solid; border-width: 7px 8px 7px 7px; display:block; user-select: none; color: #333333; } #res_Panel .sekcja { position: absolute; top: -27px; left: -7px; background: rgba(0,0,0,0.9); filter: hue-rotate(196deg); background-size: 100% 100%; width: 150px; cursor: all-scroll; } #res_Panel .res_button {cursor:pointer;text-align:center; border-bottom:solid gray 1px; color: white;} #res_Panel ul {margin-left:-30px; color:white; margin:7px 0px 5px 0px; padding: 0px; text-align: center;} `;
-                const csslpvm = ` #lpvm_Panel { background: rgba(0,0,0,0.9); position: fixed; top: 650px; left: 80%; z-index: 9999; width: 200px; padding: 1px; border-radius: 5px; border-style: solid; border-width: 7px 8px 7px 7px; display:block; user-select: none; color: #333333; } #lpvm_Panel .sekcja { position: absolute; top: -27px; left: -7px; background: rgba(0,0,0,0.9); filter: hue-rotate(196deg); background-size: 100% 100%; width: 150px; cursor: all-scroll; } #lpvm_Panel .lpvm_button {cursor:pointer;text-align:center; border-bottom:solid gray 1px; color: white;} #lpvm_Panel .pvm_killed {cursor:pointer;text-align:center; border-LGtom:solid gray 1px;text-align:center; color:white;} #lpvm_Panel .gamee_input{text-align:center; border-bottom:solid gray 1px; color: white;} `;
-                const html = ` <div id="main_Panel"> <div class="sekcja panel_dragg">ALL FOR ONE</div> <div class='gh_button gh_resp'>PVM<b class='gh_status red'>Off</b></div> <div class='gh_button gh_pvp'>PVP<b class='gh_status red'>Off</b></div>  <div class='gh_button gh_res'>Zbierajka<b class='gh_status red'>Off</b></div> <div class='gh_button gh_code'>Kody<b class='gh_status red'>Off</b></div> </div> `;
+                const cssinne = ` #inne_panel { background: rgba(0,0,0,0.9); position: fixed; top: 650px; left: 80%; z-index: 9999; width: 200px; padding: 1px; border-radius: 5px; border-style: solid; border-width: 7px 8px 7px 7px; display:block; user-select: none; color: #333333; } #inne_panel .sekcja { position: absolute; top: -27px; left: -7px; background: rgba(0,0,0,0.9); filter: hue-rotate(196deg); background-size: 100% 100%; width: 150px; cursor: all-scroll; } #inne_panel .inne_button {cursor:pointer;text-align:center; border-bottom:solid gray 1px; color: white;} #inne_Panel .pvm_killed {cursor:pointer;text-align:center; border-LGtom:solid gray 1px;text-align:center; color:white;} #inne_Panel .gamee_input{text-align:center; border-bottom:solid gray 1px; color: white;} `;
+                const html = ` <div id="main_Panel"> <div class="sekcja panel_dragg">ALL FOR ONE</div> <div class='gh_button gh_resp'>PVM<b class='gh_status red'>Off</b></div> <div class='gh_button gh_pvp'>PVP<b class='gh_status red'>Off</b></div>  <div class='gh_button gh_res'>Zbierajka<b class='gh_status red'>Off</b></div> <div class='gh_button gh_inne'>Inne<b class='gh_status red'>Off</b></div> </div> `;
                 const PVP_panel = ` <div id="pvp_Panel"> <div class="sekcja pvp_dragg">PVP</div> <div class='pvp_button pvp_pvp'>PVP<b class='pvp_status red'>Off</b></div>  <div class='pvp_button pvp_WI'>Wojny <b class='pvp_status red'>Off</b></div> <div class='pvp_button pvp_WK'>Wojny Klanowe<b class='pvp_status red'>Off</b></div>  <div class='gamee_input'><input style='width:120px; margin-left:-2px; background:grey;text-align:center;font-size:16;' type='text' placeholder="Lista wojen" name='pvp_capt' value='' /></div> <div class='gameee_input'><input style='width:120px; margin-left:-2px; background:grey;text-align:center;font-size:16;' type='text' placeholder="Szybkość 10-100" name='speed_capt' value='50' /></div> </div> `;
                 const RESP_panel = ` <div id="resp_Panel"> <div class="sekcja resp_dragg">SPAWN MOBKóW</div> <div class="resp_button resp_resp">On<b class="resp_status red">Off</b></div>  <div class="resp_button resp_resp1">Resp<b class="resp_status red">Off</b></div> <div class="resp_button resp_rare">exp<b class="resp_status red">Off</b></div> <div class="resp_button resp_normal">Niszczenie eq<b class="resp_status red">Off</b></div> <div class="resp_button resp_leg">Niszczenie leq<b class="resp_status red">Off</b></div> <div class="resp_button resp_blue">Ogromny ramen<b class="resp_status red">Off</b></div> <div class="resp_button resp_green">maly ramen<b class="resp_status red">Off</b></div> <div class="resp_button resp_purple">Powiekszony ramen<b class="resp_status red">Off</b></div> <div class="resp_button resp_yellow">zolta pigula<b class="resp_status red">Off</b></div> <div class="resp_button resp_red">zielona pigula<b class="resp_status red">Off</b></div> <div class="resp_button resp_magic">Czerwona pigula<b class="resp_status red">Off</b></div>    <div class="resp_button resp_on">Włącz All<b class="resp_status green">On</b></div> <div class="resp_button resp_off">Wyłącz All<b class="resp_status red">Off</b></div> <div class="resp_button resp_bh16">5 Min cd pvp <b class="resp_status red">Off</b></div>  </div> `;
-                const CODE_panel = ` <div id="code_Panel"> <div class="sekcja code_dragg">Kody</div> <div class="code_button code_code">KODY<b class="code_status red">Off</b></div> <div class="code_button code_acc">Konto<b class="code_status red">Off</b></div> <div class="code_button code_zast">Zastępstwa<b class="code_status red">Off</b></div> <div class="code_button code_bh1">Błogo 250% tren<b class="code_status red">Off</b></div> <div class="code_button code_bh2">Błogo 5% kod<b class="code_status red">Off</b></div> <label class='select_input'><select id='bot_what_to_train'><option value='1'>Siła</option><option value='2'>Szybkość</option><option value='3'>Wytrzymałość</option><option value='4'>Siła Woli</option><option value='5'>Energia Ki</option><option value='6'>Wtajemniczenie</option></select></label> <label class='select_input'><select id='bot_what_to_traintime'><option value='1'>1 godz.</option><option value='2'>2 godz.</option><option value='3'>3 godz.</option><option value='4'>4 godz.</option><option value='5'>5 godz.</option><option value='6'>6 godz.</option><option value='7'>7 godz.</option><option value='8'>8 godz.</option><option value='9'>9 godz.</option><option value='10'>10 godz.</option><option value='11'>11 godz.</option><option value='12'>12 godz.</option></label> </div> `;
+                const CODE_panel = ` <div id="code_Panel"> <div class="sekcja code_dragg">Inne</div> <div class="code_button code_code">KODY<b class="code_status red">Off</b></div> <div class="code_button code_acc">Konto<b class="code_status red">Off</b></div> <div class="code_button code_zast">Zastępstwa<b class="code_status red">Off</b></div> <div class="code_button code_bh1">Błogo 250% tren<b class="code_status red">Off</b></div> <div class="code_button code_bh2">Błogo 5% kod<b class="code_status red">Off</b></div> <label class='select_input'><select id='bot_what_to_train'><option value='1'>Siła</option><option value='2'>Szybkość</option><option value='3'>Wytrzymałość</option><option value='4'>Siła Woli</option><option value='5'>Energia Ki</option><option value='6'>Wtajemniczenie</option></select></label> <label class='select_input'><select id='bot_what_to_traintime'><option value='1'>1 godz.</option><option value='2'>2 godz.</option><option value='3'>3 godz.</option><option value='4'>4 godz.</option><option value='5'>5 godz.</option><option value='6'>6 godz.</option><option value='7'>7 godz.</option><option value='8'>8 godz.</option><option value='9'>9 godz.</option><option value='10'>10 godz.</option><option value='11'>11 godz.</option><option value='12'>12 godz.</option></label> </div> `;
                 const RES_panel = ` <div id="res_Panel"> <div class="sekcja res_dragg">SUROWCE</div> <div class="res_button res_res">ZBIERAJ<b class="res_status red">Off</b></div> <div class="bt_cool" style="text-align:center; color:white;"></div> <ul></ul> </div> `;
                 const LPVM_panel = ` <div id="lpvm_Panel"> <div class="sekcja lpvm_dragg">LISTY GOŃCZE</div> <div class='pvm_killed'>Wykonane listy: <b>0</b></div> <div class="lpvm_button lpvm_lpvm">START<b class="lpvm_status red">Off</b></div> <div class="lpvm_button lpvm_g">G-Born<b class="lpvm_status red">Off</b></div> <div class="lpvm_button lpvm_u">U-Born<b class="lpvm_status red">Off</b></div> <div class="lpvm_button lpvm_s">S-Born<b class="lpvm_status red">Off</b></div> <div class="lpvm_button lpvm_h">H-Born<b class="lpvm_status red">Off</b></div> <div class="lpvm_button lpvm_limit">Limit<b class="lpvm_status red">Off</b></div> <div class='gamee_input'><input style='width:120px; margin-left:-2px; background:grey;text-align:center;font-size:16;' type='text' placeholder="Enter text" name='lpvm_capt' value='60' /></div> </div> `;
+                const INNE_panel = `<div id="inne_panel"> <div class="sekcja inne_dragg">Inne</div> <div class="inne_button inne_wymiana">Wymiana<strong class="pvp_status red">Off</strong></div> <div class="inne_button inne_ronin">Ronin<strong class="pvp_status red">Off</strong></div>
+                <div class="inne_button inne_karciana">Karciana<strong class="pvp_status red">Off</strong></div>
+                <label><select name="ronin_opt">
+                <option value="1">Krysztal chakry</option>
+                <option value="2">Inverter</option>
+                <option value="3">Ulepszacz</option>
+                <option value="4">Prowo boss</option>
+                <option value="5">Misja S</option>
+                <option value="6">Subka 3x</option>
+                <option value="7">Zwoj resetu</option>
+                <option value="8">Zwoj transferu</option>
+                <option value="9">Zwoj exp</option>
+                <option value="10">Maly ramen</option>
+                </select></label></div>
+                <div><label><select name="karciana_opt">
+                <option value="1">Karta dusz</option>
+                <option value="2">Esencja dusz</option>
+                <option value="3">Powiekszony ramen</option>
+                <option value="4">Epicki zwoj</option>
+                <option value="5">Esencja jakosci</option>
+                <option value="6">zwoj resetu</option>
+                <option value="7">zwoj teleportacji</option>
+                <option value="8">Inverter</option>
+                <option value="9">Ulepszacz</option>
+                </select></label>
+                <div class="gameee_input"><input style="width: 120px; margin-left: -2px; background: grey; text-align: center; font-size: 16;" name="insta_capt" type="text" value="50" placeholder="Szybkość 10-1000" /></div>
+                </div> `
                 $("body").append(`<style>${css}</style>${html}`);
                 $("body").append(`<style>${csspvp}</style>${PVP_panel}`);
                 $("body").append(`<style>${cssresp}</style>${RESP_panel}`);
-                // $("body").append(`<style>${csscode}</style>${CODE_panel}`);
-                $("body").append(`<style>${cssres}</style>${RES_panel}`);
+                $("body").append(`<style>${csscode}</style>${CODE_panel}`);
+                $("body").append(`<style>${cssres}</style>${INNE_panel}`);
                 // $("body").append(`<style>${csslpvm}</style>${LPVM_panel}`);
                 $("#pvp_Panel").hide();
                 $("#resp_Panel").hide();
                 $("#code_Panel").hide();
                 $("#res_Panel").hide();
                 $("#lpvm_Panel").hide();
+                $("#inne_panel").hide();
                 $("#main_Panel").draggable({
                     handle: ".panel_dragg"
                 });
@@ -66,12 +94,12 @@ if (typeof GAME === 'undefined') {} else {
                 $("#res_Panel").draggable({
                     handle: ".res_dragg"
                 });
-                // $("#lpvm_Panel").draggable({
-                //     handle: ".lpvm_dragg"
-                // });
-                // $("#code_Panel").draggable({
-                //     handle: ".code_dragg"
-                // });
+                $("#inne_panel").draggable({
+                    handle: ".inne_dragg"
+                });
+                $("#code_Panel").draggable({
+                    handle: ".code_dragg"
+                });
                 $('#main_Panel .gh_pvp').click(() => {
                     if ($(".gh_pvp .gh_status").hasClass("red")) {
                         $(".gh_pvp .gh_status").removeClass("red").addClass("green").html("On");
@@ -105,23 +133,23 @@ if (typeof GAME === 'undefined') {} else {
                         $(".res_res .res_status").removeClass("green").addClass("red").html("Off");
                     }
                 });
-                // $('#main_Panel .gh_lpvm').click(() => {
-                //     if ($(".gh_lpvm .gh_status").hasClass("red")) {
-                //         $(".gh_lpvm .gh_status").removeClass("red").addClass("green").html("On");
-                //         $("#lpvm_Panel").show();
-                //     } else {
-                //         $(".gh_lpvm .gh_status").removeClass("green").addClass("red").html("Off");
-                //         $("#lpvm_Panel").hide();
-                //         LPVM.Stop = true;
-                //         $(".lpvm_lpvm .lpvm_status").removeClass("green").addClass("red").html("Off");
-                //     }
-                // });
-                $('#main_Panel .gh_code').click(() => {
-                    if ($(".gh_code .gh_status").hasClass("red")) {
-                        $(".gh_code .gh_status").removeClass("red").addClass("green").html("On");
+                $('#main_Panel .gh_inne').click(() => {
+                    if ($(".gh_lpvm .gh_status").hasClass("red")) {
+                        $(".gh_lpvm .gh_status").removeClass("red").addClass("green").html("On");
+                        $("#inne_Panel").show();
+                    } else {
+                        $(".gh_lpvm .gh_status").removeClass("green").addClass("red").html("Off");
+                        $("#inne_Panel").hide();
+                        LPVM.Stop = true;
+                        $(".inne_wymiana .lpvm_status").removeClass("green").addClass("red").html("Off");
+                    }
+                });
+                $('#main_Panel .gh_inne').click(() => {
+                    if ($(".gh_inne .gh_status").hasClass("red")) {
+                        $(".gh_inne .gh_status").removeClass("red").addClass("green").html("On");
                         $("#code_Panel").show();
                     } else {
-                        $(".gh_code .gh_status").removeClass("green").addClass("red").html("Off");
+                        $(".gh_inne .gh_status").removeClass("green").addClass("red").html("Off");
                         $("#code_Panel").hide();
                         CODE.stop = true;
                         $(".code_code .code_status").removeClass("green").addClass("red").html("Off");

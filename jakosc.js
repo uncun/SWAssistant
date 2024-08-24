@@ -13,7 +13,7 @@ $('[data-option="rer2_item"]').click();
 }, 300);
 
 window.setTimeout(function() {
-const targetElement = document.querySelector('.player_ekw_item[data-item_id="'+id +'"]');
+const targetElement = document.querySelector('.player_ekw_item[data-item_id="'+id+'"]');
                 const pattern = /<span id="quality">Jakość:/;
                 if (targetElement) {
                   // Get the value of the data-slot attribute
