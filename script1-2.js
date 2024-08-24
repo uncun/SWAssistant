@@ -1,5 +1,5 @@
 var checked = false;
-
+var item_id=0;
 if (typeof GAME === 'undefined' && extrapremium) { } else {
     let Pog = setInterval(() => {
         if (!GAME.pid) { } else {
@@ -999,6 +999,14 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
                     
                     case 12:
                         console.log(res);
+                        if (!res.ekw)
+                            return;
+                        for (var i = 0; i < ekw.size; i++) {
+                            console.log(ekw[i]);
+                            if (ekw[i] == item_id)
+                                console.log("item found");
+                        }
+
                     default:
                         console.log("KWA_HANDLE_SOCKETS: unhandeled response");
                         break;
@@ -1046,6 +1054,7 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
                 });
                 $("body").on("click", "#custom_but", () => {
                     $("#ItemPanel").show();
+                    this.item_id = GAME.dragged_item.id;
                     console.log("custom clicked");
                 });
                 $("body").on("click", "#changeProfileNext", () => {
