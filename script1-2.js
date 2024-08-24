@@ -1003,7 +1003,7 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
                             return;
                         for (var i = 0; i < res.ekw.length; i++) {
                             console.log(res.ekw[i]);
-                            if (res.ekw[i] == item_id)
+                            if (res.ekw[i].id == item_id)
                                 console.log("item found");
                         }
 
