@@ -157,6 +157,9 @@ if (typeof GAME === 'undefined') {} else {
                     if ($(".gh_inne .gh_status").hasClass("red")) {
                         $(".gh_inne .gh_status").removeClass("red").addClass("green").html("On");
                         $("#inne_Panel").show();
+                        $("#inne_Panel .karciana_opt1").hide();
+                        $("#inne_Panel .insta_capt1").hide();
+                        $("#inne_Panel .ronin_opt1").hide();
                     } else {
                         $(".gh_inne .gh_status").removeClass("green").addClass("red").html("Off");
                         $("#inne_Panel").hide();
@@ -200,12 +203,10 @@ if (typeof GAME === 'undefined') {} else {
                 });
 
                 $('#inne_Panel .inne_wymiana').click(() => {
-                    if ($(".inne_karciana .inne_status").hasClass("red")) {
+                    if ($(".inne_karciana .inne_status").hasClass("red") || ($(".inne_ronin .inne_status").hasClass("red"))) {
                         return;
                     }
-                    if ($(".inne_ronin .inne_status").hasClass("red")) {
-                        return;
-                    }
+        
                     if ($(".inne_wymiana .inne_status").hasClass("red")) {
                         $(".inne_karciana .inne_status").removeClass("red").addClass("green").html("On");
 
