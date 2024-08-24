@@ -177,12 +177,16 @@ if (typeof GAME === 'undefined') {} else {
                         $("#inne_Panel .ronin_opt1").show();
                         $("#inne_Panel .karciana_opt1").hide();
                         $(".inne_karciana .inne_status").removeClass("green").addClass("red").html("Off");
+                        INNE.karciana = false;
+                        INNE.ronin = true;
                     } else {
                         $(".inne_ronin .inne_status").removeClass("green").addClass("red").html("Off");
                         $("#inne_Panel .karciana_opt1").hide();
                         $("#inne_Panel .insta_capt1").hide();
                         $("#inne_Panel .ronin_opt1").hide();
                         $(".inne_karciana .inne_status").removeClass("green").addClass("red").html("Off");
+                        INNE.karciana = false;
+                        INNE.ronin = false;
                     }
                 });
 
@@ -193,24 +197,30 @@ if (typeof GAME === 'undefined') {} else {
                         $("#inne_Panel .ronin_opt1").hide();
                         $("#inne_Panel .karciana_opt1").show();
                         $(".inne_ronin .inne_status").removeClass("green").addClass("red").html("Off");
+                        INNE.karciana = true;
+                        INNE.ronin = false;
                     } else {
                         $(".inne_karciana .inne_status").removeClass("green").addClass("red").html("Off");
                         $("#inne_Panel .karciana_opt1").hide();
                         $("#inne_Panel .insta_capt1").hide();
                         $("#inne_Panel .ronin_opt1").hide();
                         $(".inne_ronin .inne_status").removeClass("green").addClass("red").html("Off");
+                        INNE.karciana = false;
+                        INNE.ronin = false;
                     }
                 });
 
                 $('#inne_Panel .inne_wymiana').click(() => {
-                    if ($(".inne_karciana .inne_status").hasClass("red") || ($(".inne_ronin .inne_status").hasClass("red"))) {
-                        return;
-                    }
-        
                     if ($(".inne_wymiana .inne_status").hasClass("red")) {
+                        if ($(".inne_karciana .inne_status").hasClass("red") || ($(".inne_ronin .inne_status").hasClass("red"))) {
+                            return;
+                        }
                         $(".inne_karciana .inne_status").removeClass("red").addClass("green").html("On");
-
+                        INNE.wymiana = true;
                     } else {
+                        INNE.wymiana = false;
+                        INNE.karciana = false;
+                        INNE.ronin = false;
                         $(".inne_wymiana .inne_status").removeClass("green").addClass("red").html("Off");
                         $("#inne_Panel .karciana_opt1").hide();
                         $("#inne_Panel .insta_capt1").hide();
@@ -549,11 +559,20 @@ if (typeof GAME === 'undefined') {} else {
             var INNE = {
                 ronin: false,
                 karciana: false,
-                wait_wymiana: 20,
+                wymiana: false,
+                wait_wymiana: 600,
                 cap_wymiana: 0,
                 res_id: 0,
             };
-            INNE.check = () => {
+            INNE.start = () => {
+                if (INNE.wymiana && !GAME.is_loading) {
+                    INNE.action();
+                } else if (GAME.is_loading) {
+                    window.setTimeout(INNE.start, wait_wymiana);
+                } else {}
+            };
+
+            INNE.action = () => {
                 INNE.cap_wymiana = $("#inne_Panel input[name=insta_capt]").val();
             };
 
