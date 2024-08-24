@@ -1057,7 +1057,7 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
 
                 // itemki
                 $('#ItemPanel .close_item').click(() => {
-                    $("#ItemPanel").close();
+                    $("#ItemPanel").hide();
                 });
                 $("body").on("click", "#custom_but", () => {
                     $("#ItemPanel").show();
