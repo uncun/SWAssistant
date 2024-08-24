@@ -1017,9 +1017,11 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
                 $("body").on("click", "#changeProfile", () => {
                     this.resetAFO();
                 });
-                $("body").on("click", "#changeProfilePrev", () => {
-                    this.goToPreviousChar();
-                    this.resetCalculatedPower();
+                $("body").on("click", "#changeProfile", () => {
+                    this.resetAFO();
+                });
+                $("body").on("click", "#custom_but", () => {
+                    console.log("custom clicked");
                 });
                 $("body").on("click", "#changeProfileNext", () => {
                     this.goToNextChar();
