@@ -217,6 +217,7 @@ if (typeof GAME === 'undefined') {} else {
                         }
                         $(".inne_wymiana .inne_status").removeClass("red").addClass("green").html("On");
                         INNE.wymiana = true;
+                        INNE.start();
                     } else {
                         INNE.wymiana = false;
                         INNE.karciana = false;
