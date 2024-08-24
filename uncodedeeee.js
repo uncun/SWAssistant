@@ -589,6 +589,7 @@ if (typeof GAME === 'undefined') {} else {
                     if (INNE.cap_wymiana > 0) {
                         console.log("wymiana", INNE.cap_wymiana, INNE.res_id, INNE.exchange_id);
                     } else if (INNE.cap_wymiana <= 0) {
+                        clearInterval(inter_wymiana);
                         console.log("koniec wymiany");
                         INNE.wymiana = false;
                         $(".inne_wymiana .inne_status").removeClass("green").addClass("red").html("Off");
