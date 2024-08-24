@@ -89,8 +89,10 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
                 $("#changeProfile").after('<button id="changeProfileNext" class="option" data-option="nextChar">Next</button>');
                 $("#changeProfileNext").after('<button id="changeProfilePrev" class="option" data-option="prevChar">Prev</button>');
                 $("#ekw_item_menu").append('<button id="custom_but" class="option" data-option="customUpgrade">Custom</button>')
-                $("#custom_but").show();
-                
+                $("#custom_but").css({
+                    "display": "block"
+                });
+
                 this.auto_abyss_interval = false;
                 this.auto_arena = false;
                 this.additionalTopBarVisible = false;
