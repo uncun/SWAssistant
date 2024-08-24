@@ -215,7 +215,7 @@ if (typeof GAME === 'undefined') {} else {
                         if ($(".inne_karciana .inne_status").hasClass("red") && ($(".inne_ronin .inne_status").hasClass("red"))) {
                             return;
                         }
-                        $(".inne_karciana .inne_status").removeClass("red").addClass("green").html("On");
+                        $(".inne_wymiana .inne_status").removeClass("red").addClass("green").html("On");
                         INNE.wymiana = true;
                     } else {
                         INNE.wymiana = false;
