@@ -133,24 +133,24 @@ if (typeof GAME === 'undefined') {} else {
                         $(".res_res .res_status").removeClass("green").addClass("red").html("Off");
                     }
                 });
-                $('#main_Panel .gh_inne').click(() => {
-                    if ($(".gh_lpvm .gh_status").hasClass("red")) {
-                        $(".gh_lpvm .gh_status").removeClass("red").addClass("green").html("On");
-                        $("#inne_Panel").show();
-                    } else {
-                        $(".gh_lpvm .gh_status").removeClass("green").addClass("red").html("Off");
-                        $("#inne_Panel").hide();
-                        LPVM.Stop = true;
-                        $(".inne_wymiana .lpvm_status").removeClass("green").addClass("red").html("Off");
-                    }
-                });
+                // $('#main_Panel .gh_inne').click(() => {
+                //     if ($(".gh_lpvm .gh_status").hasClass("red")) {
+                //         $(".gh_lpvm .gh_status").removeClass("red").addClass("green").html("On");
+                //         $("#inne_Panel").show();
+                //     } else {
+                //         $(".gh_lpvm .gh_status").removeClass("green").addClass("red").html("Off");
+                //         $("#inne_Panel").hide();
+                //         LPVM.Stop = true;
+                //         $(".inne_wymiana .lpvm_status").removeClass("green").addClass("red").html("Off");
+                //     }
+                // });
                 $('#main_Panel .gh_inne').click(() => {
                     if ($(".gh_inne .gh_status").hasClass("red")) {
                         $(".gh_inne .gh_status").removeClass("red").addClass("green").html("On");
-                        $("#code_Panel").show();
+                        $("#inne_Panel").show();
                     } else {
                         $(".gh_inne .gh_status").removeClass("green").addClass("red").html("Off");
-                        $("#code_Panel").hide();
+                        $("#inne_Panel").hide();
                         CODE.stop = true;
                         $(".code_code .code_status").removeClass("green").addClass("red").html("Off");
                     }
