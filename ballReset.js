@@ -144,140 +144,269 @@ class ballReset {
     }
     allBons() {
         return [{
+            id: 1,
+            bonus: 'do obrażeń taijutsu'
+        }, {
+            id: 2,
+            bonus: 'do obrażeń kenjutsu'
+        }, {
+            id: 3,
+            bonus: 'do obrażeń shurikenjutsu'
+        }, {
+            id: 4,
+            bonus: 'do obrażeń ninjutsu'
+        }, {
+            id: 5,
+            bonus: 'do obrażeń genjutsu'
+        }, {
+            id: 6,
+            bonus: 'do obrażeń kinjutsu'
+        }, {
+            id: 7,
+            bonus: 'do obrażeń fizycznych'
+        }, {
+            id: 8,
+            bonus: 'do obrażeń mentalnych'
+        }, {
+            id: 9,
+            bonus: 'do obrony fizycznej'
+        }, {
+            id: 10,
+            bonus: 'do obrony mentalnej'
+        }, {
+            id: 11,
+            bonus: 'do punktów życia'
+        }, {
+            id: 12,
+            bonus: 'do punktów chakry'
+        }, {
             id: 13,
-            bonus: '% do obrażeń'
+            bonus: '% do celności ataków fizycznych'
         }, {
             id: 14,
-            bonus: '% do redukcji obrażeń'
+            bonus: '% do celności ataków mentalnyc'
         }, {
             id: 15,
-            bonus: '% do efektywności treningu'
-        }, {
-            id: 16,
-            bonus: '% do doświadczenia'
-        }, {
-            id: 17,
             bonus: '% do szansy na trafienie krytyczne'
         }, {
-            id: 18,
-            bonus: '% do redukcji szansy na otrzymanie trafienia krytycznego'
-        }, {
-            id: 51,
-            bonus: '% do obrażeń od technik'
-        }, {
-            id: 52,
-            bonus: '% redukcji obrażeń od technik'
-        }, {
-            id: 53,
-            bonus: '% do szansy na moc z walk PvM'
-        }, {
-            id: 54,
-            bonus: '% do ilości mocy z walk PvM'
-        }, {
-            id: 55,
-            bonus: '% do szansy na zdobycie przedmiotu z walk PvM'
-        }, {
-            id: 56,
-            bonus: 'minut(a) krótsze wyprawy'
-        }, {
-            id: 57,
-            bonus: '% do szansy powodzenia wypraw'
-        }, {
-            id: 58,
-            bonus: '% do szansy na ulepszenie przedmiotów'
-        }, {
-            id: 59,
-            bonus: '% do szansy na połączenie przedmiotów'
-        }, {
-            id: 60,
+            id: 16,
             bonus: '% do obrażeń od trafień krytycznych'
         }, {
-            id: 61,
-            bonus: '% redukcji obrażeń od trafień krytycznych'
+            id: 17,
+            bonus: '"% do szansy na uniknięcie trafienia krytycznego'
         }, {
-            id: 62,
-            bonus: '% do mocy za wygrane walki wojenne'
+            id: 18,
+            bonus: '% do redukcji obrażeń od wrogich trafień krytycznych'
         }, {
-            id: 63,
-            bonus: '% do skuteczności podpaleń'
+            id: 19,
+            bonus: '% do odporności na ogłuszenia'
         }, {
-            id: 64,
-            bonus: '% do skuteczności krwawień'
+            id: 20,
+            bonus: '% do odporności na zamrożenie'
         }, {
-            id: 65,
-            bonus: '% do odporności na podpalenia'
+            id: 21,
+            bonus: '% do odporności na paraliż'
         }, {
-            id: 66,
+            id: 22,
+            bonus: '% do odporności na dezorientację'
+        }, {
+            id: 23,
             bonus: '% do odporności na krwawienia'
         }, {
+            id: 24,
+            bonus: '% do odporności na uwięzienia'
+        }, {
+            id: 25,
+            bonus: '% do odporności na żywioł wody'
+        }, {
+            id: 26,
+            bonus: '% do odporności na żywioł ognia'
+        }, {
+            id: 27,
+            bonus: '% do odporności na żywioł wiatru'
+        }, {
+            id: 28,
+            bonus: '% do odporności na żywioł ziemi'
+        }, {
+            id: 29,
+            bonus: '% do odporności na żywioł pioruna'
+        }, {
+            id: 30,
+            bonus: '% do obrażeń'
+        }, {
+            id: 31,
+            bonus: '% redukcja obrażeń'
+        }, {
+            id: 32,
+            bonus: '% do obrażeń PvP'
+        }, {
+            id: 33,
+            bonus: '% redukcja obrażeń PvP'
+        }, {
+            id: 34,
+            bonus: '% do obrażeń PvM'
+        }, {
+            id: 35,
+            bonus: '% redukcja obrażeń PvM'
+        }, {
+            id: 36,
+            bonus: '% do odporności na genjutsu'
+        }, {
+            id: 37,
+            bonus: 'do wynagrodzenia za wygrane walki'
+        }, {
+            id: 38,
+            bonus: '% do zdobywanego doświadczenia'
+        }, {
+            id: 39,
+            bonus: '% do obrażeń taijutsu'
+        }, {
+            id: 40,
+            bonus: '% do obrażeń kenjutsu'
+        }, {
+            id: 41,
+            bonus: '% do obrażeń shurikenjutsu'
+        }, {
+            id: 42,
+            bonus: '% do obrażeń ninjutsu'
+        }, {
+            id: 43,
+            bonus: '% do obrażeń genjutsu'
+        }, {
+            id: 44,
+            bonus: '% do obrażeń kinjutsu'
+        }, {
+            id: 45,
+            bonus: '% do obrażeń technik kekkei genkai'
+        }, {
+            id: 46,
+            bonus: '% do redukcji obrażeń taijutsu'
+        }, {
+            id: 47,
+            bonus: '% do redukcji obrażeń kenjutsu'
+        }, {
+            id: 48,
+            bonus: '% do redukcji obrażeń shurikenjutsu'
+        }, {
+            id: 49,
+            bonus: '% do redukcji obrażeń ninjutsu'
+        }, {
+            id: 50,
+            bonus: '% do redukcji obrażeń genjutsu'
+        }, {
+            id: 51,
+            bonus: '% do redukcji obrażeń kinjutsu'
+        }, {
+            id: 52,
+            bonus: '% do redukcji obrażeń technik kekkei genkai'
+        }, {
+            id: 53,
+            bonus: '% do odporności na podpalenia'
+        }, {
+            id: 54,
+            bonus: '% do odporności na absorpcje chakry'
+        }, {
+            id: 55,
+            bonus: '% do skuteczności technik blokujących'
+        }, {
+            id: 56,
+            bonus: '% do odporności na przejęcie kontroli'
+        }, {
+            id: 57,
+            bonus: '% do skuteczności ogłuszenia'
+        }, {
+            id: 58,
+            bonus: '% do skuteczności ogłuszenia PvP'
+        }, {
+            id: 59,
+            bonus: '% do skuteczności ogłuszenia PvM'
+        }, {
+            id: 60,
+            bonus: '% do skuteczności paraliżu'
+        }, {
+            id: 61,
+            bonus: '% do skuteczności paraliżu PvP'
+        }, {
+            id: 62,
+            bonus: '% do skuteczności paraliżu PvM'
+        }, {
+            id: 63,
+            bonus: '% do skuteczności dezorientacji'
+        }, {
+            id: 64,
+            bonus: '% do do skuteczności dezorientacji PvP'
+        }, {
+            id: 65,
+            bonus: '% do skuteczności dezorientacji PvM'
+        }, {
+            id: 66,
+            bonus: '% do skuteczności krwawienia'
+        }, {
             id: 67,
-            bonus: '% do szansy na zdobycie PSK'
+            bonus: '% do skuteczności krwawienia PvP'
         }, {
             id: 68,
-            bonus: '% do punktów PvP za wygrane walki'
+            bonus: '% do skuteczności krwawienia PvM'
         }, {
             id: 69,
-            bonus: '% do szansy na 3x więcej punktów PvP za wygrane walki'
+            bonus: '% do skuteczności uwięzienia'
         }, {
             id: 70,
-            bonus: '% do szansy na 3x więcej doświadczenia za wygrane walki PvM'
+            bonus: '% do skuteczności uwięzienia PvP'
         }, {
             id: 71,
-            bonus: '% do mocy za skompletowanie SK'
+            bonus: '% do skuteczności uwięzienia PvM'
         }, {
             id: 72,
-            bonus: '% do mocy za skompletowanie PSK'
+            bonus: '% do skuteczności podpalenia'
         }, {
             id: 73,
-            bonus: 'minut(y) do czasu trwania błogosławieństw'
+            bonus: '% do skuteczności podpalenia PvP'
         }, {
             id: 74,
-            bonus: '% do szansy na spotkanie legendarnych potworów'
+            bonus: '% do skuteczności podpalenia PvM'
         }, {
             id: 75,
-            bonus: 'minut(y) krótszy cooldown między walkami PvP'
+            bonus: '% do odporności na ogłuszenia PvP'
         }, {
             id: 76,
-            bonus: '% zwiększenie własnej szybkości'
+            bonus: '% do odporności na ogłuszenia PvM'
         }, {
             id: 77,
-            bonus: '% obniżenie szybkości przeciwnika'
+            bonus: '% do odporności na paraliż PvP'
         }, {
             id: 78,
-            bonus: '% do szansy na zdobycie Niebieskiego Senzu'
+            bonus: '% do odporności na paraliż PvM'
         }, {
             id: 79,
-            bonus: '% mniejsze obrażenia od podpaleń'
+            bonus: '% do odporności na dezorientację PvP'
         }, {
             id: 80,
-            bonus: '% mniejsze obrażenia od krwawień'
+            bonus: '% do odporności na dezorientację PvM'
         }, {
             id: 81,
-            bonus: '% do szansy na zdobycie Scoutera'
+            bonus: '% do odporności na krwawienia PvP'
         }, {
-            id: 91,
-            bonus: '% do wtajemniczenia'
+            id: 82,
+            bonus: '% do odporności na krwawienia PvM'
         }, {
-            id: 99,
-            bonus: '% większy limit dzienny Niebieskich Senzu'
+            id: 83,
+            bonus: '% do odporności na uwięzienia PvP'
         }, {
-            id: 139,
-            bonus: '% do ilości zdobywanych kryształów instancji'
+            id: 84,
+            bonus: '% do odporności na uwięzienia PvM'
         }, {
-            id: 140,
-            bonus: '% do przyrostu Punktów Akcji'
+            id: 85,
+            bonus: '% do odporności na podpalenia PvP'
         }, {
-            id: 154,
-            bonus: '% do sławy za walki w wojnach imperiów'
-        }, {
-            id: 160,
-            bonus: '% do boskiego atrybutu przewodniego'
-        }, {
-            id: 163,
-            bonus: '% więcej Boskiej Ki za CSK'
-        }, {
-            id: 171,
-            bonus: '% do max Punktów Akcji'
-        }];
+            id: 86,
+            bonus: '% do odporności na podpalenia PvM'
+        },
+		
+		
+		
+		
+		
+		];
     }
 }

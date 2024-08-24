@@ -72,6 +72,7 @@ if (typeof GAME === 'undefined') {} else {
                     <option value="8">Inverter</option>
                     <option value="9">Ulepszacz</option>
                     </select>
+                    </div>
                     <div class="gamee_input"><input style="width: 150px; margin-left: -2px; background: grey; text-align: center; font-size: 16;" name="insta_capt" type="text" value="50" placeholder="Szybkość 10-1000" /></div>
                 </div> `
 
