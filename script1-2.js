@@ -62,12 +62,30 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
                 this.addToCSS(`.spawn_switch{cursor:pointer;}`);
                 this.addToCSS(`.quest_roll1{position:absolute; width:50px; height:50px; background:url('/gfx/layout/dice.png') 0 0; top:-25px; left:25px; cursor:pointer; filter:drop-shadow(0px 0px 10px lime)} .quest_roll2{position:absolute; width:50px; height:50px; background:url('/gfx/layout/dice.png') 0 0; top:-25px; left:75px; cursor:pointer; filter:drop-shadow(0px 0px 10px #00fdff)} .quest_roll3{position:absolute; width:50px; height:50px; background:url('/gfx/layout/dice.png') 0 0; top:-25px; left:125px; cursor:pointer; filter:drop-shadow(0px 0px 10px #ff0000)} .quest_roll:hover{background:url('/gfx/layout/dice.png') 0 -45px;} .quest_roll1:hover{background:url('/gfx/layout/dice.png') 0 -45px;} .quest_roll2:hover{background:url('/gfx/layout/dice.png') 0 -45px;} .quest_roll3:hover{background:url('/gfx/layout/dice.png') 0 -45px;}`);
                 this.addToCSS(`#lastmap_bar { top: 115px !important; }`);
-                this.addToCSS(`button#changeProfileNext { position: absolute; top: 125px; left: 139px; border: none; background: none; color: #9FBAD2;font-family: 'Roboto', sans-serif;  display: block; vertical-align: middle;  }`);
+                this.addToCSS(`button#changeProfileNext { border: none; background: none; color: #9FBAD2;font-family: 'Roboto', sans-serif;  display: block; vertical-align: middle;  }`);
                 // this.addToCSS(`button#changeProfileNext:hover {
                 //     background: linear-gradient(0deg, rgba(247,121,12,1) 0%, rgba(252,238,54,1) 100%);
                 //     border: 0px solid #973804;
                 // }`);
                 this.addToCSS(`button#changeProfilePrev { position: absolute; top: 125px; left: 179px; border: none; background: none; color: #9FBAD2; font-family: 'Roboto', sans-serif;  display: block; vertical-align: middle;   }`);
+                this.addToCSS(`button#CustomUpgrage {  background: url('/gfx/layout/newbtn2.png') repeat-x 0 0;
+                    height: 23px;
+                    background-clip: padding-box;
+                    line-height: 23px;
+                    box-sizing: content-box;
+                    display: inline-block;
+                    text-align: center;
+                    color: #E5D8A5;
+                    text-decoration: none;
+                    font-size: 12px;
+                    font-weight: Bold;
+                    text-transform: uppercase;
+                    border-style: solid; 
+                    border-width: 5px; 
+                    -moz-border-image: url(/gfx/layout/btnborder.png) 5 repeat; 
+                    -webkit-border-image: url(/gfx/layout/btnborder.png) 5 repeat; 
+                    -o-border-image: url(/gfx/layout/btnborder.png) 5 repeat; 
+                    border-image: url(/gfx/layout/btnborder.png) 5 fill repeat; }`);
                 // this.addToCSS(`button#changeProfilePrev:hover {
                 //     background: linear-gradient(0deg, rgba(247,121,12,1) 0%, rgba(252,238,54,1) 100%);
                 //     border: 0px solid #973804;
@@ -88,6 +106,8 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
                 $('.MoveIcon[data-option="map_quest_skip_time"]').after('<div class="MoveIcon bigg option" data-option="map_alternative_pilot" data-toggle="tooltip" data-original-title="<div class=tt>Ukryje pilota, pokazuje inną klawiaturę<br />Klawisz skrótu:<b class=orange>=</b></div>"><img src="https://up.be3.ovh/upload/1709400449.png"></div>');
                 $("#changeProfile").after('<button id="changeProfileNext" class="option" data-option="nextChar">Next</button>');
                 $("#changeProfileNext").after('<button id="changeProfilePrev" class="option" data-option="prevChar">Prev</button>');
+                $("#CustomUpgrage").after('<button id="ekw_menu_rer" class="option" data-option="customUpgrade">Custom</button>');
+
                 this.auto_abyss_interval = false;
                 this.auto_arena = false;
                 this.additionalTopBarVisible = false;
