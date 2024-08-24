@@ -43,9 +43,10 @@ if (typeof GAME === 'undefined') {} else {
                 const CODE_panel = ` <div id="code_Panel"> <div class="sekcja code_dragg">Inne</div> <div class="code_button code_code">KODY<b class="code_status red">Off</b></div> <div class="code_button code_acc">Konto<b class="code_status red">Off</b></div> <div class="code_button code_zast">Zastępstwa<b class="code_status red">Off</b></div> <div class="code_button code_bh1">Błogo 250% tren<b class="code_status red">Off</b></div> <div class="code_button code_bh2">Błogo 5% kod<b class="code_status red">Off</b></div> <label class='select_input'><select id='bot_what_to_train'><option value='1'>Siła</option><option value='2'>Szybkość</option><option value='3'>Wytrzymałość</option><option value='4'>Siła Woli</option><option value='5'>Energia Ki</option><option value='6'>Wtajemniczenie</option></select></label> <label class='select_input'><select id='bot_what_to_traintime'><option value='1'>1 godz.</option><option value='2'>2 godz.</option><option value='3'>3 godz.</option><option value='4'>4 godz.</option><option value='5'>5 godz.</option><option value='6'>6 godz.</option><option value='7'>7 godz.</option><option value='8'>8 godz.</option><option value='9'>9 godz.</option><option value='10'>10 godz.</option><option value='11'>11 godz.</option><option value='12'>12 godz.</option></label> </div> `;
                 const RES_panel = ` <div id="res_Panel"> <div class="sekcja res_dragg">SUROWCE</div> <div class="res_button res_res">ZBIERAJ<b class="res_status red">Off</b></div> <div class="bt_cool" style="text-align:center; color:white;"></div> <ul></ul> </div> `;
                 const LPVM_panel = ` <div id="lpvm_Panel"> <div class="sekcja lpvm_dragg">LISTY GOŃCZE</div> <div class='pvm_killed'>Wykonane listy: <b>0</b></div> <div class="lpvm_button lpvm_lpvm">START<b class="lpvm_status red">Off</b></div> <div class="lpvm_button lpvm_g">G-Born<b class="lpvm_status red">Off</b></div> <div class="lpvm_button lpvm_u">U-Born<b class="lpvm_status red">Off</b></div> <div class="lpvm_button lpvm_s">S-Born<b class="lpvm_status red">Off</b></div> <div class="lpvm_button lpvm_h">H-Born<b class="lpvm_status red">Off</b></div> <div class="lpvm_button lpvm_limit">Limit<b class="lpvm_status red">Off</b></div> <div class='gamee_input'><input style='width:120px; margin-left:-2px; background:grey;text-align:center;font-size:16;' type='text' placeholder="Enter text" name='lpvm_capt' value='60' /></div> </div> `;
-                const INNE_panel = `<div id="inne_panel"> <div class="sekcja inne_dragg">Inne</div> <div class="inne_button inne_wymiana">Wymiana<strong class="inne_status red">Off</strong></div> <div class="inne_button inne_ronin">Ronin<strong class="inne_status red">Off</strong></div>
+                const INNE_panel = `<div id="inne_panel"> <div class="sekcja inne_dragg">Inne</div> <div class="inne_button inne_wymiana">Wymiana<strong class="inne_status red">Off</strong></div>
+                <div class="inne_button inne_ronin">Ronin<strong class="inne_status red">Off</strong></div>
                 <div class="inne_button inne_karciana">Karciana<strong class="inne_status red">Off</strong></div>
-                <label><select name="ronin_opt">
+                <div><label><select name="ronin_opt">
                 <option value="1">Krysztal chakry</option>
                 <option value="2">Inverter</option>
                 <option value="3">Ulepszacz</option>
@@ -68,7 +69,7 @@ if (typeof GAME === 'undefined') {} else {
                 <option value="8">Inverter</option>
                 <option value="9">Ulepszacz</option>
                 </select></label>
-                <div class="gameee_input"><input style="width: 120px; margin-left: -2px; background: grey; text-align: center; font-size: 16;" name="insta_capt" type="text" value="50" placeholder="Szybkość 10-1000" /></div>
+                <div class="gamee_input"><input style="width: 120px; margin-left: -2px; background: grey; text-align: center; font-size: 16;" name="insta_capt" type="text" value="50" placeholder="Szybkość 10-1000" /></div>
                 </div> `
                 $("body").append(`<style>${css}</style>${html}`);
                 $("body").append(`<style>${csspvp}</style>${PVP_panel}`);
@@ -81,7 +82,7 @@ if (typeof GAME === 'undefined') {} else {
                 $("#code_Panel").hide();
                 $("#res_Panel").hide();
                 $("#lpvm_Panel").hide();
-                $("#inne_panel").append();
+                $("#inne_panel").hide();
                 $("#main_Panel").draggable({
                     handle: ".panel_dragg"
                 });
