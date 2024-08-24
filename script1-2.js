@@ -113,11 +113,11 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
                 this.baselinePower = undefined;
                 this.baselineLevel = undefined;
 
-                const item_css = `#ItemPanel { position: absolute; top: 35px; right: 10px; z-index: 9999999; width: 445px; padding: 5px; background: #303131bd; border: solid #ffffff7a 1px; border-radius: 5px; display: none; user-select: none; } #ItemPanel .controller { display: flex; flex-direction: column; align-items: stretch; margin-bottom: 2px; } #ItemPanel .controller button { font-weight: bolder; border:solid black 1px; cursor: pointer; }  `;
+                const item_css = `#ItemPanel { position: absolute; top: 35px; right: 10px; z-index: 9999999; width: 200; padding: 5px; background: #303131bd; border: solid #ffffff7a 1px; border-radius: 5px; display: none; user-select: none; } #ItemPanel .controller { display: flex; flex-direction: column; align-items: stretch; margin-bottom: 2px; } #ItemPanel .controller button { font-weight: bolder; border:solid black 1px; cursor: pointer; }  `;
                 const item_panel = `<div id="ItemPanel">
                 <div class="controller">
-                <div class="gamee_input insta_capt1"><input style="width: 150px; margin-left: -2px; background: grey; text-align: center; font-size: 16;" name="insta_capt" type="text" value="50" placeholder="Szybkość 10-1000" /> <button class="startSearching green">Min jakość</button></div>
-                <div class="gamee_input insta_capt1"><input style="width: 150px; margin-left: -2px; background: grey; text-align: center; font-size: 16;" name="insta_capt" type="text" value="50" placeholder="Szybkość 10-1000" /> <button class="startSearching green">Min poziom</button></div>
+                <div class="gamee_input insta_capt1"><input style="width: 150px; margin-left: -2px; background: grey; text-align: center; font-size: 16;" name="insta_capt" type="text" value="" placeholder="jakosc" /> <button class="startSearching red">Start</button></div>
+                <div class="gamee_input insta_capt1"><input style="width: 150px; margin-left: -2px; background: grey; text-align: center; font-size: 16;" name="insta_capt" type="text" value="" placeholder="poziom" /> <button class="startSearching red">Start</button></div>
                 </div>`;
                 $("body").append(`<style>${item_css}</style>${item_panel}`);
                 $("#ItemPanel").hide();
