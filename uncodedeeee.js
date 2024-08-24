@@ -75,7 +75,7 @@ if (typeof GAME === 'undefined') {} else {
                     </div>
                     <div class="gamee_input insta_capt1"><input style="width: 150px; margin-left: -2px; background: grey; text-align: center; font-size: 16;" name="insta_capt" type="text" value="50" placeholder="Szybkość 10-1000" /></div>
                 </div> `
-
+                
                 $("body").append(`<style>${css}</style>${html}`);
                 $("body").append(`<style>${csspvp}</style>${PVP_panel}`);
                 $("body").append(`<style>${cssresp}</style>${RESP_panel}`);

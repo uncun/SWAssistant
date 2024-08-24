@@ -106,8 +106,8 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
                 $('.MoveIcon[data-option="map_quest_skip_time"]').after('<div class="MoveIcon bigg option" data-option="map_alternative_pilot" data-toggle="tooltip" data-original-title="<div class=tt>Ukryje pilota, pokazuje inną klawiaturę<br />Klawisz skrótu:<b class=orange>=</b></div>"><img src="https://up.be3.ovh/upload/1709400449.png"></div>');
                 $("#changeProfile").after('<button id="changeProfileNext" class="option" data-option="nextChar">Next</button>');
                 $("#changeProfileNext").after('<button id="changeProfilePrev" class="option" data-option="prevChar">Prev</button>');
-                $("#CustomUpgrage").after('<button id="ekw_menu_rer" class="option" data-option="customUpgrade">Custom</button>');
-
+                $("#ekw_item_menu").append('<button id="custom_but" class="ekw_menu_btn option newBtn" data-option="customUpgrade">Custom</button>')
+                $("#custom_but").show();
                 this.auto_abyss_interval = false;
                 this.auto_arena = false;
                 this.additionalTopBarVisible = false;
