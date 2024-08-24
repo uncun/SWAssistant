@@ -1001,9 +1001,9 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
                         console.log(res);
                         if (!res.ekw)
                             return;
-                        for (var i = 0; i < ekw.size; i++) {
-                            console.log(ekw[i]);
-                            if (ekw[i] == item_id)
+                        for (var i = 0; i < res.ekw.length; i++) {
+                            console.log(res.ekw[i]);
+                            if (res.ekw[i] == item_id)
                                 console.log("item found");
                         }
 
