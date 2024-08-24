@@ -49,7 +49,7 @@ if (typeof GAME === 'undefined') {} else {
                     <div class="inne_button inne_ronin">Ronin<strong class="inne_status red">Off</strong></div>
                     <div class="inne_button inne_karciana">Karciana<strong class="inne_status red">Off</strong></div>
                     <div class="inne_check"><select 
-                    style="width: 200px; margin-left: -2px; background: grey; text-align: center; font-size: 16;" name="ronin_opt">
+                    style="width: 150px; margin-left: -2px; background: grey; text-align: center; font-size: 16;" name="ronin_opt">
                     <option value="1">Krysztal chakry</option>
                     <option value="2">Inverter</option>
                     <option value="3">Ulepszacz</option>
@@ -61,7 +61,7 @@ if (typeof GAME === 'undefined') {} else {
                     <option value="9">Zwoj exp</option>
                     <option value="10">Maly ramen</option>
                     </select></div>
-                    <div><label><select style="width: 200px; margin-left: -2px; background: grey; text-align: center; font-size: 16;" name="karciana_opt">
+                    <div><select style="width: 150px; margin-left: -2px; background: grey; text-align: center; font-size: 16;" name="karciana_opt">
                     <option value="1">Karta dusz</option>
                     <option value="2">Esencja dusz</option>
                     <option value="3">Powiekszony ramen</option>
@@ -72,7 +72,7 @@ if (typeof GAME === 'undefined') {} else {
                     <option value="8">Inverter</option>
                     <option value="9">Ulepszacz</option>
                     </select>
-                    <div class="gamee_input"><input style="width: 200px; margin-left: -2px; background: grey; text-align: center; font-size: 16;" name="insta_capt" type="text" value="50" placeholder="Szybkość 10-1000" /></div>
+                    <div class="gamee_input"><input style="width: 150px; margin-left: -2px; background: grey; text-align: center; font-size: 16;" name="insta_capt" type="text" value="50" placeholder="Szybkość 10-1000" /></div>
                 </div> `
 
                 $("body").append(`<style>${css}</style>${html}`);
@@ -159,6 +159,9 @@ if (typeof GAME === 'undefined') {} else {
                     } else {
                         $(".gh_inne .gh_status").removeClass("green").addClass("red").html("Off");
                         $("#inne_Panel").hide();
+                        $("#inne_Panel .karciana_opt").hide();
+                        $("#inne_Panel .insta_capt").hide();
+                        $("#inne_Panel .ronin_opt").hide();
                         $(".inne_wymiana .inne_status").removeClass("green").addClass("red").html("Off");
                     }
                 });
