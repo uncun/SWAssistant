@@ -212,7 +212,7 @@ if (typeof GAME === 'undefined') {} else {
 
                 $('#inne_Panel .inne_wymiana').click(() => {
                     if ($(".inne_wymiana .inne_status").hasClass("red")) {
-                        if ($(".inne_karciana .inne_status").hasClass("red") || ($(".inne_ronin .inne_status").hasClass("red"))) {
+                        if ($(".inne_karciana .inne_status").hasClass("red") && ($(".inne_ronin .inne_status").hasClass("red"))) {
                             return;
                         }
                         $(".inne_karciana .inne_status").removeClass("red").addClass("green").html("On");
