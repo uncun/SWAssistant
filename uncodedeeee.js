@@ -74,7 +74,7 @@ if (typeof GAME === 'undefined') {} else {
                 $("body").append(`<style>${css}</style>${html}`);
                 $("body").append(`<style>${csspvp}</style>${PVP_panel}`);
                 $("body").append(`<style>${cssresp}</style>${RESP_panel}`);
-                $("body").append(`<style>${cssinne}</style>${INNE_panel}`);
+                $("body").append(`${INNE_panel}`);
                 $("body").append(`<style>${cssres}</style>${RES_panel}`);
                 // $("body").append(`<style>${csslpvm}</style>${LPVM_panel}`);
                 $("#pvp_Panel").hide();
