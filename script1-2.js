@@ -1003,7 +1003,7 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
                         if (!res.ekw)
                             return;
                         for (var i = 0; i < res.ekw.length; i++) {
-                            console.log(res.ekw[i]);
+                            console.log(res.ekw[i].id, item_id);
                             if (res.ekw[i].id == item_id)
                                 console.log("item found");
                         }
@@ -1056,7 +1056,7 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
                 $("body").on("click", "#custom_but", () => {
                     $("#ItemPanel").show();
                     this.item_id = GAME.dragged_item.id;
-                    console.log("custom clicked");
+                    console.log("custom clicked", this.item_id);
                 });
                 $("body").on("click", "#changeProfileNext", () => {
                     this.goToNextChar();
