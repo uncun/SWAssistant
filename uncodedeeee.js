@@ -553,7 +553,7 @@ if (typeof GAME === 'undefined') {} else {
                 cap_wymiana: 0,
                 res_id: 0,
             };
-            INNE.check() = () => {
+            INNE.check = () => {
                 INNE.cap_wymiana = $("#inne_Panel input[name=insta_capt]").val();
             };
 
