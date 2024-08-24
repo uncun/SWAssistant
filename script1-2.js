@@ -88,7 +88,7 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
                 $('.MoveIcon[data-option="map_quest_skip_time"]').after('<div class="MoveIcon bigg option" data-option="map_alternative_pilot" data-toggle="tooltip" data-original-title="<div class=tt>Ukryje pilota, pokazuje inną klawiaturę<br />Klawisz skrótu:<b class=orange>=</b></div>"><img src="https://up.be3.ovh/upload/1709400449.png"></div>');
                 $("#changeProfile").after('<button id="changeProfileNext" class="option" data-option="nextChar">Next</button>');
                 $("#changeProfileNext").after('<button id="changeProfilePrev" class="option" data-option="prevChar">Prev</button>');
-                $("#ekw_item_menu").append('<button id="custom_but" class="option" data-option="customUpgrade">Custom</button>')
+                $("#ekw_item_menu").append('<button id="custom_but" class="ekw_menu_btn option newBtn" data-option="customUpgrade">Custom</button>')
                 $("#custom_but").css({
                     "display": "block"
                 });
@@ -170,96 +170,7 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
                 option_bind();
             }
             parseSSJqts(race) {
-                switch (race) {
-                    case 0:
-                        return [
-                            [19, "ssj1"],
-                            [25, "ssj2"],
-                            [26, "ssj3"],
-                            [30, "ssj4"],
-                            [39, "ssj5"],
-                            [72, "ssja"],
-                            [81, "ssjb"],
-                            [116, "ssj_uio"]
-                        ];
-                    case 1:
-                        return [
-                            [46, "ssj1"],
-                            [50, "ssj2"],
-                            [53, "ssj3"],
-                            [55, "ssj4"],
-                            [39, "ssj5"],
-                            [72, "ssja"],
-                            [81, "ssjb"],
-                            [116, "ssj_uio"]
-                        ];
-                    case 2:
-                        return [
-                            [63, "ssj1"],
-                            [64, "ssj2"],
-                            [66, "ssjm"],
-                            [39, "ssj5"],
-                            [72, "ssja"],
-                            [81, "ssjb"],
-                            [116, "ssj_uio"]
-                        ];
-                    case 3:
-                        return [
-                            [78, "ssj1"],
-                            [76, "ssj2"],
-                            [79, "ssj3"],
-                            [39, "ssj5"],
-                            [72, "ssja"],
-                            [81, "ssjb"],
-                            [116, "ssj_uio"]
-                        ];
-                    case 4:
-                        return [
-                            [92, "ssj1"],
-                            [93, "ssj2"],
-                            [99, "ssj3"],
-                            [100, "ssj4"],
-                            [39, "ssj5"],
-                            [72, "ssja"],
-                            [81, "ssjb"],
-                            [116, "ssj_uio"]
-                        ];
-                    case 5:
-                        return [
-                            [101, "ssj1"],
-                            [102, "ssj2"],
-                            [103, "ssj3"],
-                            [110, "ssj4"],
-                            [39, "ssj5"],
-                            [72, "ssja"],
-                            [81, "ssjb"],
-                            [116, "ssj_uio"]
-                        ];
-                    case 6:
-                        return [
-                            [121, "ssj1"],
-                            [122, "ssj2"],
-                            [123, "ssj3"],
-                            [124, "ssj4"],
-                            [39, "ssj5"],
-                            [72, "ssja"],
-                            [81, "ssjb"],
-                            [116, "ssj_uio"]
-                        ];
-                    case 7:
-                        return [
-                            [127, "ssj1"],
-                            [128, "ssj2"],
-                            [129, "ssj3"],
-                            [132, "ssj4"],
-                            [39, "ssj5"],
-                            [72, "ssja"],
-                            [81, "ssjb"],
-                            [116, "ssj_uio"]
-                        ];
-                    default:
-                        return [];
-                }
+                return [];
             }
             manageAutoExpeditions() {
                 let expedNmbr = GAME.char_data.bonus16 < GAME.getTime() ? 1 : 2;
@@ -1826,6 +1737,12 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
                 $('#klawiszw').click(() => {
                     GAME.map_move(2) // klawisz 'w'
                 });
+
+
+        $("body").on("click", `button[data-page="custom_but"]`, () => {  
+            console.log("custom clicked,")
+        });     
+
  		  $('#klawisz1').click(() => {
 		  var keyEvent = jQuery.Event('keydown');
 		  keyEvent.which = 49;  // Kod klawisza '1'
@@ -2408,6 +2325,7 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
             $('#available_servers option[value=' + this.server + ']').prop('selected', true);
         };
         const kulka = new ballManager();
+    
         let adimp = false;
         let arena_count = 0;
         let pvp_count = 0;
