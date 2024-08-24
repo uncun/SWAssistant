@@ -173,9 +173,6 @@ if (typeof GAME === 'undefined') {} else {
                         PVP.start();
                         RESP.stop = true;
                         RES.stop = true;
-                        LPVM.Stop = true;
-                        CODE.stop = true;
-                        $(".code_code .code_status").removeClass("green").addClass("red").html("Off");
                         $(".res_res .res_status").removeClass("green").addClass("red").html("Off");
                         $(".resp_resp .resp_status").removeClass("green").addClass("red").html("Off");
                     } else {
@@ -215,10 +212,7 @@ if (typeof GAME === 'undefined') {} else {
                         RESP.action();
                         RESP.reloadint = setInterval(RESP.reload_map, 60000);
                         PVP.stop = true;
-                        LPVM.Stop = true;
-                        CODE.stop = true;
                         RESP.loc = GAME.char_data.loc;
-                        $(".code_code .code_status").removeClass("green").addClass("red").html("Off");
                         $(".pvp_pvp .pvp_status").removeClass("green").addClass("red").html("Off");
                     } else {
                         $(".resp_resp .resp_status").removeClass("green").addClass("red").html("Off");
@@ -425,11 +419,7 @@ if (typeof GAME === 'undefined') {} else {
                         RES.stop = false;
                         RES.Start();
                         PVP.stop = true;
-                        LPVM.Stop = true;
-                        CODE.stop = true;
                         RES.loc = GAME.char_data.loc;
-                        $(".code_code .code_status").removeClass("green").addClass("red").html("Off");
-                        $(".lpvm_lpvm .lpvm_status").removeClass("green").addClass("red").html("Off");
                         $(".pvp_pvp .pvp_status").removeClass("green").addClass("red").html("Off");
                     } else {
                         $(".res_res .res_status").removeClass("green").addClass("red").html("Off");
@@ -453,92 +443,7 @@ if (typeof GAME === 'undefined') {} else {
                         GAME.komunikat("Zatrzymaj najpierw skrypt!");
                     }
                 });
-                $('#code_Panel .code_code').click(() => {
-                    if (CODE.stop) {
-                        $(".code_code .code_status").removeClass("red").addClass("green").html("On");
-                        CODE.stop = false;
-                        CODE.start();
-                        GAME.socket.emit('ga', {
-                            a: 12,
-                            page: 10,
-                            used: 1
-                        });
-                        RESP.stop = true;
-                        RES.stop = true;
-                        LPVM.Stop = true;
-                        PVP.stop = true;
-                        $(".pvp_pvp .pvp_status").removeClass("green").addClass("red").html("Off");
-                        $(".res_res .res_status").removeClass("green").addClass("red").html("Off");
-                        $(".resp_resp .resp_status").removeClass("green").addClass("red").html("Off");
-                    } else {
-                        $(".code_code .code_status").removeClass("green").addClass("red").html("Off");
-                        CODE.stop = true;
-                    }
-                });
-                $('#code_Panel .code_acc').click(() => {
-                    if (CODE.acc) {
-                        $(".code_acc .code_status").removeClass("green").addClass("red").html("Off");
-                        CODE.acc = false;
-                    } else {
-                        $(".code_acc .code_status").removeClass("red").addClass("green").html("On");
-                        $(".code_bh1 .code_status").removeClass("green").addClass("red").html("Off");
-                        $(".code_bh2 .code_status").removeClass("green").addClass("red").html("Off");
-                        CODE.acc = true;
-                        CODE.b1 = false;
-                        CODE.b2 = false;
-                    }
-                });
-                $('#code_Panel .code_zast').click(() => {
-                    if (CODE.zast) {
-                        $(".code_zast .code_status").removeClass("green").addClass("red").html("Off");
-                        CODE.zast = false;
-                    } else {
-                        $(".code_zast .code_status").removeClass("red").addClass("green").html("On");
-                        $(".code_bh1 .code_status").removeClass("green").addClass("red").html("Off");
-                        $(".code_bh2 .code_status").removeClass("green").addClass("red").html("Off");
-                        CODE.zast = true;
-                        CODE.b1 = false;
-                        CODE.b2 = false;
-                    }
-                });
-                $('#code_Panel .code_bh1').click(() => {
-                    if (CODE.b1) {
-                        $(".code_bh1 .code_status").removeClass("green").addClass("red").html("Off");
-                        CODE.b1 = false;
-                    } else {
-                        $(".code_bh1 .code_status").removeClass("red").addClass("green").html("On");
-                        $(".code_acc .code_status").removeClass("green").addClass("red").html("Off");
-                        $(".code_zast .code_status").removeClass("green").addClass("red").html("Off");
-                        CODE.b1 = true;
-                        CODE.acc = false;
-                        CODE.zast = false;
-                    }
-                });
-                $('#code_Panel .code_bh2').click(() => {
-                    if (CODE.b2) {
-                        $(".code_bh2 .code_status").removeClass("green").addClass("red").html("Off");
-                        CODE.b2 = false;
-                    } else {
-                        $(".code_bh2 .code_status").removeClass("red").addClass("green").html("On");
-                        $(".code_acc .code_status").removeClass("green").addClass("red").html("Off");
-                        $(".code_zast .code_status").removeClass("green").addClass("red").html("Off");
-                        CODE.b2 = true;
-                        CODE.acc = false;
-                        CODE.zast = false;
-                    }
-                });
-                $('#bot_what_to_train').change((e) => {
-                    CODE.what_to_train = parseInt($(e.target).val());
-                });
-                $('#bot_what_to_traintime').change((e) => {
-                    CODE.what_to_traintime = parseInt($(e.target).val());
-                });
-                $('#lpvm_Panel .gamee_input').change((e) => {
-                    LPVM.limit2 = parseInt($(e.target).val());
-                });
-                $('#lpvm_Panel .gamee_input').change((e) => {
-                    LPVM.limit2 = parseInt($(e.target).val());
-                });
+
                 $('#pvp_Panel .gameee_input').change((e) => {
                     PVP.WSP = parseInt($(e.target).val());
                     PVP.save_speed();
@@ -1916,7 +1821,7 @@ if (typeof GAME === 'undefined') {} else {
                 }
             };
             RES.HandleResponse = function(res) {
-                if (RES.stop && res.a === 3 && PVP.stop && LPVM.Stop && RESP.stop && CODE.stop) {
+                if (RES.stop && res.a === 3 && PVP.stop  && RESP.stop) {
                     this.listMines();
                     this.getMinesPos();
                 }
