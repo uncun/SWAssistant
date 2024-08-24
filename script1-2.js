@@ -120,7 +120,7 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
                     <div class="gamee_input insta_capt1"><input style="width: 150px; margin-left: -2px; background: grey; text-align: center; font-size: 16;" name="insta_capt" type="text" value="" placeholder="jakosc" /> <div class="item_button item_jakosc">jakosc<strong class="item_status red">Off</strong> </div>
                     
                     <div class="gamee_input insta_capt1"><input style="width: 150px; margin-left: -2px; background: grey; text-align: center; font-size: 16;" name="insta_capt" type="text" value="" placeholder="poziom" /> <div class="item_button item_poziom">poziom<strong class="item_status red">Off</strong> </div>
-                    <button class="pvp_button pvp_pvp">Close</button></div>
+                    <button class="pvp_button close_item">Close</button></div>
                     </div>`;
                 $("body").append(`<style>${item_css}</style>${item_panel}`);
                 $("#ItemPanel").hide();
@@ -1058,14 +1058,14 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
 
 
                 // itemki
-                $('#ItemPanel .item_poziom_start').click(() => {
+                $('#ItemPanel .item_poziom').click(() => {
                     if ($(".item_poziom .item_status").hasClass("red")) {
                         $(".item_poziom .item_status").removeClass("red").addClass("green").html("On");
                     } else {
                         $(".item_poziom .item_status").removeClass("green").addClass("red").html("Off");
                     }
                 });
-                $('#ItemPanel .item_jakosc_start').click(() => {
+                $('#ItemPanel .item_jakosc').click(() => {
                     if ($(".item_jakosc .item_status").hasClass("red")) {
                         $(".item_jakosc .item_status").removeClass("red").addClass("green").html("On");
                     } else {
