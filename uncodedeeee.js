@@ -545,6 +545,18 @@ if (typeof GAME === 'undefined') {} else {
                 $('#available_servers').html(con);
                 $('#available_servers option[value=' + this.server + ']').prop('selected', true);
             };
+
+            var INNE = {
+                ronin: false,
+                karciana: false,
+                wait_wymiana: 20,
+                cap_wymiana: 0,
+                res_id: 0,
+            };
+            INNE.check() = () => {
+                INNE.cap_wymiana = $("#inne_Panel input[name=insta_capt]").val();
+            }
+
             var PVP = {
                 stop: true,
                 wi: false,
