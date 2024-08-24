@@ -90,6 +90,7 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
                 $("#changeProfileNext").after('<button id="changeProfilePrev" class="option" data-option="prevChar">Prev</button>');
                 $("#ekw_item_menu").append('<button id="custom_but" class="option" data-option="customUpgrade">Custom</button>')
                 $("#custom_but").css({
+                    "background": 'url(/gfx/layout/newbtn2.png)',
                     "height": "23px",
                     "background-clip": "padding-box",
                     "line-height": "23px",
@@ -103,7 +104,7 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
                     "text-transform": "uppercase",
                     "border-style": "solid",
                     "border-width": "5px",
-
+                    "border-image": 'url(/gfx/layout/btnborder.png) 5 fill repeat',
                 });
 
                 this.auto_abyss_interval = false;
