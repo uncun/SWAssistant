@@ -90,6 +90,7 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
                 $("#changeProfileNext").after('<button id="changeProfilePrev" class="option" data-option="prevChar">Prev</button>');
                 $("#ekw_item_menu").append('<button id="custom_but" class="option" data-option="customUpgrade">Custom</button>')
                 $("#custom_but").show();
+                
                 this.auto_abyss_interval = false;
                 this.auto_arena = false;
                 this.additionalTopBarVisible = false;
