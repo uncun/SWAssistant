@@ -588,6 +588,7 @@ if (typeof GAME === 'undefined') {} else {
                 window.inter_wymiana = window.setInterval(function() {
                     if (INNE.cap_wymiana > 0) {
                         console.log("wymiana", INNE.cap_wymiana, INNE.res_id, INNE.exchange_id);
+                        GAME.emitOrder({a:211,type:2,exchange:INNE.exchange_id,item:INNE.res_id});
                     } else if (INNE.cap_wymiana <= 0) {
                         clearInterval(inter_wymiana);
                         console.log("koniec wymiany");
