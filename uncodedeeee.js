@@ -168,14 +168,14 @@ if (typeof GAME === 'undefined') {} else {
                 });
 
                 $('#inne_Panel .inne_ronin').click(() => {
-                    if ($(".inne_ronin .gh_status").hasClass("red")) {
-                        $(".inne_ronin .gh_status").removeClass("red").addClass("green").html("On");
+                    if ($(".inne_ronin .inne_status").hasClass("red")) {
+                        $(".inne_ronin .inne_status").removeClass("red").addClass("green").html("On");
                         $("#inne_Panel .insta_capt1").show();
                         $("#inne_Panel .ronin_opt1").show();
                         $("#inne_Panel .karciana_opt1").hide();
-                        $(".inne_wymiana .inne_status").removeClass("green").addClass("red").html("Off");
+                        $(".inne_karciana .inne_status").removeClass("green").addClass("red").html("Off");
                     } else {
-                        $(".inne_ronin .gh_status").removeClass("green").addClass("red").html("Off");
+                        $(".inne_ronin .inne_status").removeClass("green").addClass("red").html("Off");
                         $("#inne_Panel .karciana_opt1").hide();
                         $("#inne_Panel .insta_capt1").hide();
                         $("#inne_Panel .ronin_opt1").hide();
@@ -184,18 +184,39 @@ if (typeof GAME === 'undefined') {} else {
                 });
 
                 $('#inne_Panel .inne_karciana').click(() => {
-                    if ($(".inne_karciana .gh_status").hasClass("red")) {
-                        $(".inne_karciana .gh_status").removeClass("red").addClass("green").html("On");
+                    if ($(".inne_karciana .inne_status").hasClass("red")) {
+                        $(".inne_karciana .inne_status").removeClass("red").addClass("green").html("On");
                         $("#inne_Panel .insta_capt1").show();
                         $("#inne_Panel .ronin_opt1").hide();
                         $("#inne_Panel .karciana_opt1").show();
-                        $(".inne_wymiana .inne_status").removeClass("green").addClass("red").html("Off");
+                        $(".inne_ronin .inne_status").removeClass("green").addClass("red").html("Off");
                     } else {
-                        $(".inne_karciana .gh_status").removeClass("green").addClass("red").html("Off");
+                        $(".inne_karciana .inne_status").removeClass("green").addClass("red").html("Off");
                         $("#inne_Panel .karciana_opt1").hide();
                         $("#inne_Panel .insta_capt1").hide();
                         $("#inne_Panel .ronin_opt1").hide();
                         $(".inne_ronin .inne_status").removeClass("green").addClass("red").html("Off");
+                    }
+                });
+
+                $('#inne_Panel .inne_wymiana').click(() => {
+                    if ($(".inne_karciana .inne_status").hasClass("red")) {
+                        return;
+                    }
+                    if ($(".inne_ronin .inne_status").hasClass("red")) {
+                        return;
+                    }
+                    if ($(".inne_wymiana .inne_status").hasClass("red")) {
+                        $(".inne_karciana .inne_status").removeClass("red").addClass("green").html("On");
+
+                    } else {
+                        $(".inne_wymiana .inne_status").removeClass("green").addClass("red").html("Off");
+                        $("#inne_Panel .karciana_opt1").hide();
+                        $("#inne_Panel .insta_capt1").hide();
+                        $("#inne_Panel .ronin_opt1").hide();
+                        $(".inne_ronin .inne_status").removeClass("green").addClass("red").html("Off");
+                        $(".inne_karciana .inne_status").removeClass("green").addClass("red").html("Off");
+
                     }
                 });
 
