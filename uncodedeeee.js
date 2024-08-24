@@ -150,6 +150,7 @@ if (typeof GAME === 'undefined') {} else {
                 //     }
                 // });
                 $('#main_Panel .gh_inne').click(() => {
+                    console.log("inne clicked");
                     if ($(".gh_inne .gh_status").hasClass("red")) {
                         $(".gh_inne .gh_status").removeClass("red").addClass("green").html("On");
                         $("#inne_Panel").show();
