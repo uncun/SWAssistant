@@ -176,7 +176,6 @@ if (typeof GAME === 'undefined') {} else {
                         $(".inne_wymiana .inne_status").removeClass("green").addClass("red").html("Off");
                     } else {
                         $(".inne_ronin .gh_status").removeClass("green").addClass("red").html("Off");
-                        $("#inne_Panel").hide();
                         $("#inne_Panel .karciana_opt1").hide();
                         $("#inne_Panel .insta_capt1").hide();
                         $("#inne_Panel .ronin_opt1").hide();
@@ -193,7 +192,6 @@ if (typeof GAME === 'undefined') {} else {
                         $(".inne_wymiana .inne_status").removeClass("green").addClass("red").html("Off");
                     } else {
                         $(".inne_karciana .gh_status").removeClass("green").addClass("red").html("Off");
-                        $("#inne_Panel").hide();
                         $("#inne_Panel .karciana_opt1").hide();
                         $("#inne_Panel .insta_capt1").hide();
                         $("#inne_Panel .ronin_opt1").hide();
