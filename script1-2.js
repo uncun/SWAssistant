@@ -150,19 +150,6 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
                     }
                 }, 200);
             }
-            loadRiddles(cb) {
-                fetch(`https://raw.githubusercontent.com/uncun/SWAssistant/main/riddles.json`).then(res => res.json()).then((out) => {
-                    cb(out)
-                }).catch(err => {
-                    throw err
-                });
-            }
-            solveRiddle(r_id) {
-                let riddle = this.riddles.find((r) => r.id == r_id);
-                if (riddle) {
-                    $("input[id=quest_riddle]").val(riddle.answer);
-                }
-            }
             getSettings() {
                 let settings = JSON.parse(localStorage.getItem("kws_settings"));
                 let settings_sample = {
@@ -185,95 +172,13 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
             updateSettings() {
                 localStorage.setItem('kws_settings', JSON.stringify(this.settings));
             }
-            goEmpPos() {
-                let imp_pos = $(".empPos").position();
-                $(".go_to_emp_con").css("left", imp_pos.left - 5);
-            }
-            listQts() {
-                let trans = this.parseSSJqts(GAME.char_data.race);
-                let html = ``;
-                for (let i = 0; i < trans.length && trans[i][0] !== GAME.quick_opts.ssj[0]; i++) {
-                    html += `<div class="option qlink ${trans[i][1]}" data-option="use_transform" data-tech="${trans[i][0]}"></div>`;
-                }
-                if ($(".show_qat").length) {
-                    let ssj_pos = $(".show_qat").position();
-                    $("#quick_allTransformations").css("left", ssj_pos.left - 5);
-                }
-                $("#quick_allTransformations").html(html);
-                option_bind();
-            }
-            parseSSJqts(race) {
-                return [];
-            }
-            manageAutoExpeditions() {
-                let expedNmbr = GAME.char_data.bonus16 < GAME.getTime() ? 1 : 2;
-                if (!this.autoExpeditions) {
-                    this.autoExpeditions = true;
-                    this.autoExpeditionsInterval = setInterval(() => {
-                        let opponents = $("#arena_players").find(`.player button[data-option="arena_attack"][data-quick="1"]:not(.initial_hide_forced)`);
-                        let opponent = parseInt(opponents.attr("data-index"));
-                        setTimeout(() => {
-                            GAME.parseTimed();
-                        }, 100);
-                        if (this.settings.aeCodes && $("#train_uptime").find('.timer').length == 0 && !GAME.is_training && $("#timed_label").text().includes("Wyprawa") && GAME.char_tables.timed_actions[0] != undefined) {
-                            GAME.socket.emit('ga', {
-                                a: 8,
-                                type: 3
-                            });
-                        } else if (this.settings.aeCodes && $("#train_uptime").find('.timer').length == 0 && !GAME.is_training) {
-                            GAME.socket.emit('ga', {
-                                a: 8,
-                                type: 2,
-                                stat: 1,
-                                duration: 1
-                            });
-                            setTimeout(() => {
-                                GAME.socket.emit('ga', {
-                                    a: 8,
-                                    type: 5,
-                                    apud: 'vzaaa'
-                                });
-                            }, 1500);
-                        } else if (this.settings.aeCodes && GAME.is_training && $("#train_uptime").find('.timer').length == 1) {
-                            GAME.socket.emit('ga', {
-                                a: 8,
-                                type: 3
-                            });
-                        } else if (this.auto_arena && !isNaN(opponent)) { } else if (GAME.char_tables.timed_actions[0] == undefined || GAME.char_tables.timed_actions[1] == undefined && GAME.char_data.bonus16 > GAME.getTime()) {
-                            GAME.socket.emit('ga', {
-                                a: 10,
-                                type: 2,
-                                ct: 0
-                            });
-                            kom_clear();
-                        } else { }
-                    }, 4000);
-                    $(".qlink.manage_autoExpeditions").addClass("kws_active_icon");
-                } else {
-                    this.autoExpeditions = false;
-                    clearInterval(this.autoExpeditionsInterval);
-                    $(".qlink.manage_autoExpeditions").removeClass("kws_active_icon");
-                }
-            }
+
             manageAutoAbyss() {
                 GAME.socket.emit('ga', {
                     a: 59,
                     type: 0
                 });
-                setTimeout(() => {
-                    if (GAME.quick_opts.ssj && $("#ssj_bar").css("display") == "none") {
-                        GAME.socket.emit('ga', {
-                            a: 18,
-                            type: 5,
-                            tech_id: GAME.quick_opts.ssj[0]
-                        });
-                    } else if ($('#ssj_status').text() == "--:--:--") {
-                        GAME.socket.emit('ga', {
-                            a: 18,
-                            type: 6
-                        });
-                    }
-                }, 1000);
+
                 if ($("#ss_cd_still").css("display") == "none") {
                     setTimeout(() => {
                         GAME.socket.emit('ga', {
@@ -335,29 +240,7 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
                 this.auto_arena = false;
                 $(".qlink.manage_auto_arena").removeClass("kws_active_icon");
             }
-            freeAssist() {
-                let fafa_el = $(`button[data-option="clan_assist"]:visible`);
-                if (fafa_el.length > 0) {
-                    let fafa_tid = parseInt(fafa_el.eq(0).attr("data-tid"));
-                    let fafa_target = parseInt(fafa_el.eq(0).attr("data-target"));
-                    GAME.socket.emit('ga', {
-                        a: 39,
-                        type: 55,
-                        tid: fafa_tid,
-                        target: fafa_target
-                    });
-                    fafa_el.eq(0).hide();
-                    setTimeout(() => {
-                        this.freeAssist();
-                    }, 2100);
-                } else {
-                    GAME.socket.emit('ga', {
-                        a: 39,
-                        type: 54
-                    });
-                    GAME.komunikat("Asystowano wszystkim!");
-                }
-            }
+
             activateAllClanBuffs() {
                 let abut = $("#clan_buffs").find(`button[data-option="activate_war_buff"]`);
                 let isDisabled = $("#clan_buffs").find(`button[data-option="activate_war_buff"]`).parents("tr").hasClass("disabled");
@@ -391,63 +274,7 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
                     GAME.komunikat("Wszystkie buffy zostały aktywowane!");
                 }
             }
-            findWorker(worker, cb) {
-                let waitForWorker = setInterval(() => {
-                    let el = $(`button[data-emp="${worker.id}"]button[data-option="emp_job"]`);
-                    let emp_local = parseInt(el.attr("data-emp_local"));
-                    if (el.length) {
-                        this.workers_info[emp_local] = worker;
-                        clearInterval(waitForWorker);
-                        cb(el);
-                    }
-                }, 100);
-            }
-            doAllInstances(worker, page2 = false) {
-                let worker_info = this.workers_info[worker.local];
-                let instance_number = this.instanceNumber();
-                let kom = $(".kom").text();
-                if (instance_number) {
-                    if (kom.includes("magicznych esencji") || kom.includes("Magicznych Esencji")) { } else if (worker_info.energy > 0) {
-                        GAME.socket.emit('ga', {
-                            a: 44,
-                            type: 8,
-                            emp: worker.id,
-                            inst: instance_number
-                        });
-                        setTimeout(() => {
-                            this.doAllInstances(worker)
-                        }, 250);
-                    } else if (worker_info.energy == 0) {
-                        GAME.socket.emit('ga', {
-                            a: 44,
-                            type: 9,
-                            emp: worker_info.id
-                        });
-                        setTimeout(() => {
-                            this.doAllInstances(worker)
-                        }, 250);
-                    }
-                } else {
-                    GAME.komunikat("Wszystkie instancje zostały wykonane!");
-                }
-            }
-            instanceNumber() {
-                if (GAME.char_data.icd_1 < 2) {
-                    return 1;
-                } else if (GAME.char_data.icd_2 < 2) {
-                    return 2;
-                } else if (GAME.char_data.icd_3 < 2) {
-                    return 3;
-                } else if (GAME.char_data.icd_4 < 2) {
-                    return 4;
-                } else if (GAME.char_data.icd_5 < 2) {
-                    return 5;
-                } else if (GAME.char_data.icd_6 < 2) {
-                    return 6;
-                } else {
-                    return false;
-                }
-            }
+
             createMinimapSettings() {
                 this.manageMinimapSettings("load");
                 this.manageMapSize("load");
@@ -586,24 +413,7 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
                     }
                 }
             }
-            sortClanPlanets() {
-                let x = 72;
-                let y = -11;
-                let pl_sup = 1;
-                let pl_sup_css = `#clan_planets.galactic{height:650px !important; width:658px !important;} #clan_planets_simple .tablen1{min-width:295px;}`;
-                for (let i = 1; i <= 20; i++) {
-                    pl_sup_css += `.planet_pos.pos_${i}{left:${x}px !important; top:${y}px !important;}`;
-                    x += 220;
-                    y -= 50;
-                    if (pl_sup >= 3) {
-                        x = 72;
-                        y += 90;
-                        pl_sup = 0;
-                    }
-                    pl_sup++;
-                }
-                this.addToCSS(pl_sup_css);
-            }
+
             getTitlesList(cb) {
                 GAME.socket.emit('ga', {
                     a: 42,
@@ -626,7 +436,15 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
                 let levelsGained = currentLevel - GAME.startLevel;
                 let levelsPerHour = levelsGained / ((currentTime - GAME.startTime) / 1000 / 60 / 60);
                 let lvlh = levelsPerHour.toFixed(2);
-  
+                if ($(`#mdbp_${GAME.char_data.reborn}`).find('.timer').length) {
+                    sk_status = $(`#mdbp_${GAME.char_data.reborn}`).find('.timer').text();
+                } else {
+                    sk_status = "AKTYWNE";
+                }
+                let train_upgr = $("#train_uptime").find('.timer').text();
+                if (train_upgr.length == 0 || train_upgr == "00:00:00") {
+                    train_upgr = "AKTYWNE";
+                }
                 if ('char_data' in GAME) {
                     instances = [GAME.char_data.icd_1, GAME.char_data.icd_2, GAME.char_data.icd_3, GAME.char_data.icd_4, GAME.char_data.icd_5, GAME.char_data.icd_6];
                 }
@@ -637,7 +455,13 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
                 let received = $("#act_prizes").find("div.act_prize.disabled").length;
                 let is_trader = new Date();
                 let trader = `<span class='kws_top_bar_section trader_info' style='cursor:pointer;'>HANDLARZ</span> `;
-
+                let soulCards_current = $(".sc_sets_all.current").html();
+                let soulCards_one = `<span class='kws_top_bar_section soul_cards_one' style='cursor:pointer;color:${soulCards_current == "I" ? "red" : "white"}'>KD1</span>`;
+                let soulCards_two = `<span class='kws_top_bar_section soul_cards_two' style='cursor:pointer;color:${soulCards_current == "II" ? "red" : "white"}'>KD2</span>`;
+                let soulCards_three = `<span class='kws_top_bar_section soul_cards_three' style='cursor:pointer;color:${soulCards_current == "III" ? "red" : "white"}'>KD3</span>`;
+                let soulCards_four = `<span class='kws_top_bar_section soul_cards_four' style='cursor:pointer;color:${soulCards_current == "IV" ? "red" : "white"}'>KD4</span>`;
+                let soulCards_five = `<span class='kws_top_bar_section soul_cards_five' style='cursor:pointer;color:${soulCards_current == "V" ? "red" : "white"}'>KD5</span>`;
+                let additionalStats = `<span class='kws_top_bar_section additional_stats' style='cursor:pointer;color:${this.additionalTopBarVisible ? "orange" : "white"}'>STATY</span>`;
                 let instance = `${sum_instances}/12`;
                 $("#secondary_char_stats .instance ul").html(instance);
                 let activities = `${activity}/185 (${received}/5)`;
@@ -650,7 +474,11 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
                 if (this.baselineLevel == undefined) {
                     this.baselineLevel = GAME.char_data.level;
                 }
-  
+                let calculated_power = GAME.dots(GAME.char_data.moc - this.baselinePower);//(GAME.char_data.moc - this.baselinePower).toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+                let calculatedPowerReset = `<span class='kws_top_bar_section additional_stats_reset' style='cursor:pointer;color:"white"'>RESET</span>`;
+                let futureStats = this.prepareFutureStatsData();
+                let calculated_levels = GAME.dots(GAME.char_data.level - this.baselineLevel);
+                $(".kws_additional_top_bar").html(`  <span class='kws_additional_top_bar_section future_stats' style='cursor:pointer;'>${futureStats}</span><span class='kws_additional_top_bar_section lvlsGained' style='cursor:pointer;'>ZDOBYTE LVL: <span>${calculated_levels}</span></span><span class='kws_additional_top_bar_section psk' style='cursor:pointer;'>PSK: ${GAME.dots(GAME.char_data.minor_ball)}</span> ${calculatedPowerReset}`);
                 this.adjustCurrentCharacterId();
                 this.checkTournamentsSigning();
             }
@@ -1586,7 +1414,9 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
                 }
                 if (mob_size > 0) {
                     GAME.emitOrder({a:7,mob_num:mob_id,rank:1});
-                    kom_clear();
+                    setTimeout(() => {
+                        $('#fight_view').fadeOut();
+                    }, 200);
                 }
             }
             killElite(){
@@ -1602,7 +1432,9 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
                 }
                 if (mob_size > 0) {
                     GAME.emitOrder({a:7,mob_num:mob_id,rank:2});
-                    kom_clear();
+                    setTimeout(() => {
+                        $('#fight_view').fadeOut();
+                    }, 200);
                 }
                 
             }
@@ -1617,7 +1449,9 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
                 }
                 if (mob_size > 0) {
                     GAME.emitOrder({a:7,mob_num:mob_id,rank:3});
-                    kom_clear();
+                    setTimeout(() => {
+                        $('#fight_view').fadeOut();
+                    }, 200);
                 }
             }
             prepareFutureStatsData() {
