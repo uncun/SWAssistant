@@ -1029,7 +1029,7 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
                         if (res.tip_id) {
                                 var item = document.querySelector('.player_ekw_item[data-item_id="'+ this.item_id +'"]')
                                 item.dispatchEvent(mouseOutEvent);
-                                console.log(res.ekw[i].id, this.item_id);
+
                                 if (res.tip_id == this.item_id) {
                                     if (this.item_jakosc) {
                                         console.log("jakosc ", res.item.quality, this.item_jakosc_cap);
