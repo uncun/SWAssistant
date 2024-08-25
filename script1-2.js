@@ -2007,10 +2007,6 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
             if (this.quick_opts.senzus && this.quick_opts.senzus.length) {
                 opts += `<div class="option qlink senz" data-option="quick_use_senzu" data-toggle="tooltip" data-original-title="<div class=tt>${LNG.lab190}</div>"></div>`;
             }
-            if (this.quick_opts.empire) {
-                opts += `<div class="select_page qlink emp${this.quick_opts.empire} empPos" data-page="game_empire" data-toggle="tooltip" data-original-title="<div class=tt>${LNG['empire' + this.quick_opts.empire]}</div>"></div>`;
-                opts += `<div class="go_to_emp_con"> <div class="qlink go_to_emp emp1" style="filter:hue-rotate(168deg);" emp="1" data-toggle="tooltip" data-original-title="<div class=tt>Wejdź na siedzibę</div>"></div> <div class="qlink go_to_emp emp2" style="filter:hue-rotate(168deg);" emp="2" data-toggle="tooltip" data-original-title="<div class=tt>Wejdź na siedzibę</div>"></div> <div class="qlink go_to_emp emp3" style="filter:hue-rotate(168deg);" emp="3" data-toggle="tooltip" data-original-title="<div class=tt>Wejdź na siedzibę</div>"></div> <div class="qlink go_to_emp emp4" style="filter:hue-rotate(168deg);" emp="4" data-toggle="tooltip" data-original-title="<div class=tt>Wejdź na siedzibę</div>"></div> </div>`;
-            }
             if (newq_bar || GAME.char_id) {
                 opts += '<br>';
             
@@ -2018,16 +2014,9 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
                 opts += `<div class="qlink load_afo" style="filter:hue-rotate(168deg);background-image: url('https://i.imgur.com/P8sJgQz.png');" data-toggle="tooltip" data-original-title="<div class=tt>Załaduj AFO</div>"></div>`;
                 opts += `<div class="qlink sideIcons manage_auto_abyss${kws.auto_abyss ? ' kws_active_icon' : ''}" style="filter:hue-rotate(168deg);background-image: url('https://i.imgur.com/j5eQv2B.png');display:block;top:-136px;position:absolute;" data-toggle="tooltip" data-original-title="<div class=tt>[Włącz / Wyłącz] Atakowanie Otchłani</div>"></div>`;
                 opts += `<div class="qlink sideIcons manage_auto_arena${kws.auto_arena ? ' kws_active_icon' : ''}" style="filter:hue-rotate(168deg);background-image: url('https://i.imgur.com/rAroNzD.png');display:block;top:-104px;position:absolute;" data-toggle="tooltip" data-original-title="<div class=tt>[Włącz / Wyłącz] Atakowanie na Arenie</div>"></div>`;
-                // opts += `<div class="qlink sideIcons manage_autoExpeditions${kws.autoExpeditions ? ' kws_active_icon' : ''}" style="filter:hue-rotate(168deg);background-image: url('https://i.imgur.com/uSMzLBb.png');display:block;top:-72px;position:absolute;" data-toggle="tooltip" data-original-title="<div class=tt>[Włącz / Wyłącz] Automatyczne Wyprawy</div>"></div>`;
-                // opts += ` <div class="autoExpeCodes"> <div style="padding-left:8px;"> <label for="aeCodes" style="cursor:pointer;">KODY</label> <div class="newCheckbox"><input type="checkbox" id="aeCodes" name="aeCodes" ${kws.settings.aeCodes ? "checked" : ""} /><label for="aeCodes"></label></div> </div> </div>`;
             }
             $('#quick_bar').html(opts);
-            if (GAME.char_id && GAME.char_data.klan_rent === 0) {
-                kws.listQts();
-                if ("empire" in GAME.quick_opts) {
-                    kws.goEmpPos();
-                }
-            }
+
             option_bind();
             tooltip_bind();
             page_bind();
@@ -2047,145 +2036,6 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
             $('#quest_track_con').html(con);
         }
 
-        GAME.getEmpDetails = function (petd) {
-            kws.findWorker(petd, (el) => {
-                let emp_local = parseInt(el.attr("data-emp_local"));
-                el.after(`<button class="newBtn do_all_instances" data-emp="${petd.id}" data-emp_local="${emp_local}">Wykonaj wszystkie instancje</button>`);
-            });
-            var res = '<div class=ptt>';
-            var nextp = this.employe_exp(petd.level + 1);
-            res += '<img src=/gfx/employee/' + petd.type + '.png width=100 align=left /><b>' + petd.name + '</b><br /><b>' + LNG['emptyp' + petd.type] + '</b> - <b class=item' + petd.class + '>' + LNG['item_class' + petd.class] + '</b><br />' + LNG.lab1 + ': <b>' + this.dots(petd.level) + '</b><br />EXP: <b>' + this.dots(petd.exp) + ' / ' + this.dots(nextp) + '</b><br /><br /><b class=orange>' + LNG.lab286 + '</b><br />';
-            res += LNG.lab313 + ': <b>' + petd.energy + '</b> / <b>' + petd.maxenergy + '</b><br />';
-            if (petd.qualified) res += '<b class=green>' + LNG.lab314 + '</b><br />';
-            res += '</div>';
-            return res;
-        }
-        GAME.abbreviateNumber = function (number, decPlaces = 2) {
-            decPlaces = Math.pow(10, decPlaces);
-            var abbrev = ["K", "M", "Mld", "B", "Bld", "T", "Quad", "Quin", "Sext", "Sep", "Oct", "Non", "Dec", "Und", "Duo", "Tre", "Quat", "Quind", "Sexd", "Sept", "Octo", "Nove", "Vigi"];
-            for (var i = abbrev.length - 1; i >= 0; i--) {
-                var size = Math.pow(10, (i + 1) * 3);
-                if (size <= number) {
-                    number = Math.floor(number * decPlaces / size) / decPlaces;
-                    if ((number == 1000) && (i < abbrev.length - 1)) {
-                        number = 1;
-                        i++;
-                    }
-                    number += ' ' + abbrev[i];
-                    break;
-                }
-            }
-            return number;
-        }
-        GAME.questAction = () => {
-            if (GAME.quest_action && GAME.quest_action_count < GAME.quest_action_max) {
-                GAME.socket.emit('ga', {
-                    a: 22,
-                    type: 7,
-                    id: GAME.quest_action_qid,
-                    cnt: GAME.quest_action_max
-                });
-            }
-            setTimeout(() => {
-                kws.markDaily();
-            }, 100);
-        }
-        GAME.parseQuest = function (res) {
-            var quest = res.q_step;
-            var con = '<div class="quest_win diff' + quest.difficulty + '"><div class="sekcja">' + quest.header + '</div><div class="option closeicon" data-option="close_quest"></div><div class="quest_desc scroll"><span class="qtitle">&raquo; ' + quest.title + '</span><hr />' + this.parseContent(quest.content).replaceAll('&player', '<b class="orange">' + this.char_data.name + '</b>').replaceAll('&Player', '<b class="orange">' + this.char_data.name + '</b>') + '</div>';
-            var qrdy = true;
-            var conf = '';
-            if (quest.want) {
-                var extr = '';
-                var extr1 = '';
-                var extr2 = '';
-                var extr3 = '';
-                if (quest.difficulty > 0) {
-                    var ratio = this.getDiffQuestRatio(1, quest.difficulty);
-                    if (ratio < 1) extr = '<span class="green"> - ' + (100 - ratio * 100) + '% </span>';
-                    else extr = '<span class="red"> + ' + (ratio * 100 - 100) + '% </span>';
-                }
-                if (quest.can_roll) {
-                    extr += '<div class="quest_roll option" data-option="quest_roll" data-qb_id="' + quest.qb_id + '" data-toggle="tooltip" data-original-title="<div class=tt>Losuj inną trudność zadania<br />Koszt: 1 Kostka do Gry</div>"></div>';
-                    extr1 += '<div class="quest_roll1 option" data-option="quest_roll1" data-qb_id="' + quest.qb_id + '" data-toggle="tooltip" data-original-title="<div class=tt>Losuj -50%<br />Koszt: 1 Kostka do Gry</div>"></div>';
-                    extr2 += '<div class="quest_roll2 option" data-option="quest_roll2" data-qb_id="' + quest.qb_id + '" data-toggle="tooltip" data-original-title="<div class=tt>Losuj 150% lub 200%<br />Koszt: 1 Kostka do Gry</div>"></div>';
-                    extr3 += '<div class="quest_roll3 option" data-option="quest_roll3" data-qb_id="' + quest.qb_id + '" data-toggle="tooltip" data-original-title="<div class=tt>Losuj 200%<br />Koszt: 1 Kostka do Gry</div>"></div>';
-                }
-                con += '<div class="quest_desc">';
-                qrdy = quest.want.is_met;
-                con += '<div><b>' + LNG.lab18 + '</b>:<br />' + this.quest_want(quest.want, quest.qb_id, 1, quest.difficulty) + ' ' + extr + ' ' + extr1 + ' ' + extr2 + ' ' + extr3 + '</div>';
-                if (quest.time_limit) {
-                    con += '<div>' + LNG.lab145 + ': ' + this.showTimer(quest.want.tl - this.getTime()) + '<button class="newBtn option" data-option="quest_try_again" data-qb_id="' + quest.qb_id + '">' + LNG.lab146 + '</button></div>';
-                }
-                con += '</div>';
-            }
-            if (quest.prize) {
-                var extr = '';
-                if (quest.difficulty > 0) {
-                    con += '<div class="quest_desc disabled"><b>' + LNG.lab452 + '</b>:<br />' + this.quest_prize(quest.prize) + '</div>';
-                    var ratio = this.getDiffQuestRatio(0, quest.difficulty);
-                    if (ratio < 1) extr = '<span class="red"> - ' + (100 - ratio * 100) + '% </span>';
-                    else extr = '<span class="green"> + ' + (ratio * 100 - 100) + '% </span>';
-                    var ratio2 = this.getDiffQuestRatio(2, quest.difficulty);
-                    if (ratio2 > 0) extr += '<span class="orange"> ' + ratio2 + '% szansy na Magiczną Rudę</span>';
-                    if (quest.prize.type == 7 || quest.prize.type == 52 || quest.prize.type == 57) quest.prize.amount = parseInt(quest.prize.amount * ratio);
-                    else quest.prize.id = parseInt(quest.prize.id * ratio);
-                    if (quest.prize.hasOwnProperty("exp")) quest.prize.exp = parseInt(quest.prize.exp * ratio);
-                    if (quest.prize.hasOwnProperty("add")) quest.prize.add = parseInt(quest.prize.add * ratio);
-                    con += '<div class="quest_desc"><b>' + LNG.lab21 + '</b>:<br />' + this.quest_prize(quest.prize) + ' ' + extr + '</div>';
-                } else {
-                    con += `<div class="quest_desc"><b>${LNG.lab21}</b>:<br />${this.quest_prize(quest.prize)} ${quest.prize.type === 40 ? kws.calcLVL(quest.prize.exp) : ""}</div>`;
-                }
-                if (quest.prize.type >= 99) conf = 'data-confirm="1"';
-            }
-            if (qrdy) {
-                con += '<button class="option ans" data-option="finish_quest" ' + conf + ' data-button="1" data-qb_id="' + quest.qb_id + '">' + quest.buttton1 + '</button>';
-                if (quest.buttton2) con += '<button class="option ans" data-option="finish_quest" data-button="2" data-qb_id="' + quest.qb_id + '">' + quest.buttton2 + '</button>';
-                if (quest.buttton3) con += '<button class="option ans" data-option="finish_quest" data-button="3" data-qb_id="' + quest.qb_id + '">' + quest.buttton3 + '</button>';
-            }
-            con += '</div>';
-            JQS.qcc.html(con).show();
-            option_bind();
-            qaction_bind();
-            main_ekw_item_bind();
-            tooltip_bind();
-            if (res.q_step.want.riddle) {
-                kws.solveRiddle(res.q_step.want.riddle);
-            }
-            setTimeout(() => {
-                if (quest.difficulty != 6 && quest.difficulty != 5 && roll2 && JQS.qcc.is(":visible")) {
-                    GAME.socket.emit('ga', {
-                        a: 22,
-                        type: 12,
-                        id: quest.qb_id
-                    });
-                } else {
-                    roll2 = false;
-                }
-            }, 300);
-            setTimeout(() => {
-                if (quest.difficulty != 6 && roll3 && JQS.qcc.is(":visible")) {
-                    GAME.socket.emit('ga', {
-                        a: 22,
-                        type: 12,
-                        id: quest.qb_id
-                    });
-                } else {
-                    roll3 = false;
-                }
-            }, 300);
-            setTimeout(() => {
-                if (quest.difficulty != 1 && roll1 && JQS.qcc.is(":visible")) {
-                    GAME.socket.emit('ga', {
-                        a: 22,
-                        type: 12,
-                        id: quest.qb_id
-                    });
-                } else {
-                    roll1 = false;
-                }
-            }, 300);
-        };
         GAME.endQuest = function (quest_end) {
             JQS.qcc.hide();
             $('#field_q_' + quest_end).fadeOut();
