@@ -119,9 +119,9 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
 
                 const item_css = `#ItemPanel { background: rgba(0,0,0,0.9); position: fixed; top: 250px; left: 80%; z-index: 9999; width: 200px; padding: 1px; border-radius: 5px; border-style: solid; border-width: 7px 8px 7px 7px; display:block; user-select: none; color: #333333; } #ItemPanel .sekcja { position: absolute; top: -27px; left: -7px; background: rgba(0,0,0,0.9); filter: hue-rotate(196deg); background-size: 100% 100%; width: 150px; cursor: all-scroll; } #ItemPanel .item_button {cursor:pointer;text-align:center; border-bottom:solid gray 1px; color: white;} #ItemPanel .gamee_input{text-align:center; border-bottom:solid gray 1px; color: white;} #ItemPanel .gamee_input input::placeholder {color: #4b4b4b;} #ItemPanel .gameee_input{text-align:center; border-bottom:solid gray 1px; color: white;} #ItemPanel .gameee_input input::placeholder {color: #4b4b4b;}`;
                 const item_panel = `<div id="ItemPanel">
-                    <div class="gamee_input insta_capt1"><input style="width: 150px; margin-left: -2px; background: grey; text-align: center; font-size: 16;" name="jakosc_capt" type="text" value="" placeholder="jakosc" /> <div class="item_button item_jakosc">jakosc<strong class="item_status red">Off</strong> </div>
+                    <div class="gamee_input insta_capt1"><input style="width: 150px; margin-left: -2px; background: grey; text-align: center; font-size: 16;" name="jakosc_capt" type="text" value="" placeholder="jakosc" /></div> <div class="item_button item_jakosc">jakosc<strong class="item_status red">Off</strong> </div>
                     
-                    <div class="gamee_input insta_capt1"><input style="width: 150px; margin-left: -2px; background: grey; text-align: center; font-size: 16;" name="poziom_capt" type="text" value="" placeholder="poziom" /> <div class="item_button item_poziom">poziom<strong class="item_status red">Off</strong> </div>
+                    <div class="gamee_input insta_capt1"><input style="width: 150px; margin-left: -2px; background: grey; text-align: center; font-size: 16;" name="poziom_capt" type="text" value="" placeholder="poziom" /></div> <div class="item_button item_poziom">poziom<strong class="item_status red">Off</strong> </div>
                     <button class="pvp_button close_item">Close</button></div>
                     </div>`;
                 $("body").append(`<style>${item_css}</style>${item_panel}`);
@@ -1073,6 +1073,8 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
             }
 
             RerollItem() {
+                if (this.item_jakosc == false)
+                    return;
                 reroll_item();
                 window.setTimeout(function() {
                     $('[data-option="rer2_item"]').click();
@@ -1080,6 +1082,8 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
             }
 
             UpgradeItem() {
+                if (this.item_poziom == false)
+                    return;
                 upgrade_item();
                 window.setTimeout(function() {
                     $('[data-option="upg2_item"]').click();
@@ -1129,9 +1133,9 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
                         $(".item_jakosc .item_status").removeClass("green").addClass("red").html("Off");
                         this.item_jakosc = false;
                         this.item_poziom = true;
-                        this.item_poziom_cap = $("#ItemPanel input[name=jakosc_capt]").val();
+                        this.item_poziom_cap = $("#ItemPanel input[name=poziom_capt]").val();
+
                         window.setTimeout(this.UpgradeItem,100);
- 
                     } else {
                         $(".item_poziom .item_status").removeClass("green").addClass("red").html("Off");
                         this.item_poziom = false;
@@ -1144,7 +1148,8 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
                         $(".item_poziom .item_status").removeClass("green").addClass("red").html("Off");
                         this.item_jakosc = true;
                         this.item_poziom = false;
-                        this.item_poziom_cap = $("#ItemPanel input[name=poziom_capt]").val();
+                        this.item_jakosc_cap = $("#ItemPanel input[name=jakosc_capt]").val();
+                        
                         window.setTimeout(this.RerollItem,100);
                     } else {
                         $(".item_jakosc .item_status").removeClass("green").addClass("red").html("Off");
