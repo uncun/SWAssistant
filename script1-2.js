@@ -432,14 +432,6 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
                 let levelsPerHour = levelsGained / ((currentTime - GAME.startTime) / 1000 / 60 / 60);
                 let lvlh = levelsPerHour.toFixed(2);
     
-      
-                let activity = $('#char_activity').text();
-                let received = $("#act_prizes").find("div.act_prize.disabled").length;
-
-                let instance = `${sum_instances}/12`;
-                $("#secondary_char_stats .instance ul").html(instance);
-                let activities = `${activity}/185 (${received}/5)`;
-                $("#secondary_char_stats .activities ul").html(activities);
                 let innerHTML = `  <span class='kws_top_bar_section lvl' style='cursor:pointer;'>LVL: <span>${lvlh}/H</span></span><span class='kws_top_bar_section pvp' style='cursor:pointer;'>PVP: <span>${pvp_count}</span></span><span class='kws_top_bar_section arena' style='cursor:pointer;'>ARENA: <span>${arena_count}</span></span>  <span class='kws_top_bar_section version' style='cursor:pointer;'>Wersja: <span>${version}</span></span> `;
                 $(".kws_top_bar").html(innerHTML);
                 if (this.baselinePower == undefined) {
@@ -878,12 +870,7 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
                 $("body").on("click", ".activate_all_clan_buffs", () => {
                     this.activateAllClanBuffs();
                 });
-                $("body").on("click", ".do_all_instances", (event) => {
-                    let worker = {};
-                    worker.id = parseInt($(event.target).attr("data-emp"));
-                    worker.local = parseInt($(event.target).attr("data-emp_local"));
-                    this.doAllInstances(worker);
-                });
+ 
                 $("#poka_telep").click(() => {
                     GAME.socket.emit('ga', {
                         a: 39,
@@ -946,9 +933,6 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
                     console.log("custom clicked", this.item_id);
                 });
 
-
-
-
                 $("body").on("click", "#changeProfileNext", () => {
                     this.goToNextChar();
                     this.resetCalculatedPower();
@@ -957,23 +941,7 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
                     this.goToPreviousChar();
                     this.resetCalculatedPower();
                 });
-                $("body").on("click", `button[data-page="stelep"].cps`, () => {
-                    $("#clan_inner_stelep").attr("style", "");
-                }).on("click", `button[data-option="clan_tp_go"]`, () => {
-                    if ($("#clan_inner_stelep").css("padding") == "10px") {
-                        GAME.socket.emit('ga', {
-                            a: 39,
-                            type: 33
-                        });
-                    }
-                }).on("click", `button[data-option="invade_planet"]`, () => {
-                    if ($("#clan_inner_stelep").css("padding") == "10px") {
-                        GAME.socket.emit('ga', {
-                            a: 39,
-                            type: 33
-                        });
-                    }
-                });
+
                 $("body").on("click", `.better_chat_loading`, () => {
                     if (GAME.chat_data[GAME.chat_channel].messages.length == 0) {
                         GAME.socket.emit('ga', {
@@ -1000,47 +968,7 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
                         });
                     }
                 });
-                $("body").on("click", `.kws_top_bar_section.sk_info`, () => {
-                    GAME.page_switch('game_balls');
-                });
-                $("body").on("click", `.kws_top_bar_section.trader_info`, () => {
-                    GAME.page_switch('game_events');
-                });
-                $("body").on("click", `.kws_top_bar_section.soul_cards_one`, () => {
-                    GAME.socket.emit('ga', {
-                        a: 58,
-                        type: 7,
-                        set: 0
-                    });
-                });
-                $("body").on("click", `.kws_top_bar_section.soul_cards_two`, () => {
-                    GAME.socket.emit('ga', {
-                        a: 58,
-                        type: 7,
-                        set: 1
-                    });
-                });
-                $("body").on("click", `.kws_top_bar_section.soul_cards_three`, () => {
-                    GAME.socket.emit('ga', {
-                        a: 58,
-                        type: 7,
-                        set: 2
-                    });
-                });
-                $("body").on("click", `.kws_top_bar_section.soul_cards_four`, () => {
-                    GAME.socket.emit('ga', {
-                        a: 58,
-                        type: 7,
-                        set: 3
-                    });
-                });
-                $("body").on("click", `.kws_top_bar_section.soul_cards_five`, () => {
-                    GAME.socket.emit('ga', {
-                        a: 58,
-                        type: 7,
-                        set: 4
-                    });
-                });
+     
                 $("body").on("click", `.kws_top_bar_section.additional_stats`, () => {
                     this.handleAdditionalTopBarVisibility();
                 });
