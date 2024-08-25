@@ -1038,9 +1038,10 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
                                         if (this.item_jakosc_cap > res.item.quality) {
                                             console.log("jakosc git")
                                             this.item_jakosc = false;
+                                            clearInterval(this.RerollItem);
                                             $(".item_jakosc .item_status").removeClass("green").addClass("red").html("Off");
                                         } else {
-                                            window.setTimeout(this.UpgradeItem,100);
+                                            window.setTimeout(this.RerollItem,100);
                                         }
                                     }
                                     if (this.item_poziom) {
@@ -1048,9 +1049,10 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
                                         if (this.item_poziom_cap > res.item.upgrade) {
                                             console.log("poziom git")
                                             $(".item_poziom .item_jakosc").removeClass("green").addClass("red").html("Off");
+                                            clearInterval(this.UpgradeItem);
                                             this.poziom = false;
                                         } else {
-                                            window.setTimeout(this.RerollItem,100);
+                                            window.setTimeout(this.UpgradeItem,100);
                                         }
                                     }
 
