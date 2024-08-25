@@ -1035,7 +1035,7 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
                                     console.log("item  ",this.item_jakosc, this.item_poziom);
                                     if (this.item_jakosc) {
                                         console.log("jakosc ", res.item.quality, this.item_jakosc_cap);
-                                        if (this.item_jakosc_cap > res.item.quality) {
+                                        if (res.item.quality >= this.item_jakosc_cap) {
                                             console.log("jakosc git")
                                             this.item_jakosc = false;
                                             clearInterval(this.RerollItem);
@@ -1046,7 +1046,7 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
                                     }
                                     if (this.item_poziom) {
                                         console.log("poziom ", res.item.upgrade, this.item_poziom_cap);
-                                        if (this.item_poziom_cap > res.item.upgrade) {
+                                        if (res.item.upgrade >= this.item_poziom_cap ) {
                                             console.log("poziom git")
                                             $(".item_poziom .item_jakosc").removeClass("green").addClass("red").html("Off");
                                             clearInterval(this.UpgradeItem);
