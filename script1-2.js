@@ -1022,6 +1022,7 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
                                     console.log("item found");
                                     var item = document.querySelector('.player_ekw_item[data-item_id="'+ this.item_id +'"]')
                                     item.dispatchEvent(mouseOverEvent);
+                                    break;
                                 }
                             }
                             break;
@@ -1101,10 +1102,11 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
                         this.item_jakosc = false;
                         this.item_poziom = true;
                         this.item_jakosc_cap = $("#ItemPanel input[name=jakosc_capt]").val();
-                        reroll_item();
+                        upgrade_item();
                         window.setTimeout(function() {
-                            $('[data-option="rer2_item"]').click();
-                        }, 300);
+                            $('[data-option="upg2_item"]').click();
+                        }, 400);
+ 
                     } else {
                         $(".item_poziom .item_status").removeClass("green").addClass("red").html("Off");
                         this.item_poziom = false;
@@ -1117,10 +1119,10 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
                         this.item_jakosc = true;
                         this.item_poziom = false;
                         this.item_poziom_cap = $("#ItemPanel input[name=poziom_capt]").val();
-                        upgrade_item();
+                        reroll_item();
                         window.setTimeout(function() {
-                            $('[data-option="upg2_item"]').click();
-                        }, 400);
+                            $('[data-option="rer2_item"]').click();
+                        }, 300);
                     } else {
                         $(".item_jakosc .item_status").removeClass("green").addClass("red").html("Off");
                         this.item_jakosc = false;
