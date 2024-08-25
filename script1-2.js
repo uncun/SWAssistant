@@ -1135,7 +1135,7 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
                         this.item_poziom = true;
                         this.item_poziom_cap = $("#ItemPanel input[name=poziom_capt]").val();
 
-                        window.setTimeout(this.UpgradeItem,100);
+                        window.setTimeout(this.UpgradeItem,300);
                     } else {
                         $(".item_poziom .item_status").removeClass("green").addClass("red").html("Off");
                         this.item_poziom = false;
@@ -1150,7 +1150,7 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
                         this.item_poziom = false;
                         this.item_jakosc_cap = $("#ItemPanel input[name=jakosc_capt]").val();
                         
-                        window.setTimeout(this.RerollItem,100);
+                        window.setTimeout(this.RerollItem,300);
                     } else {
                         $(".item_jakosc .item_status").removeClass("green").addClass("red").html("Off");
                         this.item_jakosc = false;
