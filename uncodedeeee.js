@@ -1323,7 +1323,12 @@ if (typeof GAME === 'undefined') {} else {
                     //     Response.normal = false;
                         return false;
                     }
-        
+                    const komElements = document.querySelectorAll('#kom_con .kom');
+    
+                    komElements.forEach(kom => {
+                        const closeButton = kom.querySelector('.close_kom');
+                        closeButton.click();
+                    });
                     window.setTimeout(function() {
                         GAME.emitOrder({a:12,page:2});
                         GAME.ekw_page = 2;
@@ -1359,12 +1364,7 @@ if (typeof GAME === 'undefined') {} else {
                         }, 111);
                     }, 2005);
 
-                    const komElements = document.querySelectorAll('#kom_con .kom');
-    
-                    komElements.forEach(kom => {
-                        const closeButton = kom.querySelector('.close_kom');
-                        closeButton.click();
-                    });
+
                 }
                 // item jakosc
                 // const targetElement = document.querySelector('.player_ekw_item[data-item_id="'+ GAME.dragged_item.id+'"]');
