@@ -1127,7 +1127,7 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
                         this.item_jakosc = false;
                         this.item_poziom = true;
                         this.item_jakosc_cap = $("#ItemPanel input[name=jakosc_capt]").val();
-                        window.setTimeout(UpgradeItem,100);
+                        window.setTimeout(this.UpgradeItem,100);
  
                     } else {
                         $(".item_poziom .item_status").removeClass("green").addClass("red").html("Off");
