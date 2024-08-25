@@ -40,10 +40,7 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
                 this.createCSS();
                 this.createMinimapSettings();
                 if ($("#top_bar .adv").length) $("#top_bar .adv").remove();
-                this.sortClanPlanets();
-                this.loadRiddles((data) => {
-                    this.riddles = data;
-                });
+   
                 this.addToCSS(`.kom{background:url(/gfx/layout/tloPilot.png); background-size:cover; border-image:url(/gfx/layout/mapborder.png) 7 8 7 7 fill; border-style:solid; border-width:7px 8px 7px 7px; box-shadow:none;} .kom .close_kom b{background:url(/gfx/layout/tloPilot.png);} .exchange_win{max-height:500; height:auto;}`);
                 this.addToCSS(`#emp_list .petopt_btns .newBtn{margin:0px 3px 3px 0px;} .newBtn.do_all_instances{color:#e5d029;}`);
                 this.addToCSS(`#quick_bar{z-index:4;} .qlink.kws_active_icon{animation-name:kws_active_icon;animation-duration:1s;animation-iteration-count:infinite;}@keyframes kws_active_icon { 0% { filter: hue-rotate(168deg); } 50% { filter:hue-rotate(40deg); } 100% { filter: hue-rotate(168deg); } } .sideIcons{ width:29px; height:29px; left:-37px; background-size:contain; } .autoExpeCodes{background:#12121294; border:1px solid rgb(87, 87, 114); border-radius:5px 0px 0px 5px; position:absolute; top:-100px; left:-97px; padding:5px; display:none; color:#ffe500c7; user-select:none;} .manage_autoExpeditions:hover + .autoExpeCodes, .autoExpeCodes:hover{ display:flex; } .autoExpeCodes .newCheckbox{margin: 0 auto; display: block;} `);
@@ -429,8 +426,6 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
                 }, 100);
             }
             updateTopBar() {
-                let sk_status;
-                let instances = [];
                 let currentLevel = GAME.char_data.level;
                 let currentTime = Date.now();
                 let levelsGained = currentLevel - GAME.startLevel;
@@ -440,9 +435,7 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
       
                 let activity = $('#char_activity').text();
                 let received = $("#act_prizes").find("div.act_prize.disabled").length;
-                let is_trader = new Date();
-                let trader = `<span class='kws_top_bar_section trader_info' style='cursor:pointer;'>HANDLARZ</span> `;
-    
+
                 let instance = `${sum_instances}/12`;
                 $("#secondary_char_stats .instance ul").html(instance);
                 let activities = `${activity}/185 (${received}/5)`;
@@ -455,9 +448,7 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
                 if (this.baselineLevel == undefined) {
                     this.baselineLevel = GAME.char_data.level;
                 }
-                let calculated_power = GAME.dots(GAME.char_data.moc - this.baselinePower);//(GAME.char_data.moc - this.baselinePower).toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
-                let calculatedPowerReset = `<span class='kws_top_bar_section additional_stats_reset' style='cursor:pointer;color:"white"'>RESET</span>`;
-                let futureStats = this.prepareFutureStatsData();
+  
                 let calculated_levels = GAME.dots(GAME.char_data.level - this.baselineLevel);
                 $(".kws_additional_top_bar").html(`  <span class='kws_additional_top_bar_section lvlsGained' style='cursor:pointer;'>ZDOBYTE LVL: <span>${calculated_levels}</span>`);
                 this.adjustCurrentCharacterId();
