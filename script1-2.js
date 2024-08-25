@@ -1073,7 +1073,7 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
             }
 
             RerollItem() {
-                if (this.item_jakosc == false)
+                if (this.item_jakosc === false)
                     return;
                 reroll_item();
                 window.setTimeout(function() {
@@ -1082,7 +1082,7 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
             }
 
             UpgradeItem() {
-                if (this.item_poziom == false)
+                if (this.item_poziom === false)
                     return;
                 upgrade_item();
                 window.setTimeout(function() {
