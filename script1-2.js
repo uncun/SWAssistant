@@ -1100,7 +1100,11 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
                         $(".item_jakosc .item_status").removeClass("green").addClass("red").html("Off");
                         this.item_jakosc = false;
                         this.item_poziom = true;
-                        this.item_jakosc_cap = $("#ItemPanel input[name=jakosc_capt]").val()
+                        this.item_jakosc_cap = $("#ItemPanel input[name=jakosc_capt]").val();
+                        reroll_item();
+                        window.setTimeout(function() {
+                            $('[data-option="rer2_item"]').click();
+                        }, 300);
                     } else {
                         $(".item_poziom .item_status").removeClass("green").addClass("red").html("Off");
                         this.item_poziom = false;
@@ -1112,7 +1116,11 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
                         $(".item_poziom .item_status").removeClass("green").addClass("red").html("Off");
                         this.item_jakosc = true;
                         this.item_poziom = false;
-                        this.item_poziom_cap = $("#ItemPanel input[name=poziom_capt]").val()
+                        this.item_poziom_cap = $("#ItemPanel input[name=poziom_capt]").val();
+                        upgrade_item();
+                        window.setTimeout(function() {
+                            $('[data-option="upg2_item"]').click();
+                        }, 400);
                     } else {
                         $(".item_jakosc .item_status").removeClass("green").addClass("red").html("Off");
                         this.item_jakosc = false;
