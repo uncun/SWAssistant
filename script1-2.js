@@ -90,6 +90,10 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
                 $('.MoveIcon[data-option="map_multi_pvp"]').after('<div class="MoveIcon bigg option" data-option="map_quest_skip" data-toggle="tooltip" data-original-title="<div class=tt>Opcja Dalej w otwartym zadaniu jeśli jest jedna. Atakuje bosy w zadaniach i zamyka raport z walki. W zadaniu nuda wybiera opcję na zabicie mobków. W zadaniu subki wybiera opcję za 100k. Zamyka komunikaty. Zbiera zasób na którym stoimy.<br />Klawisz skrótu:<b class=orange>X</b></div>"><img src="https://i.imgur.com/wuK91VF.png"></div>');
                 $('.MoveIcon[data-option="map_quest_skip"]').after('<div class="MoveIcon bigg option" data-option="map_quest_skip_time" data-toggle="tooltip" data-original-title="<div class=tt>Używanie zegarków w zadaniach<br />Klawisz skrótu:<b class=orange>N</b></div>"><img src="https://i.imgur.com/9YCvJKe.png"></div>');
                 $('.MoveIcon[data-option="map_quest_skip_time"]').after('<div class="MoveIcon bigg option" data-option="map_alternative_pilot" data-toggle="tooltip" data-original-title="<div class=tt>Ukryje pilota, pokazuje inną klawiaturę<br />Klawisz skrótu:<b class=orange>=</b></div>"><img src="https://up.be3.ovh/upload/1709400449.png"></div>');
+                $('.MoveIcon[data-option="map_alternative_pilot"]').after('<div class="MoveIcon bigg option" data-option="fight_champ" data-toggle="tooltip" data-original-title="<div class=tt>Zabija championy<br />Klawisz skrótu:<b class=orange>2</b></div>"><img src="https://up.be3.ovh/upload/1709400449.png"></div>');
+                $('.MoveIcon[data-option="fight_champ"]').after('<div class="MoveIcon bigg option" data-option="fight_elite" data-toggle="tooltip" data-original-title="<div class=tt>Zabija elity<br />Klawisz skrótu:<b class=orange>3</b></div>"><img src="https://up.be3.ovh/upload/1709400449.png"></div>');
+                $('.MoveIcon[data-option="fight_elite"]').after('<div class="MoveIcon bigg option" data-option="fight_boss" data-toggle="tooltip" data-original-title="<div class=tt>Zabija bossy<br />Klawisz skrótu:<b class=orange>4</b></div>"><img src="https://up.be3.ovh/upload/1709400449.png"></div>');
+
                 $("#changeProfile").after('<button id="changeProfileNext" class="option" data-option="nextChar">Next</button>');
                 $("#changeProfileNext").after('<button id="changeProfilePrev" class="option" data-option="prevChar">Prev</button>');
                 $("#ekw_item_menu").append('<button id="custom_but" class="option" data-option="customUpgrade">Custom</button>')
@@ -1424,6 +1428,15 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
                 $("body").on("click", `[data-option="map_alternative_pilot"]`, () => {
                     this.createAlternativePilot();
                 });
+                $("body").on("click", `[data-option="fight_champ"]`, () => {
+                    this.killChamp();
+                });
+                $("body").on("click", `[data-option="fight_elite"]`, () => {
+                    this.killElite();
+                });
+                $("body").on("click", `[data-option="fight_boss"]`, () => {
+                    this.killBoss();
+                });
                 $(document).keydown((event) => {
                     if (!$("input, textarea").is(":focus")) {
                         if (event.key === "x" || event.key === "X") {
@@ -1441,17 +1454,11 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
                                 cnt: GAME.quest_action_max
                             });
                         } else if (event.key === "2") {
-                            GAME.socket.emit('ga', {
-                                a: 15,
-                                type: 13
-                            });
+                            this.killChamp()
                         } else if (event.key === "3") {
-                            GAME.socket.emit('ga', {
-                                a: 39,
-                                type: 32
-                            });
+                            this.killElite()
                         } else if (event.key === "4") {
-                            this.bless();
+                            this.killBoss();
                         } else if (event.key === "5") {
                             setTimeout(() => {
                                 GAME.socket.emit('ga', {
@@ -1583,6 +1590,58 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
                         });
                     }
                 });
+            }
+
+            killChamp(){
+                var mob_id;
+                var mob_size;
+                for (var i = 0; i < GAME.field_mobs.length; i++) {
+                    if (GAME.field_mobs[i] == 1) {
+                        mob_id = i;
+                        mob_size = GAME.field_mobs[i].ranks[GAME.field_mobs[i].custom_rank];
+                    }
+                }
+                if (mob_size > 0) {
+                    for (var j = 0; j < mob_size; j++) {
+                        window.setTimeout(function() {
+                            GAME.emitOrder({a:7,mob_num:mob_id,rank:1});
+                        }, 1); 
+                    }
+                }
+            }
+            killElite(){
+                var mob_id;
+                var mob_size;
+                for (var i = 0; i < GAME.field_mobs.length; i++) {
+                    if (GAME.field_mobs[i] == 2) {
+                        mob_id = i;
+                        mob_size = GAME.field_mobs[i].ranks[GAME.field_mobs[i].custom_rank];
+                    }
+                }
+                if (mob_size > 0) {
+                    for (var j = 0; j < mob_size; j++) {
+                        window.setTimeout(function() {
+                            GAME.emitOrder({a:7,mob_num:mob_id,rank:2});
+                        }, 1); 
+                    }
+                }
+            }
+            killBoss(){
+                var mob_id;
+                var mob_size;
+                for (var i = 0; i < GAME.field_mobs.length; i++) {
+                    if (GAME.field_mobs[i] == 3) {
+                        mob_id = i;
+                        mob_size = GAME.field_mobs[i].ranks[GAME.field_mobs[i].custom_rank];
+                    }
+                }
+                if (mob_size > 0) {
+                    for (var j = 0; j < mob_size; j++) {
+                        window.setTimeout(function() {
+                            GAME.emitOrder({a:7,mob_num:mob_id,rank:3});
+                        }, 1); 
+                    }
+                }
             }
             prepareFutureStatsData() {
                 let staty = GAME.char_data;
