@@ -1020,12 +1020,10 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
                             break;
                         }
                         if (res.tip_id) {
-                            for (var i = 0; i < res.ekw.length; i++) {
                                 console.log(res.ekw[i].id, this.item_id);
-                                if (res.ekw[i].id == this.item_id) {
+                                if (res.tip_id == this.item_id) {
                                     console.log("item found ", res.item.quality, res.item.upgrade);
                                 }
-                            }
                             break;
                         }
                     default:
