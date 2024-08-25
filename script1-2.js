@@ -981,6 +981,11 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
                     cancelable: true,
                     view: window
                 });
+                const mouseOutEvent = new MouseEvent('mouseout', {
+                    bubbles: true,
+                    cancelable: true,
+                    view: window
+                });
                 console.log("KWA_HANDLE_SOCKETS: res.a == %s", res.a);
                 switch (res.a) {
                     case 7: //?? PvP fight result?
@@ -1022,6 +1027,8 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
                             break;
                         }
                         if (res.tip_id) {
+                                var item = document.querySelector('.player_ekw_item[data-item_id="'+ this.item_id +'"]')
+                                item.dispatchEvent(mouseOutEvent);
                                 console.log(res.ekw[i].id, this.item_id);
                                 if (res.tip_id == this.item_id) {
                                     if (this.item_jakosc) {
