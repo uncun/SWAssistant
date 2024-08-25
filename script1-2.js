@@ -1034,13 +1034,23 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
                                 if (res.tip_id == this.item_id) {
                                     if (this.item_jakosc) {
                                         console.log("jakosc ", res.item.quality, this.item_jakosc_cap);
-                                        if (this.item_jakosc_cap > res.item.quality)
+                                        if (this.item_jakosc_cap > res.item.quality) {
                                             console.log("jakosc git")
+                                            this.item_jakosc = false;
+                                            $(".item_poziom .item_status").removeClass("green").addClass("red").html("Off");
+                                        } else {
+                                            window.setTimeout(this.UpgradeItem,100);
+                                        }
                                     }
                                     if (this.item_poziom) {
                                         console.log("poziom ", res.item.upgrade, this.item_poziom_cap);
-                                        if (this.item_poziom_cap > res.item.upgrade)
+                                        if (this.item_poziom_cap > res.item.upgrade) {
                                             console.log("poziom git")
+                                            $(".item_poziom .item_jakosc").removeClass("green").addClass("red").html("Off");
+                                            this.item_jakosc = false;
+                                        } else {
+                                            window.setTimeout(this.RerollItem,100);
+                                        }
                                     }
 
                                     console.log("item found ", res.item.quality, res.item.upgrade);
@@ -1058,6 +1068,21 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
             addToCSS(data) {
                 $(`#kwsCSS`).append(data);
             }
+
+            RerollItem() {
+                reroll_item();
+                window.setTimeout(function() {
+                    $('[data-option="rer2_item"]').click();
+                }, 300);
+            }
+
+            UpgradeItem() {
+                upgrade_item();
+                window.setTimeout(function() {
+                    $('[data-option="upg2_item"]').click();
+                }, 400);
+            }
+
             bindClickHandlers() {
                 $("body").on("click", ".free_assist_for_all", () => {
                     this.freeAssist();
@@ -1102,16 +1127,14 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
                         this.item_jakosc = false;
                         this.item_poziom = true;
                         this.item_jakosc_cap = $("#ItemPanel input[name=jakosc_capt]").val();
-                        upgrade_item();
-                        window.setTimeout(function() {
-                            $('[data-option="upg2_item"]').click();
-                        }, 400);
+                        window.setTimeout(UpgradeItem,100);
  
                     } else {
                         $(".item_poziom .item_status").removeClass("green").addClass("red").html("Off");
                         this.item_poziom = false;
                     }
                 });
+
                 $('#ItemPanel .item_jakosc').click(() => {
                     if ($(".item_jakosc .item_status").hasClass("red")) {
                         $(".item_jakosc .item_status").removeClass("red").addClass("green").html("On");
@@ -1119,10 +1142,7 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
                         this.item_jakosc = true;
                         this.item_poziom = false;
                         this.item_poziom_cap = $("#ItemPanel input[name=poziom_capt]").val();
-                        reroll_item();
-                        window.setTimeout(function() {
-                            $('[data-option="rer2_item"]').click();
-                        }, 300);
+                        window.setTimeout(this.RerollItem,100);
                     } else {
                         $(".item_jakosc .item_status").removeClass("green").addClass("red").html("Off");
                         this.item_jakosc = false;
