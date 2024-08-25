@@ -1050,7 +1050,7 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
                                             console.log("poziom git")
                                             $(".item_poziom .item_jakosc").removeClass("green").addClass("red").html("Off");
                                             clearInterval(this.UpgradeItem);
-                                            this.poziom = false;
+                                            this.item_poziom = false;
                                         } else {
                                             window.setTimeout(this.UpgradeItem,100);
                                         }
@@ -1074,8 +1074,8 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
 
             RerollItem() {
                 console.log("rerol item", this.item_jakosc);
-                if (this.item_jakosc === false)
-                    return;
+                // if (this.item_jakosc === false)
+                //     return;
                 reroll_item();
                 window.setTimeout(function() {
                     $('[data-option="rer2_item"]').click();
@@ -1084,8 +1084,8 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
 
             UpgradeItem() {
                 console.log("up item", this.item_poziom);
-                if (this.item_poziom === false)
-                    return;
+                // if (this.item_poziom === false)
+                //     return;
                 upgrade_item();
                 window.setTimeout(function() {
                     $('[data-option="upg2_item"]').click();
