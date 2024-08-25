@@ -1,9 +1,9 @@
 var checked = false;
 var item_id;
-var item_jakosc;
-var item_poziom;
-var item_jakosc_cap;
-var item_poziom_cap;
+var item_jakosc=false;
+var item_poziom=false;
+var item_jakosc_cap=0;
+var item_poziom_cap=0;
 if (typeof GAME === 'undefined' && extrapremium) { } else {
     let Pog = setInterval(() => {
         if (!GAME.pid) { } else {
