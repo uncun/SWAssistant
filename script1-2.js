@@ -899,18 +899,11 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
                 }
             }
             useCompressor() {
-                if (JQS.qcc.is(":visible")) {
-                    let compressors_button = $("#quest_con button[data-option=compress_items]");
-                    let quest_id = compressors_button.attr("data-qb_id");
-                    if (compressors_button.length === 1 && GAME.compress_items[0].stack > 0) {
-                        GAME.socket.emit('ga', {
-                            a: 22,
-                            type: 10,
-                            item_id: GAME.compress_items[0].id,
-                            qb_id: quest_id
-                        });
-                    }
-                }
+                GAME.emitOrder({
+                    a: 22,
+                    type: 10,
+                    qb_id: jQuery('#quest_con').find(`[data-option='compress_items']`).data('qb_id')
+                  });
             }
             arena_count() {
                 arena_count++;
@@ -1172,6 +1165,10 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
 
                 $("body").on("click", "#changeProfileNext", () => {
                     this.goToNextChar();
+                    this.resetCalculatedPower();
+                });
+                $("body").on("click", "#changeProfilePrev", () => {
+                    this.goToPreviousChar();
                     this.resetCalculatedPower();
                 });
                 $("body").on("click", `button[data-page="stelep"].cps`, () => {
