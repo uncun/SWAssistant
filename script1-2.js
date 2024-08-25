@@ -1073,6 +1073,7 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
             }
 
             RerollItem() {
+                console.log("rerol item", this.item_jakosc);
                 if (this.item_jakosc === false)
                     return;
                 reroll_item();
@@ -1082,6 +1083,7 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
             }
 
             UpgradeItem() {
+                console.log("up item", this.item_poziom);
                 if (this.item_poziom === false)
                     return;
                 upgrade_item();
