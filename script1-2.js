@@ -1606,7 +1606,8 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
                     for (var j = 0; j < mob_size; j++) {
                         window.setTimeout(function() {
                             GAME.emitOrder({a:7,mob_num:mob_id,rank:1});
-                        }, 1); 
+                            kom_clear();
+                        }, 10); 
                     }
                 }
             }
@@ -1627,6 +1628,7 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
                         window.setTimeout(function() {
                             console.log("kill2", j);
                             GAME.emitOrder({a:7,mob_num:mob_id,rank:2});
+                            kom_clear();
                         }, 10); 
                     }
                 }
@@ -1644,7 +1646,8 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
                     for (var j = 0; j < mob_size; j++) {
                         window.setTimeout(function() {
                             GAME.emitOrder({a:7,mob_num:mob_id,rank:3});
-                        }, 1); 
+                            kom_clear();
+                        }, 10); 
                     }
                 }
             }
