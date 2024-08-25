@@ -1032,6 +1032,7 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
                                 item.dispatchEvent(mouseOutEvent);
 
                                 if (res.tip_id == this.item_id) {
+                                    console.log("item  ",this.item_jakosc, this.item_poziom);
                                     if (this.item_jakosc) {
                                         console.log("jakosc ", res.item.quality, this.item_jakosc_cap);
                                         if (this.item_jakosc_cap > res.item.quality) {
