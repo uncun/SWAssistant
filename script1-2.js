@@ -972,7 +972,13 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
                 }
                 return `<b class="orange">[~${lvls_gained} lvl'i]</b>`;
             }
+            
             handleSockets(res) {
+                const mouseOverEvent = new MouseEvent('mouseover', {
+                    bubbles: true,
+                    cancelable: true,
+                    view: window
+                });
                 console.log("KWA_HANDLE_SOCKETS: res.a == %s", res.a);
                 switch (res.a) {
                     case 7: //?? PvP fight result?
@@ -1002,14 +1008,26 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
                     
                     case 12:
                         console.log(res);
-                        if (!res.ekw)
-                            return;
-                        for (var i = 0; i < res.ekw.length; i++) {
-                            console.log(res.ekw[i].id, this.item_id);
-                            if (res.ekw[i].id == this.item_id)
-                                console.log("item found");
+                        if (res.ekw) {
+                            for (var i = 0; i < res.ekw.length; i++) {
+                                console.log(res.ekw[i].id, this.item_id);
+                                if (res.ekw[i].id == this.item_id) {
+                                    console.log("item found");
+                                    var item = document.querySelector('.player_ekw_item[data-item_id="'+ this.item_id +'"]')
+                                    item.dispatchEvent(mouseOverEvent);
+                                }
+                            }
+                            break;
                         }
-
+                        if (res.tip_id) {
+                            for (var i = 0; i < res.ekw.length; i++) {
+                                console.log(res.ekw[i].id, this.item_id);
+                                if (res.ekw[i].id == this.item_id) {
+                                    console.log("item found ", res.item.quality, res.item.upgrade);
+                                }
+                            }
+                            break;
+                        }
                     default:
                         console.log("KWA_HANDLE_SOCKETS: unhandeled response");
                         break;
