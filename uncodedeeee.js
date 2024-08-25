@@ -1581,7 +1581,7 @@ if (typeof GAME === 'undefined') {} else {
             };
             RESP.useSenzu = () => {
                 console.log("use senzu", RESP.stop);
-                if (RESP.stop) return;
+                // if (RESP.stop) return;
                 const blue = RESP.getSenzu(RESP.SENZU_BLUE);
                 const purple = RESP.getSenzu(RESP.SENZU_PURPLE);
                 const magic = RESP.getSenzu(RESP.SENZU_MAGIC);
