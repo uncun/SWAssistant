@@ -1597,18 +1597,14 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
                 var mob_id;
                 var mob_size;
                 for (var i = 0; i < GAME.field_mobs.length; i++) {
-                    if (GAME.field_mobs[i] == 1) {
+                    if (GAME.field_mobs[i].custom_rank == 1) {
                         mob_id = i;
                         mob_size = GAME.field_mobs[i].ranks[GAME.field_mobs[i].custom_rank];
                     }
                 }
                 if (mob_size > 0) {
-                    for (var j = 0; j < mob_size; j++) {
-                        window.setTimeout(function() {
-                            GAME.emitOrder({a:7,mob_num:mob_id,rank:1});
-                            kom_clear();
-                        }, 10); 
-                    }
+                    GAME.emitOrder({a:7,mob_num:mob_id,rank:1});
+                    kom_clear();
                 }
             }
             killElite(){
@@ -1616,39 +1612,30 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
                 var mob_size;
                 for (var i = 0; i < GAME.field_mobs.length; i++) {
                     console.log("searching elite");
-                    if (GAME.field_mobs[i] == 2) {
+                    if (GAME.field_mobs[i].custom_rank == 2) {
                         mob_id = i;
                         mob_size = GAME.field_mobs[i].ranks[GAME.field_mobs[i].custom_rank];
                         console.log("elite", mob_id, mob_size);
                     }
                 }
                 if (mob_size > 0) {
-                    for (var j = 0; j < mob_size; j++) {
-                        console.log("kill1", j);
-                        window.setTimeout(function() {
-                            console.log("kill2", j);
-                            GAME.emitOrder({a:7,mob_num:mob_id,rank:2});
-                            kom_clear();
-                        }, 10); 
-                    }
+                    GAME.emitOrder({a:7,mob_num:mob_id,rank:2});
+                    kom_clear();
                 }
+                
             }
             killBoss(){
                 var mob_id;
                 var mob_size;
                 for (var i = 0; i < GAME.field_mobs.length; i++) {
-                    if (GAME.field_mobs[i] == 3) {
+                    if (GAME.field_mobs[i].custom_rank == 3) {
                         mob_id = i;
                         mob_size = GAME.field_mobs[i].ranks[GAME.field_mobs[i].custom_rank];
                     }
                 }
                 if (mob_size > 0) {
-                    for (var j = 0; j < mob_size; j++) {
-                        window.setTimeout(function() {
-                            GAME.emitOrder({a:7,mob_num:mob_id,rank:3});
-                            kom_clear();
-                        }, 10); 
-                    }
+                    GAME.emitOrder({a:7,mob_num:mob_id,rank:3});
+                    kom_clear();
                 }
             }
             prepareFutureStatsData() {
