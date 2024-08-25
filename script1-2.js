@@ -2,6 +2,8 @@ var checked = false;
 var item_id;
 var item_jakosc;
 var item_poziom;
+var item_jakosc_cap;
+var item_poziom_cap;
 if (typeof GAME === 'undefined' && extrapremium) { } else {
     let Pog = setInterval(() => {
         if (!GAME.pid) { } else {
@@ -117,9 +119,9 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
 
                 const item_css = `#ItemPanel { background: rgba(0,0,0,0.9); position: fixed; top: 250px; left: 80%; z-index: 9999; width: 200px; padding: 1px; border-radius: 5px; border-style: solid; border-width: 7px 8px 7px 7px; display:block; user-select: none; color: #333333; } #ItemPanel .sekcja { position: absolute; top: -27px; left: -7px; background: rgba(0,0,0,0.9); filter: hue-rotate(196deg); background-size: 100% 100%; width: 150px; cursor: all-scroll; } #ItemPanel .item_button {cursor:pointer;text-align:center; border-bottom:solid gray 1px; color: white;} #ItemPanel .gamee_input{text-align:center; border-bottom:solid gray 1px; color: white;} #ItemPanel .gamee_input input::placeholder {color: #4b4b4b;} #ItemPanel .gameee_input{text-align:center; border-bottom:solid gray 1px; color: white;} #ItemPanel .gameee_input input::placeholder {color: #4b4b4b;}`;
                 const item_panel = `<div id="ItemPanel">
-                    <div class="gamee_input insta_capt1"><input style="width: 150px; margin-left: -2px; background: grey; text-align: center; font-size: 16;" name="insta_capt" type="text" value="" placeholder="jakosc" /> <div class="item_button item_jakosc">jakosc<strong class="item_status red">Off</strong> </div>
+                    <div class="gamee_input insta_capt1"><input style="width: 150px; margin-left: -2px; background: grey; text-align: center; font-size: 16;" name="jakosc_capt" type="text" value="" placeholder="jakosc" /> <div class="item_button item_jakosc">jakosc<strong class="item_status red">Off</strong> </div>
                     
-                    <div class="gamee_input insta_capt1"><input style="width: 150px; margin-left: -2px; background: grey; text-align: center; font-size: 16;" name="insta_capt" type="text" value="" placeholder="poziom" /> <div class="item_button item_poziom">poziom<strong class="item_status red">Off</strong> </div>
+                    <div class="gamee_input insta_capt1"><input style="width: 150px; margin-left: -2px; background: grey; text-align: center; font-size: 16;" name="poziom_capt" type="text" value="" placeholder="poziom" /> <div class="item_button item_poziom">poziom<strong class="item_status red">Off</strong> </div>
                     <button class="pvp_button close_item">Close</button></div>
                     </div>`;
                 $("body").append(`<style>${item_css}</style>${item_panel}`);
@@ -1022,6 +1024,17 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
                         if (res.tip_id) {
                                 console.log(res.ekw[i].id, this.item_id);
                                 if (res.tip_id == this.item_id) {
+                                    if (this.item_jakosc) {
+                                        console.log("jakosc ", res.item.quality, this.item_jakosc_cap);
+                                        if (this.item_jakosc_cap > res.item.quality)
+                                            console.log("jakosc git")
+                                    }
+                                    if (this.item_poziom) {
+                                        console.log("poziom ", res.item.upgrade, this.item_poziom_cap);
+                                        if (this.item_poziom_cap > res.item.upgrade)
+                                            console.log("poziom git")
+                                    }
+
                                     console.log("item found ", res.item.quality, res.item.upgrade);
                                 }
                             break;
@@ -1077,15 +1090,25 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
                 $('#ItemPanel .item_poziom').click(() => {
                     if ($(".item_poziom .item_status").hasClass("red")) {
                         $(".item_poziom .item_status").removeClass("red").addClass("green").html("On");
+                        $(".item_jakosc .item_status").removeClass("green").addClass("red").html("Off");
+                        this.item_jakosc = false;
+                        this.item_poziom = true;
+                        this.item_jakosc_cap = $("#pvp_Panel input[name=jakosc_capt]").val()
                     } else {
                         $(".item_poziom .item_status").removeClass("green").addClass("red").html("Off");
+                        this.item_poziom = false;
                     }
                 });
                 $('#ItemPanel .item_jakosc').click(() => {
                     if ($(".item_jakosc .item_status").hasClass("red")) {
                         $(".item_jakosc .item_status").removeClass("red").addClass("green").html("On");
+                        $(".item_poziom .item_status").removeClass("green").addClass("red").html("Off");
+                        this.item_jakosc = true;
+                        this.item_poziom = false;
+                        this.item_poziom_cap = $("#pvp_Panel input[name=poziom_capt]").val()
                     } else {
                         $(".item_jakosc .item_status").removeClass("green").addClass("red").html("Off");
+                        this.item_jakosc = false;
                     }
                 });
                 $('#ItemPanel .close_item').click(() => {
