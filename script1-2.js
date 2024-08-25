@@ -626,15 +626,7 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
                 let levelsGained = currentLevel - GAME.startLevel;
                 let levelsPerHour = levelsGained / ((currentTime - GAME.startTime) / 1000 / 60 / 60);
                 let lvlh = levelsPerHour.toFixed(2);
-                if ($(`#mdbp_${GAME.char_data.reborn}`).find('.timer').length) {
-                    sk_status = $(`#mdbp_${GAME.char_data.reborn}`).find('.timer').text();
-                } else {
-                    sk_status = "AKTYWNE";
-                }
-                let train_upgr = $("#train_uptime").find('.timer').text();
-                if (train_upgr.length == 0 || train_upgr == "00:00:00") {
-                    train_upgr = "AKTYWNE";
-                }
+  
                 if ('char_data' in GAME) {
                     instances = [GAME.char_data.icd_1, GAME.char_data.icd_2, GAME.char_data.icd_3, GAME.char_data.icd_4, GAME.char_data.icd_5, GAME.char_data.icd_6];
                 }
@@ -645,13 +637,7 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
                 let received = $("#act_prizes").find("div.act_prize.disabled").length;
                 let is_trader = new Date();
                 let trader = `<span class='kws_top_bar_section trader_info' style='cursor:pointer;'>HANDLARZ</span> `;
-                let soulCards_current = $(".sc_sets_all.current").html();
-                let soulCards_one = `<span class='kws_top_bar_section soul_cards_one' style='cursor:pointer;color:${soulCards_current == "I" ? "red" : "white"}'>KD1</span>`;
-                let soulCards_two = `<span class='kws_top_bar_section soul_cards_two' style='cursor:pointer;color:${soulCards_current == "II" ? "red" : "white"}'>KD2</span>`;
-                let soulCards_three = `<span class='kws_top_bar_section soul_cards_three' style='cursor:pointer;color:${soulCards_current == "III" ? "red" : "white"}'>KD3</span>`;
-                let soulCards_four = `<span class='kws_top_bar_section soul_cards_four' style='cursor:pointer;color:${soulCards_current == "IV" ? "red" : "white"}'>KD4</span>`;
-                let soulCards_five = `<span class='kws_top_bar_section soul_cards_five' style='cursor:pointer;color:${soulCards_current == "V" ? "red" : "white"}'>KD5</span>`;
-                let additionalStats = `<span class='kws_top_bar_section additional_stats' style='cursor:pointer;color:${this.additionalTopBarVisible ? "orange" : "white"}'>STATY</span>`;
+
                 let instance = `${sum_instances}/12`;
                 $("#secondary_char_stats .instance ul").html(instance);
                 let activities = `${activity}/185 (${received}/5)`;
@@ -664,11 +650,7 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
                 if (this.baselineLevel == undefined) {
                     this.baselineLevel = GAME.char_data.level;
                 }
-                let calculated_power = GAME.dots(GAME.char_data.moc - this.baselinePower);//(GAME.char_data.moc - this.baselinePower).toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
-                let calculatedPowerReset = `<span class='kws_top_bar_section additional_stats_reset' style='cursor:pointer;color:"white"'>RESET</span>`;
-                let futureStats = this.prepareFutureStatsData();
-                let calculated_levels = GAME.dots(GAME.char_data.level - this.baselineLevel);
-                $(".kws_additional_top_bar").html(` <span class='kws_additional_top_bar_section pvm_power' style='cursor:pointer;'>ZDOBYTA MOC: <span style="color:lime;">${calculated_power}</span></span> <span class='kws_additional_top_bar_section future_stats' style='cursor:pointer;'>${futureStats}</span><span class='kws_additional_top_bar_section lvlsGained' style='cursor:pointer;'>ZDOBYTE LVL: <span>${calculated_levels}</span></span><span class='kws_additional_top_bar_section psk' style='cursor:pointer;'>PSK: ${GAME.dots(GAME.char_data.minor_ball)}</span> ${calculatedPowerReset}`);
+  
                 this.adjustCurrentCharacterId();
                 this.checkTournamentsSigning();
             }
@@ -1639,55 +1621,7 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
                 }
             }
             prepareFutureStatsData() {
-                let staty = GAME.char_data;
-                if(staty.reborn==0){
-                    var moc=staty.sila+staty.szyb+staty.wytrz+staty.swoli+staty.ki;
-                    var fb=Math.round(moc/10000000,3);
-                    return `${LNG.lab166} : <span class="orange">${GAME.dots(fb)}</span>`;
-                }
-                if(staty.reborn==1){
-                    var expm=Math.round(staty.exp/5000),mocm=Math.round(staty.moc/10);
-                    var fb=expm+mocm;
-                    return `${LNG.lab167} : <span class="orange" id="future_wspol">${GAME.dots(fb)}</span> [${LNG.lab217}: <span class="green">${GAME.dots(mocm)}</span>, ${LNG.lab218}: <span class="green">${GAME.dots(expm)}</span>]`;
-                }
-                if(staty.reborn==2){
-                    var ps=0;
-                    var moc=staty.sila+staty.szyb+staty.wytrz+staty.swoli+staty.ki;
-                    var mocm=Math.round(moc/100000000000);
-                    if(mocm>1000) mocm=1000;
-                    ps+=mocm;
-                    var wsplm=Math.round(staty.reborn_bonus/100);
-                    if(wsplm>1000) wsplm=1000;
-                    ps+=wsplm;
-                    var fb=Math.round(staty.god/10000);
-                    return `${LNG.lab168} : <span class="orange">${GAME.dots(fb)}</span> ${LNG.lab220} : <span class="orange">${GAME.dots(ps)}</span> [${LNG.lab217}: <span class="green">${GAME.dots(mocm)}</span>, ${LNG.lab219}: <span class="green">${GAME.dots(wsplm)}</span>]`;
-                }
-                if(staty.reborn==3){
-                    var gki=1000;
-                    var wtam=Math.floor(staty.wta/100000000000);
-                    gki+=wtam;
-                    var moc=staty.sila+staty.szyb+staty.wytrz+staty.swoli+staty.ki;
-                    var mocm1=Math.round(moc/10000000000000);
-                    gki+=mocm1;
-                    if(gki>1000000) gki=1000000;
-                    var ps=10;
-                    var levm=Math.floor(staty.level/200);
-                    ps+=levm;
-                    var moc=staty.sila+staty.szyb+staty.wytrz+staty.swoli+staty.ki+staty.wta;
-                    var mocm2=Math.floor(moc/10000000000000000);
-                    ps+=mocm2;
-                    if(ps>150) ps=150;
-                    return `${LNG.lab169} : <span class="orange">${GAME.dots(gki)}</span> [1000 + ${LNG.lab217}: <span class="green">${GAME.dots(mocm1)}</span>, ${LNG.lab221}: <span class="green">${GAME.dots(wtam)}</span>] ${LNG.lab170} : <span class="orange">${GAME.dots(ps)}</span> [10+ ${LNG.lab217}: <span class="green">${GAME.dots(mocm2)}</span>, ${LNG.lab222}: <span class="green">${GAME.dots(levm)}</span>]`;
-                }
-                if(staty.reborn==4){
-                    var ins=10;
-                    var wtam=Math.floor(staty.wta/1000000000000);
-                    ins+=wtam;
-                    var gkid=staty.gki/1000;
-                    ins+=gkid;
-                    if(ins>100000) ins=100000;
-                    return `${LNG.lab434} : <span class="orange">${GAME.dots(ins)}</span> [10 + ${LNG.lab435}: <span class="green">${GAME.dots(gkid)}</span>, ${LNG.lab221}: <span class="green">${GAME.dots(wtam)}</span>]`;
-                }
+                
             }
             handleAdditionalTopBarVisibility() {
                 if(this.additionalTopBarVisible) {
