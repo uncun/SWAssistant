@@ -1580,7 +1580,7 @@ if (typeof GAME === 'undefined') {} else {
                 }
             };
             RESP.useSenzu = () => {
-                console.log("use senzu", RESP.stop);
+                console.log("use senzu", RESP.stop, RESP.CONF_SENZU);
                 // if (RESP.stop) return;
                 const blue = RESP.getSenzu(RESP.SENZU_BLUE);
                 const purple = RESP.getSenzu(RESP.SENZU_PURPLE);
