@@ -1608,9 +1608,7 @@ if (typeof GAME === 'undefined') {} else {
                         RESP.useRed(1);
                         break;
                     default:
-                        if (blue && blue.stack > RESP.CONF_BLUE_AMOUNT() * 20) RESP.useBlue(Math.min(RESP.CONF_BLUE_AMOUNT(), blue.stack, RESP.CONF_BLUE_AMOUNT1));
-                        else if (green && green.stack > RESP.CONF_GREEN_AMOUNT() * 5) RESP.useGreen(Math.min(RESP.CONF_GREEN_AMOUNT(), green.stack, RESP.CONF_GREEN_AMOUNT1));
-                        else if (red && red.stack > 0) RESP.useRed();
+                        break;
                 }
             };
             RESP.useBlue = (amount = RESP.CONF_BLUE_AMOUNT()) => {
@@ -1623,11 +1621,12 @@ if (typeof GAME === 'undefined') {} else {
                     type: 8,
                     iid: blue.id,
                     page: GAME.ekw_page,
-                    am: amount
+                    am: 1
                 });
             };
             RESP.useGreen = (amount = RESP.CONF_GREEN_AMOUNT()) => {
                 const green = RESP.getSenzu(RESP.SENZU_GREEN);
+                console.log("use green", green);
                 if (!green) {
                     return;
                 }
@@ -1636,7 +1635,7 @@ if (typeof GAME === 'undefined') {} else {
                     type: 8,
                     iid: green.id,
                     page: GAME.ekw_page,
-                    am: amount
+                    am: 1
                 });
             };
             RESP.usePurple = (amount = RESP.CONF_PURPLE_AMOUNT) => {
@@ -1649,7 +1648,7 @@ if (typeof GAME === 'undefined') {} else {
                     type: 8,
                     iid: purple.id,
                     page: GAME.ekw_page,
-                    am: amount
+                    am: 1
                 });
             };
             RESP.useYellow = (amount = RESP.CONF_YELLOW_AMOUNT) => {
@@ -1662,7 +1661,7 @@ if (typeof GAME === 'undefined') {} else {
                     type: 8,
                     iid: yellow.id,
                     page: GAME.ekw_page,
-                    am: amount
+                    am: 1
                 });
             };
             RESP.useRed = () => {

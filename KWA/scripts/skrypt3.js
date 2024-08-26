@@ -67,7 +67,7 @@ let up = false
 let down = false
 
 let antybotPath = false
-let stop = true
+let stop_exp = true
 let moveTimeout
 
 let collectedCSK = 0
@@ -101,13 +101,13 @@ const $exp = '<button id="gh_exp_button" class="gh_btn" style="display: block; m
 
 // /* ACTIONS */
 // $('#gh_exp_button').click(() => {
-// 	if (stop) {
+// 	if (stop_exp) {
 // 		$('#gh_exp_status').text('On').attr('class', 'green');
-// 		stop = false
+// 		stop_exp = false
 // 		move()
 // 	} else {
 // 		$('#gh_exp_status').text('Off').attr('class', 'red');
-// 		stop = true
+// 		stop_exp = true
 // 	}
 // });
 // -----------------------------------
@@ -350,7 +350,7 @@ function isAntybotActive () {
 // ===================================
 // FIGHT
 function fight (mob_num = 0) {
-	if (stop) return
+	if (stop_exp) return
 
 	// check if mob exists on field and has no multi fight yet
 	if (GAME.field_mobs[mob_num].ranks[1] && GAME.mf[GAME.field_mobs[mob_num].mob_id] !== 3) fightLegend(mob_num) // kill legend if exists
@@ -401,7 +401,7 @@ function getSenzu(type) {
 }
 
 function useSenzu () {
-	if (stop) return
+	if (stop_exp) return
 
 	if (isAntybotActive()) {
 		move()
@@ -542,11 +542,11 @@ if($(".black_db").length>0){
 // MOVE
 function move () {
 	if (($(".resp_rare .resp_status").hasClass("red"))) {
-        stop = true;
+        stop_exp = true;
         window.setTimeout(move, 300);
         return;
     } else {
-        stop = false;
+        stop_exp = false;
     }
 	if (moveTimeout) clearTimeout(moveTimeout)
 	moveTimeout = setTimeout(move, 700) // trigger move after 7 seconds without move action

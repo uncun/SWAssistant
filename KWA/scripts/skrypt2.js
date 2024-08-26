@@ -9,7 +9,7 @@ var quantityBlue = 1000; //ile ma być użytych niebieskich fasolek
 var collectBlueSenzuOn = false; //zatrzyamnie skryptu po zebraniu maksymalnej ilości niebieskich fasolek
 var limitPA = 1400 // ilość PA przy której używana jest fasolka
 var stopIfAnotherPlayerOn = true;
-var stop = false; //zatrzyamnie skryptu
+var stop_resp = false; //zatrzyamnie skryptu
 var killLegend = true; //zbijanie legend
 var killEpic = true; // zbijanie epic
 var killMystic = true; //zbijanie mistic
@@ -56,13 +56,13 @@ var refresh_arena = 0;
 // 	.append($resp);
 
 // $('#gh_resp_button').click(() => {
-// 	if (stop) {
+// 	if (stop_resp) {
 // 		$('#gh_resp_status').text('ON').attr('class', 'green');
-// 		stop = false
+// 		stop_resp = false
 // 		start()
 // 	} else {
 // 		$('#gh_resp_status').text('OFF').attr('class', 'red');
-// 		stop = true
+// 		stop_resp = true
 // 	}
 // });
 // //---------------------------------------------------------------------------------------------------------
@@ -135,7 +135,7 @@ return true;
 }
 function go(){
 if(GAME.char_data.pr < limitPA && (useBlueBeans || useRedBeans)){
-stop==true;
+stop_resp==true;
 }
 if(downb){
 go_down();
@@ -243,11 +243,11 @@ return true;
 }
 }
 function scriptOn(){
-stop = false;
+stop_resp = false;
 }
 function scriptOff(){
 console.log("scriptOff");
-stop = true;
+stop_resp = true;
 }
 start();
 
