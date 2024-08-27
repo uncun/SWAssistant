@@ -1566,17 +1566,17 @@ if (typeof GAME === 'undefined') {} else {
             RESP.getSenzu = (type) => {
                 switch (type) {
                     case RESP.SENZU_BLUE:
-                        return GAME.quick_opts.senzus.find(senzu => senzu.item_id === 357187);
+                        return GAME.quick_opts.senzus.find(senzu => senzu.item_id === 42); // ogromny ramen
                     case RESP.SENZU_PURPLE:
-                        return GAME.quick_opts.senzus.find(senzu => senzu.item_id === 357459);
+                        return GAME.quick_opts.senzus.find(senzu => senzu.item_id === 41); // powiekszony ramen
                     case RESP.SENZU_MAGIC:
-                        return GAME.quick_opts.senzus.find(senzu => senzu.item_id === 357455);
+                        return GAME.quick_opts.senzus.find(senzu => senzu.item_id === 30); // czerwona pigula
                     case RESP.SENZU_GREEN:
-                        return GAME.quick_opts.senzus.find(senzu => senzu.item_id === 357426);
+                        return GAME.quick_opts.senzus.find(senzu => senzu.item_id === 1);  // zwykly ramion
                     case RESP.SENZU_YELLOW:
-                        return GAME.quick_opts.senzus.find(senzu => senzu.item_id === 357192);
+                        return GAME.quick_opts.senzus.find(senzu => senzu.item_id === 29); // zolta pigula
                     case RESP.SENZU_RED:
-                        return GAME.quick_opts.senzus.find(senzu => senzu.item_id === 357193);
+                        return GAME.quick_opts.senzus.find(senzu => senzu.item_id === 28); // zielona pigula
                 }
             };
             RESP.useSenzu = () => {
@@ -1599,7 +1599,7 @@ if (typeof GAME === 'undefined') {} else {
                         RESP.useMagic(1);
                         break;
                     case RESP.SENZU_GREEN:
-                        RESP.useGreen(1);
+                        RESP.useGreen(10);
                         break;
                     case RESP.SENZU_YELLOW:
                         RESP.useYellow(1);
