@@ -1622,7 +1622,7 @@ if (typeof GAME === 'undefined') {} else {
                     type: 8,
                     iid: blue.id,
                     page: GAME.ekw_page,
-                    am: 1
+                    am: 2
                 });
             };
             RESP.useGreen = (amount = RESP.CONF_GREEN_AMOUNT()) => {
@@ -1636,7 +1636,7 @@ if (typeof GAME === 'undefined') {} else {
                     type: 8,
                     iid: green.id,
                     page: GAME.ekw_page,
-                    am: 1
+                    am: 5
                 });
             };
             RESP.usePurple = (amount = RESP.CONF_PURPLE_AMOUNT) => {
@@ -1649,7 +1649,7 @@ if (typeof GAME === 'undefined') {} else {
                     type: 8,
                     iid: purple.id,
                     page: GAME.ekw_page,
-                    am: 1
+                    am: 3
                 });
             };
             RESP.useYellow = (amount = RESP.CONF_YELLOW_AMOUNT) => {
