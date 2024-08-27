@@ -1316,7 +1316,8 @@ if (typeof GAME === 'undefined') {} else {
 
                     // let ekwSpaceElement = document.getElementById('ekw_space');
                     // let ekwSpaceValue = ekwSpaceElement.textContent;
-                    if (($(".resp_rare .resp_status").hasClass("green")) && ekwUsedValue < 1000) {
+                    if ((($(".resp_rare .resp_status").hasClass("green")) && ekwUsedValue < 1000) ||
+                    (($(".resp_resp1 .resp_status").hasClass("green")) && ekwUsedValue < 1000)) {
                     //     window.setTimeout(function() {
                     //         GAME.page_switch("game_ekw");
                     //     }, 225);
