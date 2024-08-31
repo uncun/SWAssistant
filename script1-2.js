@@ -667,12 +667,12 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
                         $("button[data-option='load_more_players']").click();
                         setTimeout(() => {
                             this.pvpKill();
-                        }, 110);
+                        }, 11);
                     } else if (opponents.length > 0) {
                         opponents.eq(0).click();
                         setTimeout(() => {
                             this.pvpKill();
-                        }, 110);
+                        }, 11);
                     }
                 }
             }
