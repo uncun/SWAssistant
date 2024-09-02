@@ -1100,7 +1100,7 @@ if (typeof GAME === 'undefined') {} else {
                         vo: GAME.map_options.vo
                     }, 1);
                 });
-                window.setTimeout(PVP.start, 180);
+                window.setTimeout(PVP.start, 580);
             };
             PVP.check2 = () => {
                 if (PVP.checkkkk()) {
