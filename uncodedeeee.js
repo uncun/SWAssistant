@@ -820,18 +820,18 @@ if (typeof GAME === 'undefined') {} else {
                 PVP.licznik = 1;
             };
             PVP.check_players2 = () => {
+                PVP.kill_players = () => {
+                    GAME.loadMapJson(function() {
+                        GAME.socket.emit('ga', {
+                            a: 3,
+                            vo: GAME.map_options.vo
+                        }, 1);
+                    });
                 var enemy = $("#player_list_con").find(".player button" + "[data-quick=1]" + ":not(.initial_hide_forced)");
                 PVP.kill_players1();
                 window.setTimeout(PVP.start, PVP.czekajpvp / PVP.WSPP() * (enemy.length) * 2);
                 PVP.licznik = 1;
             };
-            PVP.kill_players = () => {
-                GAME.loadMapJson(function() {
-                    GAME.socket.emit('ga', {
-                        a: 3,
-                        vo: GAME.map_options.vo
-                    }, 1);
-                });
                 var enemy = $("#player_list_con").find(".player button" + "[data-quick=1]" + ":not(.initial_hide_forced)");
                 if ($("#player_list_con").find("[data-option=load_more_players]").length == 1) {
                     $("#player_list_con").find("[data-option=load_more_players]").click();
