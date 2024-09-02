@@ -756,41 +756,35 @@ if (typeof GAME === 'undefined') {} else {
                         PVP.check();
                         break;
                     case 3:
-                        PVP.dec_wars();
-                        PVP.caseNumber++;
-                        break;
-                    case 4:
                         PVP.caseNumber++;
                         PVP.check_players();
                         break;
-                    case 5:
+                    case 4:
                         PVP.caseNumber++;
                         PVP.kill_players();
                         break;
-                    case 6:
-                        PVP.caseNumber++;
-                        break;
-                    case 7:
+                    case 5:
                         PVP.caseNumber++;
                         PVP.check_players2();
                         break;
-                    case 8:
+                    case 6:
                         PVP.caseNumber++;
                         PVP.wojny1();
                         break;
-                    case 9:
+                    case 7:
                         PVP.caseNumber++;
                         PVP.check_location();
                         break;
-                    case 10:
+                    case 8:
                         PVP.caseNumber++;
                         PVP.check2();
                         break;
-                    case 11:
+                    case 9:
                         PVP.caseNumber++;
                         PVP.check_players2();
                         break;
-                    case 12:
+
+                    case 11:
                         PVP.caseNumber = 0;
                         PVP.go();
                     default:
@@ -832,6 +826,12 @@ if (typeof GAME === 'undefined') {} else {
                 PVP.licznik = 1;
             };
             PVP.kill_players = () => {
+                GAME.loadMapJson(function() {
+                    GAME.socket.emit('ga', {
+                        a: 3,
+                        vo: GAME.map_options.vo
+                    }, 1);
+                });
                 var enemy = $("#player_list_con").find(".player button" + "[data-quick=1]" + ":not(.initial_hide_forced)");
                 if ($("#player_list_con").find("[data-option=load_more_players]").length == 1) {
                     $("#player_list_con").find("[data-option=load_more_players]").click();
@@ -1097,13 +1097,7 @@ if (typeof GAME === 'undefined') {} else {
                 if ($("#war_list .timer").length === 0 && PVP.wk) {
                     GAME.emitOrder({a:39,type:24,shorts:'Yuki'});
                 }
-                GAME.loadMapJson(function() {
-                    GAME.socket.emit('ga', {
-                        a: 3,
-                        vo: GAME.map_options.vo
-                    }, 1);
-                });
-                window.setTimeout(PVP.start, 580);
+                window.setTimeout(PVP.start, 180);
             };
             PVP.check2 = () => {
                 if (PVP.checkkkk()) {
@@ -1130,7 +1124,6 @@ if (typeof GAME === 'undefined') {} else {
                     window.setTimeout(PVP.start, PVP.wait_pvp / PVP.WSPP());
                     return;
                 }
-
                 console.log("dec wars ", PVP.war_cnt);
                 if (PVP.war_cnt > 10)
                     PVP.war_cnt = 0;
