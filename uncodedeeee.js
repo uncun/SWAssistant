@@ -755,17 +755,20 @@ if (typeof GAME === 'undefined') {} else {
                         PVP.caseNumber++;
                         PVP.check();
                         break;
-                    case 4:
+                    case 3:
                         PVP.dec_wars();
                         PVP.caseNumber++;
                         break;
-                    case 5:
+                    case 4:
                         PVP.caseNumber++;
                         PVP.check_players();
                         break;
-                    case 6:
+                    case 5:
                         PVP.caseNumber++;
                         PVP.kill_players();
+                        break;
+                    case 6:
+                        PVP.caseNumber++;
                         break;
                     case 7:
                         PVP.caseNumber++;
