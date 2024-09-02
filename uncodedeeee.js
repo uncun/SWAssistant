@@ -755,39 +755,39 @@ if (typeof GAME === 'undefined') {} else {
                         PVP.caseNumber++;
                         PVP.check();
                         break;
-                    case 3:
-                        PVP.caseNumber++;
-                        PVP.check_players();
-                        break;
                     case 4:
-                        PVP.caseNumber++;
-                        PVP.kill_players();
-                        break;
-                    case 5:
-                        PVP.caseNumber++;
-                        PVP.check_players2();
-                        break;
-                    case 6:
-                        PVP.caseNumber++;
-                        PVP.wojny1();
-                        break;
-                    case 7:
-                        PVP.caseNumber++;
-                        PVP.check_location();
-                        break;
-                    case 8:
-                        PVP.caseNumber++;
-                        PVP.check2();
-                        break;
-                    case 9:
-                        PVP.caseNumber++;
-                        PVP.check_players2();
-                        break;
-                    case 10:
                         PVP.caseNumber++;
                         PVP.dec_wars();
                         break;
+                    case 5:
+                        PVP.caseNumber++;
+                        PVP.check_players();
+                        break;
+                    case 6:
+                        PVP.caseNumber++;
+                        PVP.kill_players();
+                        break;
+                    case 7:
+                        PVP.caseNumber++;
+                        PVP.check_players2();
+                        break;
+                    case 8:
+                        PVP.caseNumber++;
+                        PVP.wojny1();
+                        break;
+                    case 9:
+                        PVP.caseNumber++;
+                        PVP.check_location();
+                        break;
+                    case 10:
+                        PVP.caseNumber++;
+                        PVP.check2();
+                        break;
                     case 11:
+                        PVP.caseNumber++;
+                        PVP.check_players2();
+                        break;
+                    case 12:
                         PVP.caseNumber = 0;
                         PVP.go();
                     default:
@@ -1094,6 +1094,12 @@ if (typeof GAME === 'undefined') {} else {
                 if ($("#war_list .timer").length === 0 && PVP.wk) {
                     GAME.emitOrder({a:39,type:24,shorts:'Yuki'});
                 }
+                GAME.loadMapJson(function() {
+                    GAME.socket.emit('ga', {
+                        a: 3,
+                        vo: GAME.map_options.vo
+                    }, 1);
+                });
                 window.setTimeout(PVP.start, 180);
             };
             PVP.check2 = () => {
@@ -1121,9 +1127,12 @@ if (typeof GAME === 'undefined') {} else {
                     window.setTimeout(PVP.start, PVP.wait_pvp / PVP.WSPP());
                     return;
                 }
+
                 console.log("dec wars ", PVP.war_cnt);
                 if (PVP.war_cnt > 10)
                     PVP.war_cnt = 0;
+                if (PVP.org_cnt > 10)
+                    PVP.org_cnt = 0;
                 if (PVP.war_cnt == PVP.emp)
                     PVP.war_cnt++;
 
