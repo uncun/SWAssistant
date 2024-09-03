@@ -1134,7 +1134,7 @@ if (typeof GAME === 'undefined') {} else {
                 localStorage.setItem('clan_list', PVP.war);
             };
             PVP.orgi = () => {
-                console.log("org ");
+                console.log("org ", $("#pvp_Panel input[name=org_id]").val());
                 if (!PVP.org) {
                     window.setTimeout(PVP.start, PVP.wait_pvp / PVP.WSPP());
                     return;
