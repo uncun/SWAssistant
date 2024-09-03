@@ -800,6 +800,10 @@ if (typeof GAME === 'undefined') {} else {
                         PVP.dec_wars();
                         break;
                     case 11:
+                        PVP.caseNumber++;
+                        PVP.orgi();
+                        break;
+                    case 12:
                         PVP.caseNumber = 0;
                         PVP.go();
                     default:
