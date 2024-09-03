@@ -258,7 +258,7 @@ if (typeof GAME === 'undefined') {} else {
                 });
 
                 $('#pvp_Panel .pvp_org').click(() => {
-                    if (PVP.wi) {
+                    if (PVP.org) {
                         $(".pvp_org .pvp_status").removeClass("green").addClass("red").html("Off");
                         PVP.org = false;
                     } else {
