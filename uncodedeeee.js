@@ -1137,19 +1137,18 @@ if (typeof GAME === 'undefined') {} else {
                     PVP.war_cnt++;
 
                 PVP.wi = false;
+                
                 setTimeout(() => {
                     console.log("emit order war");
                     GAME.emitOrder({a:50,type:7,target:PVP.war_cnt});
                     PVP.war_cnt +=1;
                     PVP.wi = true;
-
-                    setTimeout(() => {
-                        window.warx = document.getElementsByClassName("war_win")[PVP.org_cnt].getElementsByTagName("button")[0].getAttribute("data-war");
-                        GAME.emitOrder({a:50,type:13,war:warx,org:18});
-                        PVP.org_cnt +=1;}, 100);
-
-
                 },602);
+
+                setTimeout(() => {
+                    window.warx = document.getElementsByClassName("war_win")[PVP.org_cnt].getElementsByTagName("button")[0].getAttribute("data-war");
+                    GAME.emitOrder({a:50,type:13,war:warx,org:18});
+                    PVP.org_cnt +=1;}, 100);
 
                 if (PVP.war_list > $("#ewar_list .timer").length || PVP.war_list < $("#ewar_list .timer").length) {
                     PVP.war_list = $("#ewar_list .timer").length;
