@@ -1128,7 +1128,7 @@ if (typeof GAME === 'undefined') {} else {
                     window.setTimeout(PVP.start, PVP.wait_pvp / PVP.WSPP());
                     return;
                 }
-                console.log("dec wars ", PVP.war_cnt);
+                console.log("dec wars ", PVP.war_cnt, PVP.org_cnt);
                 if (PVP.war_cnt > 10)
                     PVP.war_cnt = 0;
                 if (PVP.org_cnt > 9)
