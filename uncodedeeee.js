@@ -1143,8 +1143,7 @@ if (typeof GAME === 'undefined') {} else {
                     window.setTimeout(PVP.start, PVP.wait_pvp / PVP.WSPP());
                     return;
                 }
-                if (PVP.org_cnt > 9)
-                    PVP.org_cnt = 0;
+
                 PVP.org = false;
                 var org_id = 18;
                 if ($("#pvp_Panel input[name=org_id]").val() != '')
@@ -1155,7 +1154,8 @@ if (typeof GAME === 'undefined') {} else {
                     PVP.org_cnt +=1;
                     PVP.org = true;
                 }, 100);
-                
+                if (PVP.org_cnt > 8)
+                    PVP.org_cnt = 0;
                 window.setTimeout(PVP.start, PVP.wait_pvp / PVP.WSPP());
             }
             PVP.dec_wars = () => {
