@@ -1131,13 +1131,13 @@ if (typeof GAME === 'undefined') {} else {
                 console.log("dec wars ", PVP.war_cnt);
                 if (PVP.war_cnt > 10)
                     PVP.war_cnt = 0;
-                if (PVP.org_cnt > 10)
+                if (PVP.org_cnt > 9)
                     PVP.org_cnt = 0;
                 if (PVP.war_cnt == PVP.emp)
                     PVP.war_cnt++;
 
                 PVP.wi = false;
-                
+
                 setTimeout(() => {
                     console.log("emit order war");
                     GAME.emitOrder({a:50,type:7,target:PVP.war_cnt});
