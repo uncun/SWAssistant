@@ -912,10 +912,11 @@ if (typeof GAME === 'undefined') {} else {
                     window.setTimeout(PVP.start, PVP.wait_pvp / PVP.WSPP())
                     console.log('2');
                 }else if (PVP.licznik < $("#player_list_con .player").length) {
-                    if (PVP.pvp_timeout > parseInt($("#player_list_con .player").eq(PVP.licznik).find(".timer").attr("data-end")))
+                    if (PVP.pvp_timeout < parseInt($("#player_list_con .player").eq(PVP.licznik).find(".timer").attr("data-end")))
                         PVP.pvp_timeout = parseInt($("#player_list_con .player").eq(PVP.licznik).find(".timer").attr("data-end"));
                     PVP.licznik++;
                     console.log("3 ", PVP.licznik, PVP.pvp_timeout);
+                    window.setTimeout(PVP.checkTimeout, PVP.wait_pvp / PVP.WSPP())
                 } else {
                     window.setTimeout(PVP.start, PVP.wait_pvp / PVP.WSPP());
                     PVP.licznik = 0;
