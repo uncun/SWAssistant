@@ -1035,7 +1035,7 @@ if (typeof GAME === 'undefined') {} else {
                 GAME.emitOrder({ a: 2, char_id: charId });
                 PVP.chars.shift();
 
-                window.setTimeout(PVP.start, 10000);
+                window.setTimeout(PVP.start, 5000);
             }
             PVP.go = () => {
                 var x = GAME.char_data.x;
