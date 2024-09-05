@@ -1027,7 +1027,7 @@ if (typeof GAME === 'undefined') {} else {
                 PVP.chars.shift();
 
                 if(PVP.chars.length > 0){
-                    console.log("jaja");
+                    console.log("jaja", parseInt(PVP.chars));
                     window.setTimeout(PVP.start, 1000);
                 }else{
                     console.log("dupa");
