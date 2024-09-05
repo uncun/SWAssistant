@@ -757,7 +757,7 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
                     cancelable: true,
                     view: window
                 });
-                console.log("KWA_HANDLE_SOCKETS: res.a == %s", res.a);
+                // console.log("KWA_HANDLE_SOCKETS: res.a == %s", res.a);
                 switch (res.a) {
                     case 7: //?? PvP fight result?
                         if (!this.stopped) {
@@ -832,7 +832,7 @@ if (typeof GAME === 'undefined' && extrapremium) { } else {
                             break;
                         }
                     default:
-                        console.log("KWA_HANDLE_SOCKETS: unhandeled response");
+                        // console.log("KWA_HANDLE_SOCKETS: unhandeled response");
                         break;
                 }
             }
