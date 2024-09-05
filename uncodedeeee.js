@@ -645,7 +645,8 @@ if (typeof GAME === 'undefined') {} else {
                 y: 1,
                 war: false,
                 buff_imp: false,
-                buff_clan: false
+                buff_clan: false,
+                chars:[],
             };
             PVP.checkkkk = () => {
                 let imp = $("#leader_player").find("[data-option=show_player]").attr("data-char_id");
@@ -656,6 +657,12 @@ if (typeof GAME === 'undefined') {} else {
                 let abut = $("#clan_buffs").find(`button[data-option="activate_war_buff"]`);
                 let isDisabled = $("#clan_buffs").find(`button[data-option="activate_war_buff"]`).parents("tr").hasClass("disabled");
                 PVP.emp = GAME.char_data.village_id;
+
+                for(i=0; i<GAME.player_chars; i++){
+                    char = $("li[data-option=select_char]").eq(i);
+                    PVP.chars.push(char.attr("data-char_id"));
+                }
+
                 if (GAME.quick_opts.ssj && $("#ssj_bar").css("display") === "none" && PVP.code) {
                     setTimeout(() => {
                         GAME.socket.emit('ga', {
@@ -984,8 +991,10 @@ if (typeof GAME === 'undefined') {} else {
                     window.setTimeout(PVP.start, PVP.wait_pvp / PVP.WSPP());
                     return;
                 }
-                var charId = this.charactersManager.getNextCharId();
+
+                var charId = parseInt(this.chars);
                 GAME.emitOrder({ a: 2, char_id: charId });
+                this.chars.shift();
             }
             PVP.go = () => {
                 var x = GAME.char_data.x;
