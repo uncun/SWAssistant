@@ -992,11 +992,11 @@ if (typeof GAME === 'undefined') {} else {
                     return;
                 }
 
-                var charId = parseInt(this.chars);
+                var charId = parseInt(PVP.chars);
                 GAME.emitOrder({ a: 2, char_id: charId });
-                this.chars.shift();
+                PVP.chars.shift();
 
-                if(this.chars.length > 0){
+                if(PVP.chars.length > 0){
                     window.setTimeout(PVP.start, PVP.wait_pvp / PVP.WSPP());
                 }else{
                     window.setTimeout(PVP.start, 3000);
