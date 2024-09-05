@@ -997,7 +997,7 @@ if (typeof GAME === 'undefined') {} else {
                 PVP.chars.shift();
 
                 if(PVP.chars.length > 0){
-                    window.setTimeout(PVP.start, PVP.wait_pvp / PVP.WSPP());
+                    window.setTimeout(PVP.start, 1000);
                 }else{
                     window.setTimeout(PVP.start, 3000);
                 }
