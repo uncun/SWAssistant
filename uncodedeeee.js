@@ -1144,7 +1144,6 @@ if (typeof GAME === 'undefined') {} else {
                     return;
                 }
 
-                PVP.org = false;
                 var org_id = 18;
                 if ($("#pvp_Panel input[name=org_id]").val() != '')
                     org_id = $("#pvp_Panel input[name=org_id]").val();
@@ -1152,11 +1151,10 @@ if (typeof GAME === 'undefined') {} else {
                     window.warx = document.getElementsByClassName("war_win")[PVP.org_cnt].getElementsByTagName("button")[0].getAttribute("data-war");
                     GAME.emitOrder({a:50,type:13,war:warx,org:org_id});
                     PVP.org_cnt +=1;
-                    PVP.org = true;
                 }, 100);
                 if (PVP.org_cnt > 8)
                     PVP.org_cnt = 0;
-                window.setTimeout(PVP.start, PVP.wait_pvp / PVP.WSPP());
+                window.setTimeout(PVP.start, 300);
             }
             PVP.dec_wars = () => {
                 console.log("dec wars");
