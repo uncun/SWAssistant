@@ -1026,9 +1026,8 @@ if (typeof GAME === 'undefined') {} else {
                 var charId = parseInt(PVP.chars);
                 if (PVP.start_char == charId) {
                     window.setTimeout(PVP.pvp_timeout*1000);
-                    PVP.chars.shift();
-                    return;
-                }
+                    PVP.start_char = 0;
+                } else {
                 if (PVP.start_char == 0)
                     PVP.start_char = charId;
                 GAME.emitOrder({ a: 2, char_id: charId });
@@ -1040,6 +1039,7 @@ if (typeof GAME === 'undefined') {} else {
                 }else{
                     console.log("dupa");
                     window.setTimeout(PVP.start, PVP.pvp_timeout*1000);
+                }
                 }
             }
             PVP.go = () => {
