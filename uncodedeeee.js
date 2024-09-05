@@ -905,9 +905,7 @@ if (typeof GAME === 'undefined') {} else {
             };
             PVP.checkTimeout = () => {
                 var charId = parseInt(PVP.chars);
-                if (PVP.start_char != charId) {
-                    window.setTimeout(PVP.start, PVP.wait_pvp / PVP.WSPP());
-                } else {
+        
                     var enemy = $("#player_list_con").find(".player button" + "[data-quick=1]" + ".initial_hide_forced");
                     if ($("#player_list_con").find("[data-option=load_more_players]").length == 1) {
                         $("#player_list_con").find("[data-option=load_more_players]").click();
@@ -927,7 +925,7 @@ if (typeof GAME === 'undefined') {} else {
                         PVP.licznik = 0;
                         kom_clear();
                     }
-                }
+                
             }
             PVP.kill_players1 = () => {
                 if (!JQS.chm.is(":focus")) {
@@ -1033,9 +1031,9 @@ if (typeof GAME === 'undefined') {} else {
                     GAME.emitOrder({ a: 2, char_id: charId });
                     if (PVP.pvp_timeout < GAME.getTime()) {
                         window.setTimeout(PVP.start, 200);
-                        PVP.start_char = 0;
                         return;
                     }
+                    PVP.start_char = 0;
                 } else {
                 if (PVP.start_char == 0)
                     PVP.start_char = charId;
