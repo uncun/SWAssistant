@@ -281,8 +281,13 @@ if (typeof GAME === 'undefined') {} else {
                     if (PVP.zmieniaj) {
                         $(".pvp_zmieniaj .pvp_status").removeClass("green").addClass("red").html("Off");
                         PVP.zmieniaj = false;
+                        PVP.chars = [];
                     } else {
                         $(".pvp_zmieniaj .pvp_status").removeClass("red").addClass("green").html("On");
+                        for(i=0; i<GAME.player_chars; i++){
+                            char = $("li[data-option=select_char]").eq(i);
+                            PVP.chars.push(char.attr("data-char_id"));
+                        }
                         PVP.zmieniaj = true;
                     }
                 });
@@ -659,11 +664,6 @@ if (typeof GAME === 'undefined') {} else {
                 let abut = $("#clan_buffs").find(`button[data-option="activate_war_buff"]`);
                 let isDisabled = $("#clan_buffs").find(`button[data-option="activate_war_buff"]`).parents("tr").hasClass("disabled");
                 PVP.emp = GAME.char_data.village_id;
-
-                for(i=0; i<GAME.player_chars; i++){
-                    char = $("li[data-option=select_char]").eq(i);
-                    PVP.chars.push(char.attr("data-char_id"));
-                }
 
                 if (GAME.quick_opts.ssj && $("#ssj_bar").css("display") === "none" && PVP.code) {
                     setTimeout(() => {
