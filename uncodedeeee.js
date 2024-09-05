@@ -903,7 +903,7 @@ if (typeof GAME === 'undefined') {} else {
                 } 
             };
             PVP.checkTimeout = () => {
-                var enemy = $("#player_list_con").find(".player button" + "[data-quick=1]" + "(.initial_hide_forced)");
+                var enemy = $("#player_list_con").find(".player button" + "[data-quick=1]" + ".initial_hide_forced");
                 if ($("#player_list_con").find("[data-option=load_more_players]").length == 1) {
                     $("#player_list_con").find("[data-option=load_more_players]").click();
                     window.setTimeout(PVP.checkTimeout, PVP.czekajpvp / PVP.WSPP());
