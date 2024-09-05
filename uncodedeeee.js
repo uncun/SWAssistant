@@ -905,7 +905,7 @@ if (typeof GAME === 'undefined') {} else {
             };
             PVP.checkTimeout = () => {
 
-                if (PVP.start_char !=0) {
+                if (PVP.start_char !=0 || PVP.start_char-1 !=0) {
                     window.setTimeout(PVP.start, PVP.wait_pvp / PVP.WSPP());
                     return;
                 }
