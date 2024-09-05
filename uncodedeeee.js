@@ -1025,7 +1025,8 @@ if (typeof GAME === 'undefined') {} else {
 
                 var charId = parseInt(PVP.chars);
                 if (PVP.start_char == charId) {
-                    window.setTimeout(PVP.pvp_timeout*1000);
+                    GAME.emitOrder({ a: 2, char_id: charId });
+                    window.setTimeout((GAME.getTime-PVP.pvp_timeout)*1000);
                     PVP.start_char = 0;
                 } else {
                 if (PVP.start_char == 0)
