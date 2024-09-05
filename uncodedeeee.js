@@ -909,7 +909,6 @@ if (typeof GAME === 'undefined') {} else {
                     window.setTimeout(PVP.start, PVP.wait_pvp / PVP.WSPP());
                     return;
                 }
-                var charId = parseInt(PVP.chars);
         
                     var enemy = $("#player_list_con").find(".player button" + "[data-quick=1]" + ".initial_hide_forced");
                     if ($("#player_list_con").find("[data-option=load_more_players]").length == 1) {
@@ -1030,10 +1029,15 @@ if (typeof GAME === 'undefined') {} else {
                     window.setTimeout(PVP.start, PVP.wait_pvp / PVP.WSPP());
                     return;
                 }
-
-                var charId = parseInt(PVP.chars);
+                if (PVP.start_char == PVP.chars.length - 1) {
+                    PVP.start_char = 0;
+                    var charId = parseInt(PVP.chars[0]);
+                    GAME.emitOrder({ a: 2, char_id: charId });
+                    window.setTimeout(PVP.start, (PVP.pvp_timeout-GAME.getTime() * 1000));
+                    return;
+                }
+                var charId = parseInt(PVP.chars[PVP.start_char++]);
                 GAME.emitOrder({ a: 2, char_id: charId });
-                PVP.chars.shift();
 
                 window.setTimeout(PVP.start, 5000);
             }
