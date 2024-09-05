@@ -904,24 +904,29 @@ if (typeof GAME === 'undefined') {} else {
                 } 
             };
             PVP.checkTimeout = () => {
-                var enemy = $("#player_list_con").find(".player button" + "[data-quick=1]" + ".initial_hide_forced");
-                if ($("#player_list_con").find("[data-option=load_more_players]").length == 1) {
-                    $("#player_list_con").find("[data-option=load_more_players]").click();
-                    console.log("1");
-                    window.setTimeout(PVP.checkTimeout, PVP.czekajpvp / PVP.WSPP());
-                }else if (enemy.length == 0) {
-                    window.setTimeout(PVP.start, PVP.wait_pvp / PVP.WSPP())
-                    console.log('2');
-                }else if (PVP.licznik < $("#player_list_con .player").length) {
-                    if (PVP.pvp_timeout < parseInt($("#player_list_con .player").eq(PVP.licznik).find(".timer").attr("data-end")))
-                        PVP.pvp_timeout = parseInt($("#player_list_con .player").eq(PVP.licznik).find(".timer").attr("data-end"));
-                    PVP.licznik++;
-                    console.log("3 ", PVP.licznik, PVP.pvp_timeout);
-                    window.setTimeout(PVP.checkTimeout, PVP.wait_pvp / PVP.WSPP())
-                } else {
+                var charId = parseInt(PVP.chars);
+                if (PVP.start_char != charId) {
                     window.setTimeout(PVP.start, PVP.wait_pvp / PVP.WSPP());
-                    PVP.licznik = 0;
-                    kom_clear();
+                } else {
+                    var enemy = $("#player_list_con").find(".player button" + "[data-quick=1]" + ".initial_hide_forced");
+                    if ($("#player_list_con").find("[data-option=load_more_players]").length == 1) {
+                        $("#player_list_con").find("[data-option=load_more_players]").click();
+                        console.log("1");
+                        window.setTimeout(PVP.checkTimeout, PVP.czekajpvp / PVP.WSPP());
+                    }else if (enemy.length == 0) {
+                        window.setTimeout(PVP.start, PVP.wait_pvp / PVP.WSPP())
+                        console.log('2');
+                    }else if (PVP.licznik < $("#player_list_con .player").length) {
+                        if (PVP.pvp_timeout < parseInt($("#player_list_con .player").eq(PVP.licznik).find(".timer").attr("data-end")))
+                            PVP.pvp_timeout = parseInt($("#player_list_con .player").eq(PVP.licznik).find(".timer").attr("data-end"));
+                        PVP.licznik++;
+                        console.log("3 ", PVP.licznik, PVP.pvp_timeout);
+                        window.setTimeout(PVP.checkTimeout, PVP.wait_pvp / PVP.WSPP())
+                    } else {
+                        window.setTimeout(PVP.start, PVP.wait_pvp / PVP.WSPP());
+                        PVP.licznik = 0;
+                        kom_clear();
+                    }
                 }
             }
             PVP.kill_players1 = () => {
