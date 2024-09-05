@@ -1031,7 +1031,7 @@ if (typeof GAME === 'undefined') {} else {
                 }
                 console.log("PVP ", PVP.start_char, PVP.chars.length)
                 if (PVP.start_char == PVP.chars.length) {
-                    PVP.start_char = 0;
+                    
                     console.log("PVP ", PVP.start_char, ((PVP.pvp_timeout-GAME.getTime()) * 1000))
                     var charId = parseInt(PVP.chars[0]);
                     GAME.emitOrder({ a: 2, char_id: charId });
@@ -1039,6 +1039,7 @@ if (typeof GAME === 'undefined') {} else {
                         window.setTimeout(PVP.start, 1000);
                         return;
                     }
+                    PVP.start_char = 0;
                 }
                 var charId = parseInt(PVP.chars[PVP.start_char++]);
                 GAME.emitOrder({ a: 2, char_id: charId });
