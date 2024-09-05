@@ -904,6 +904,11 @@ if (typeof GAME === 'undefined') {} else {
                 } 
             };
             PVP.checkTimeout = () => {
+
+                if (!PVP.zmieniaj) {
+                    window.setTimeout(PVP.start, PVP.wait_pvp / PVP.WSPP());
+                    return;
+                }
                 var charId = parseInt(PVP.chars);
         
                     var enemy = $("#player_list_con").find(".player button" + "[data-quick=1]" + ".initial_hide_forced");
