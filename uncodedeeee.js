@@ -878,6 +878,7 @@ if (typeof GAME === 'undefined') {} else {
                             char_id: $("#player_list_con .player").eq(PVP.licznik).find("[data-quick=1]").attr("data-char_id"),
                             quick: 1
                         });
+                        console.log("kill ", $("#player_list_con .player").eq(PVP.licznik).find("[data-quick=1]").attr("data-char_id"));
                         PVP.licznik++;
                         window.setTimeout(PVP.kill_players, PVP.czekajpvp / PVP.WSPP());
                     } else {
@@ -886,6 +887,7 @@ if (typeof GAME === 'undefined') {} else {
                             char_id: $("#player_list_con .player").eq(PVP.licznik).find("[data-quick=1]").attr("data-char_id"),
                             quick: 1
                         });
+                        console.log("kill ", $("#player_list_con .player").eq(PVP.licznik).find("[data-quick=1]").attr("data-char_id"));
                         PVP.licznik++;
                         window.setTimeout(PVP.kill_players, PVP.czekajpvp / PVP.WSPP());
                     }
@@ -914,7 +916,9 @@ if (typeof GAME === 'undefined') {} else {
                     } else if (enemy.length > 0) {
                         enemy.eq(0).click();
                         window.setTimeout(PVP.kill_players1, 110);
+                        console.log("zabijanie ", enemy.length);
                     } else {
+                        console.log("koniec wroguw", enemy.length);
                         kom_clear();
                     }
                 }
