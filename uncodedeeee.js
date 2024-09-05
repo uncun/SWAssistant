@@ -1034,7 +1034,7 @@ if (typeof GAME === 'undefined') {} else {
                 var charId = parseInt(PVP.chars);
                 if (PVP.start_char == charId) {
                     GAME.emitOrder({ a: 2, char_id: charId });
-                    if (PVP.pvp_timeout < GAME.getTime()) {
+                    if (PVP.pvp_timeout > GAME.getTime()) {
                         window.setTimeout(PVP.start, 200);
                         return;
                     }
