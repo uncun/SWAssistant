@@ -647,6 +647,7 @@ if (typeof GAME === 'undefined') {} else {
                 buff_imp: false,
                 buff_clan: false,
                 chars:[],
+                start_char:0,
                 pvp_timeout:0,
             };
             PVP.checkkkk = () => {
@@ -1023,12 +1024,19 @@ if (typeof GAME === 'undefined') {} else {
                 }
 
                 var charId = parseInt(PVP.chars);
+                if (PVP.start_char == charId) {
+                    window.setTimeout(PVP.pvp_timeout*1000);
+                    PVP.chars.shift();
+                    return;
+                }
+                if (PVP.start_char == 0)
+                    PVP.start_char = charId;
                 GAME.emitOrder({ a: 2, char_id: charId });
                 PVP.chars.shift();
 
                 if(PVP.chars.length > 0){
                     console.log("jaja", parseInt(PVP.chars));
-                    window.setTimeout(PVP.start, 1000);
+                    window.setTimeout(PVP.start, 2000);
                 }else{
                     console.log("dupa");
                     window.setTimeout(PVP.start, PVP.pvp_timeout*1000);
