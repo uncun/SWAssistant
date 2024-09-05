@@ -1030,9 +1030,9 @@ if (typeof GAME === 'undefined') {} else {
 
                 var charId = parseInt(PVP.chars);
                 if (PVP.start_char == charId) {
-                    console.log("jaja1", parseInt(PVP.chars));
                     GAME.emitOrder({ a: 2, char_id: charId });
-                    window.setTimeout((GAME.getTime-PVP.pvp_timeout)*1000);
+                    window.setTimeout((GAME.getTime()-PVP.pvp_timeout)*1000);
+                    console.log("next action in", parseInt(PVP.chars));
                     PVP.start_char = 0;
                 } else {
                 if (PVP.start_char == 0)
