@@ -1032,27 +1032,10 @@ if (typeof GAME === 'undefined') {} else {
                 }
 
                 var charId = parseInt(PVP.chars);
-                if (PVP.start_char == charId) {
-                    GAME.emitOrder({ a: 2, char_id: charId });
-                    if (PVP.pvp_timeout > GAME.getTime()) {
-                        window.setTimeout(PVP.start, 200);
-                        return;
-                    }
-                    PVP.start_char = 0;
-                } else {
-                if (PVP.start_char == 0)
-                    PVP.start_char = charId;
                 GAME.emitOrder({ a: 2, char_id: charId });
                 PVP.chars.shift();
 
-                if(PVP.chars.length > 0){
-                    console.log("jaja", parseInt(PVP.chars));
-                    window.setTimeout(PVP.start, 2000);
-                }else{
-                    console.log("dupa");
-                    window.setTimeout(PVP.start, PVP.pvp_timeout*1000);
-                }
-                }
+                window.setTimeout(PVP.start, 10000);
             }
             PVP.go = () => {
                 var x = GAME.char_data.x;
