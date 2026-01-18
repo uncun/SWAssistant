@@ -1,6 +1,6 @@
 {
   "name": "SW Assistant",
-  "description": "Test",
+  "description": "Shinobiworld Assistant - Extension to enhance user experience on Shinobiworld.pl",
   "version": "1.0.0",
   "manifest_version": 3,
   "permissions": [
