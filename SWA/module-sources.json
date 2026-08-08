@@ -1,0 +1,28 @@
+{
+  "modules": [
+    {
+      "id": "characters-manager",
+      "path": "game-scripts/characters-manager.js"
+    },
+    {
+      "id": "ball-exp",
+      "path": "game-scripts/ball-exp.js"
+    },
+    {
+      "id": "ball-upgrade",
+      "path": "game-scripts/ball-upgrade.js"
+    },
+    {
+      "id": "ball-reset",
+      "path": "game-scripts/ball-reset.js"
+    },
+    {
+      "id": "ball-manager",
+      "path": "game-scripts/ball-manager.js"
+    },
+    {
+      "id": "assistant-core",
+      "path": "game-scripts/assistant-core.js"
+    }
+  ]
+}

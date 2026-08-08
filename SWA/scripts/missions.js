@@ -1,0 +1,671 @@
+
+(function () {
+if (window.__SWA_MISSIONS_ENGINE_RUNNING__) return;
+window.__SWA_MISSIONS_ENGINE_RUNNING__ = true;
+
+(function(definition) {
+  /* global define */
+  if (typeof module === 'object' && typeof module.exports === 'object') {
+    module.exports = definition();
+  } else if (typeof define === 'function' && define.amd) {
+    define([], definition);
+  } else {
+    var exports = definition();
+    window.astar = exports.astar;
+    window.Graph = exports.Graph;
+  }
+})(function() {
+
+function pathTo(node) {
+  var curr = node;
+  var path = [];
+  while (curr.parent) {
+    path.unshift(curr);
+    curr = curr.parent;
+  }
+  return path;
+}
+
+function getHeap() {
+  return new BinaryHeap(function(node) {
+    return node.f;
+  });
+}
+
+var astar = {
+  /**
+  * Perform an A* Search on a graph given a start and end node.
+  * @param {Graph} graph
+  * @param {GridNode} start
+  * @param {GridNode} end
+  * @param {Object} [options]
+  * @param {bool} [options.closest] Specifies whether to return the
+             path to the closest node if the target is unreachable.
+  * @param {Function} [options.heuristic] Heuristic function (see
+  *          astar.heuristics).
+  */
+  search: function(graph, start, end, options) {
+    graph.cleanDirty();
+    options = options || {};
+    var heuristic = options.heuristic || astar.heuristics.manhattan;
+    var closest = options.closest || false;
+
+    var openHeap = getHeap();
+    var closestNode = start; // set the start node to be the closest if required
+
+    start.h = heuristic(start, end);
+    graph.markDirty(start);
+
+    openHeap.push(start);
+
+    while (openHeap.size() > 0) {
+
+      // Grab the lowest f(x) to process next.  Heap keeps this sorted for us.
+      var currentNode = openHeap.pop();
+
+      if (currentNode === end) {
+        return pathTo(currentNode);
+      }
+
+      currentNode.closed = true;
+
+      var neighbors = graph.neighbors(currentNode);
+
+      for (var i = 0, il = neighbors.length; i < il; ++i) {
+        var neighbor = neighbors[i];
+
+        if (neighbor.closed || neighbor.isWall()) {
+          continue;
+        }
+
+        var gScore = currentNode.g + neighbor.getCost(currentNode);
+        var beenVisited = neighbor.visited;
+
+        if (!beenVisited || gScore < neighbor.g) {
+
+          neighbor.visited = true;
+          neighbor.parent = currentNode;
+          neighbor.h = neighbor.h || heuristic(neighbor, end);
+          neighbor.g = gScore;
+          neighbor.f = neighbor.g + neighbor.h;
+          graph.markDirty(neighbor);
+          if (closest) {
+            if (neighbor.h < closestNode.h || (neighbor.h === closestNode.h && neighbor.g < closestNode.g)) {
+              closestNode = neighbor;
+            }
+          }
+
+          if (!beenVisited) {
+            openHeap.push(neighbor);
+          } else {
+            openHeap.rescoreElement(neighbor);
+          }
+        }
+      }
+    }
+
+    if (closest) {
+      return pathTo(closestNode);
+    }
+
+    return [];
+  },
+  // See list of heuristics: http://theory.stanford.edu/~amitp/GameProgramming/Heuristics.html
+  heuristics: {
+    manhattan: function(pos0, pos1) {
+      var d1 = Math.abs(pos1.x - pos0.x);
+      var d2 = Math.abs(pos1.y - pos0.y);
+      return d1 + d2;
+    },
+    diagonal: function(pos0, pos1) {
+      var D = 1;
+      var D2 = Math.sqrt(2);
+      var d1 = Math.abs(pos1.x - pos0.x);
+      var d2 = Math.abs(pos1.y - pos0.y);
+      return (D * (d1 + d2)) + ((D2 - (2 * D)) * Math.min(d1, d2));
+    }
+  },
+  cleanNode: function(node) {
+    node.f = 0;
+    node.g = 0;
+    node.h = 0;
+    node.visited = false;
+    node.closed = false;
+    node.parent = null;
+  }
+};
+
+/**
+ * A graph memory structure
+ * @param {Array} gridIn 2D array of input weights
+ * @param {Object} [options]
+ * @param {bool} [options.diagonal] Specifies whether diagonal moves are allowed
+ */
+function Graph(gridIn, options) {
+  options = options || {};
+  this.nodes = [];
+  this.diagonal = !!options.diagonal;
+  this.grid = [];
+  for (var x = 0; x < gridIn.length; x++) {
+    this.grid[x] = [];
+
+    for (var y = 0, row = gridIn[x]; y < row.length; y++) {
+      var node = new GridNode(x, y, row[y]);
+      this.grid[x][y] = node;
+      this.nodes.push(node);
+    }
+  }
+  this.init();
+}
+
+Graph.prototype.init = function() {
+  this.dirtyNodes = [];
+  for (var i = 0; i < this.nodes.length; i++) {
+    astar.cleanNode(this.nodes[i]);
+  }
+};
+
+Graph.prototype.cleanDirty = function() {
+  for (var i = 0; i < this.dirtyNodes.length; i++) {
+    astar.cleanNode(this.dirtyNodes[i]);
+  }
+  this.dirtyNodes = [];
+};
+
+Graph.prototype.markDirty = function(node) {
+  this.dirtyNodes.push(node);
+};
+
+Graph.prototype.neighbors = function(node) {
+  var ret = [];
+  var x = node.x;
+  var y = node.y;
+  var grid = this.grid;
+
+  // West
+  if (grid[x - 1] && grid[x - 1][y]) {
+    ret.push(grid[x - 1][y]);
+  }
+
+  // East
+  if (grid[x + 1] && grid[x + 1][y]) {
+    ret.push(grid[x + 1][y]);
+  }
+
+  // South
+  if (grid[x] && grid[x][y - 1]) {
+    ret.push(grid[x][y - 1]);
+  }
+
+  // North
+  if (grid[x] && grid[x][y + 1]) {
+    ret.push(grid[x][y + 1]);
+  }
+
+  if (this.diagonal) {
+    // Southwest
+    if (grid[x - 1] && grid[x - 1][y - 1]) {
+      ret.push(grid[x - 1][y - 1]);
+    }
+
+    // Southeast
+    if (grid[x + 1] && grid[x + 1][y - 1]) {
+      ret.push(grid[x + 1][y - 1]);
+    }
+
+    // Northwest
+    if (grid[x - 1] && grid[x - 1][y + 1]) {
+      ret.push(grid[x - 1][y + 1]);
+    }
+
+    // Northeast
+    if (grid[x + 1] && grid[x + 1][y + 1]) {
+      ret.push(grid[x + 1][y + 1]);
+    }
+  }
+
+  return ret;
+};
+
+Graph.prototype.toString = function() {
+  var graphString = [];
+  var nodes = this.grid;
+  for (var x = 0; x < nodes.length; x++) {
+    var rowDebug = [];
+    var row = nodes[x];
+    for (var y = 0; y < row.length; y++) {
+      rowDebug.push(row[y].weight);
+    }
+    graphString.push(rowDebug.join(" "));
+  }
+  return graphString.join("\n");
+};
+
+function GridNode(x, y, weight) {
+  this.x = x;
+  this.y = y;
+  this.weight = weight;
+}
+
+GridNode.prototype.toString = function() {
+  return "[" + this.x + " " + this.y + "]";
+};
+
+GridNode.prototype.getCost = function(fromNeighbor) {
+  // Take diagonal weight into consideration.
+  if (fromNeighbor && fromNeighbor.x != this.x && fromNeighbor.y != this.y) {
+    return this.weight * 1.41421;
+  }
+  return this.weight;
+};
+
+GridNode.prototype.isWall = function() {
+  return this.weight === 0;
+};
+
+function BinaryHeap(scoreFunction) {
+  this.content = [];
+  this.scoreFunction = scoreFunction;
+}
+
+BinaryHeap.prototype = {
+  push: function(element) {
+    this.content.push(element);
+    this.sinkDown(this.content.length - 1);
+  },
+  pop: function() {
+    var result = this.content[0];
+    var end = this.content.pop();
+    if (this.content.length > 0) {
+      this.content[0] = end;
+      this.bubbleUp(0);
+    }
+    return result;
+  },
+  remove: function(node) {
+    var i = this.content.indexOf(node);
+
+    var end = this.content.pop();
+
+    if (i !== this.content.length - 1) {
+      this.content[i] = end;
+
+      if (this.scoreFunction(end) < this.scoreFunction(node)) {
+        this.sinkDown(i);
+      } else {
+        this.bubbleUp(i);
+      }
+    }
+  },
+  size: function() {
+    return this.content.length;
+  },
+  rescoreElement: function(node) {
+    this.sinkDown(this.content.indexOf(node));
+  },
+  sinkDown: function(n) {
+    var element = this.content[n];
+
+    while (n > 0) {
+
+      var parentN = ((n + 1) >> 1) - 1;
+      var parent = this.content[parentN];
+      if (this.scoreFunction(element) < this.scoreFunction(parent)) {
+        this.content[parentN] = element;
+        this.content[n] = parent;
+        n = parentN;
+      }
+      else {
+        break;
+      }
+    }
+  },
+  bubbleUp: function(n) {
+    var length = this.content.length;
+    var element = this.content[n];
+    var elemScore = this.scoreFunction(element);
+
+    // eslint-disable-next-line no-constant-condition
+    while (true) {
+      var child2N = (n + 1) << 1;
+      var child1N = child2N - 1;
+      var swap = null;
+      var child1Score;
+      if (child1N < length) {
+        var child1 = this.content[child1N];
+        child1Score = this.scoreFunction(child1);
+
+        if (child1Score < elemScore) {
+          swap = child1N;
+        }
+      }
+
+      if (child2N < length) {
+        var child2 = this.content[child2N];
+        var child2Score = this.scoreFunction(child2);
+        if (child2Score < (swap === null ? elemScore : child1Score)) {
+          swap = child2N;
+        }
+      }
+
+      if (swap !== null) {
+        this.content[n] = this.content[swap];
+        this.content[swap] = element;
+        n = swap;
+      }
+      else {
+        break;
+      }
+    }
+  }
+};
+
+return {
+  astar: astar,
+  Graph: Graph
+};
+
+});
+
+function check_X(){
+	return GAME.map_players[GAME.char_data.id].x;
+}
+function check_y(){
+	return GAME.map_players[GAME.char_data.id].y;
+}
+
+var missionsCount = [];
+var missionsRanks = [];
+var z = 0;
+var grid = [];
+var x = 0;
+var y = 0;
+var graph;
+var end;
+var result;
+var moveCounter = 0;
+var wait = 200;
+var whatNow = 0;
+var missionTime = 0;
+var waiting = false;
+var tpVerifyTries = 0;
+var MOVE_TICK = 25;
+var MOVE_MAX_WAIT = 1000;
+var moving = false;
+var moveLastFrom = null;
+var moveWaitStart = 0;     
+
+function loadEnabledMissionRanks() {
+	try {
+		return JSON.parse(localStorage.getItem('swa_mission_ranks')) || {};
+	} catch (e) {
+		return {};
+	}
+}
+
+function isMissionsOn() {
+	return !$(".misje_main .misje_status").hasClass("red");
+}
+
+function isRankEnabled(rank) {
+	if (!rank) return false;
+	var enabled = loadEnabledMissionRanks();
+	if (!(rank in enabled)) return true;
+	return !!enabled[rank];
+}
+
+function publishAvailableRanks() {
+	var availableRanks = missionsRanks.filter(function (rank, idx) {
+		return rank && missionsCount[idx] > 0;
+	});
+	localStorage.setItem('swa_mission_available_ranks', JSON.stringify(availableRanks));
+	window.dispatchEvent(new CustomEvent('swa-missions-ranks', { detail: availableRanks }));
+}
+
+function start(){
+	if (!isMissionsOn()) {
+		window.setTimeout(start, wait);
+		return;
+	}
+	if(!GAME.is_loading && !waiting){
+		action();
+	}
+	window.setTimeout(start,wait);
+}
+
+function action(){
+	switch (whatNow) {
+		case 0:
+			whatNow++;
+			clickMissionPage();
+			break;
+		case 1:
+			whatNow++;
+			getMissionCount();
+			break;
+		case 2:
+			getMissionStartId();
+			break;
+		case 3:
+			whatNow++;
+			initialiseMission();
+			break;
+		case 4:
+			whatNow++;
+			tpToLocation();
+			break;
+		case 5:
+			verifyTpAndPath();
+			break;
+		case 6:
+			moveToMissionLocation();
+			break;
+		case 7:
+			whatNow++;
+			acceptMission();
+			break;
+		case 8:
+			waitForMissionEnd();
+			break;
+		default:
+
+	}
+}
+
+function clickMissionPage() {
+	$('[data-page="game_camp"]').click();
+	waiting = true;
+	window.setTimeout(function () { waiting = false; }, 800);
+}
+
+function getMissionCount() {
+	missionsCount = [];
+	missionsRanks = [];
+
+	for(var r = 1; r <= 5; r++) {
+		let cnt = parseInt(GAME.char_data['a_' + r]) || 0;
+		missionsRanks[r - 1] = LNG['ninja_class' + r];
+		missionsCount[r - 1] = cnt;
+	}
+
+	publishAvailableRanks();
+}
+
+function getMissionStartId() {
+	while (z < missionsCount.length && (missionsCount[z] === 0 || !isRankEnabled(missionsRanks[z]))) {
+		z++;
+	}
+
+	if (z < missionsCount.length) {
+		whatNow++;
+		return;
+	}
+
+	z = 0;
+	whatNow = 0;
+	$(".misje_main .misje_status").removeClass("green").addClass("red").html("Off");
+}
+
+function initialiseMission() {
+	if(jQuery('#sel_miss_loc').html().includes("Podziemne")) {
+		GAME.emitOrder({
+			a: 207,
+			type: 2
+		});
+		whatNow = 2;
+		jQuery('#sel_miss_loc').html("<i class=\"upgrade_icon tpp\"></i>aaa");
+	} else {
+		GAME.emitOrder({
+			a: 207,
+			type: 1,
+			rank: z + 1
+		});
+	}
+}
+
+function tpToLocation() {
+	$('#sel_miss_loc').click();
+}
+
+function verifyTpAndPath() {
+	if (GAME.current_mission && GAME.char_data.loc == GAME.current_mission.loc) {
+		tpVerifyTries = 0;
+		whatNow++;
+		getPathToMissionLocation();
+		return;
+	}
+	if (tpVerifyTries < 3) {
+		tpVerifyTries++;
+		return;
+	}
+	tpVerifyTries = 0;
+	GAME.emitOrder({ a: 207, type: 2 });
+	whatNow = 2;
+}
+
+function getPathToMissionLocation() {
+	x = GAME.current_loc.x_max;
+	y = GAME.current_loc.y_max;
+
+	for(let i = 0; i < x; i++) {
+		grid[i] = [];
+	}
+
+	for(var i = 1; i < x; i++) {
+		for(var j = 1; j < y; j++) {
+			grid[i][j] = GAME.mapcell[i + '_' + j].m;
+		}
+	}
+
+	graph = new Graph(grid, { diagonal: true });
+
+	var startFrom = graph.grid[check_X()][check_y()];
+	end = graph.grid[GAME.current_mission.x][GAME.current_mission.y];
+	result = astar.search(graph, startFrom, end);
+	
+	var tmp = jQuery('#sel_miss_time').html();
+	var a = tmp.split(':');
+
+	missionTime = ((+a[0]) * 60 * 60 + (+a[1]) * 60 + (+a[2])) * 1000; 
+	
+	if(missionTime === 0) {
+		missionTime = 60000;
+	}
+}
+
+function dirFromDelta(dx, dy) {
+	if (dx === 0 && dy > 0) return 1; // dol
+	if (dx === 0 && dy < 0) return 2; // gora
+	if (dx > 0 && dy === 0) return 7; // prawo
+	if (dx < 0 && dy === 0) return 8; // lewo
+	if (dx < 0 && dy < 0) return 6;   // lewo-gora
+	if (dx > 0 && dy < 0) return 5;   // prawo-gora
+	if (dx < 0 && dy > 0) return 4;   // lewo-dol
+	if (dx > 0 && dy > 0) return 3;   // prawo-dol
+	return 0;
+}
+
+
+function moveToMissionLocation() {
+	if (moving) return;
+	moving = true;
+	waiting = true;
+	moveLastFrom = null;
+	moveStep();
+}
+
+function finishMoving(nextState) {
+	moving = false;
+	waiting = false;
+	moveLastFrom = null;
+	moveCounter = 0;
+	whatNow = nextState;
+}
+
+function moveStep() {
+	if (!moving) return;
+	if (!isMissionsOn()) { finishMoving(5); return; }
+
+	if (GAME.is_loading) {
+		moveWaitStart = Date.now();
+		window.setTimeout(moveStep, MOVE_TICK);
+		return;
+	}
+
+	var cx = check_X();
+	var cy = check_y();
+
+	if (moveLastFrom && moveLastFrom.x === cx && moveLastFrom.y === cy) {
+		if (Date.now() - moveWaitStart > MOVE_MAX_WAIT) {
+			finishMoving(5); 
+			return;
+		}
+		window.setTimeout(moveStep, MOVE_TICK);
+		return;
+	}
+	moveLastFrom = null;
+
+	while (moveCounter < result.length &&
+		result[moveCounter].x === cx && result[moveCounter].y === cy) {
+		moveCounter++;
+	}
+	if (moveCounter >= result.length) {
+		finishMoving(7);
+		return;
+	}
+
+	var target = result[moveCounter];
+	var dx = target.x - cx;
+	var dy = target.y - cy;
+
+	if (Math.abs(dx) <= 1 && Math.abs(dy) <= 1) {
+		GAME.map_move(dirFromDelta(dx, dy));
+		moveLastFrom = { x: cx, y: cy };
+		moveWaitStart = Date.now();
+		window.setTimeout(moveStep, MOVE_TICK);
+	} else {
+		finishMoving(5);
+	}
+}
+
+function acceptMission() {
+	GAME.emitOrder({
+		a: 207,
+		type: 3
+	});
+}
+
+function waitForMissionEnd() {
+	waiting = true;
+	window.setTimeout(function(){
+		whatNow = 0;
+		waiting = false;
+		window.dispatchEvent(new CustomEvent('swa-mission-completed'));
+	},missionTime + 5000);
+}
+
+
+
+
+start();
+})();
