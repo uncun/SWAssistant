@@ -5,7 +5,7 @@ var loadGithubScript = function (path, loadedFlagName, onSuccess) {
         return;
     }
     var branch = window.__SWA_BRANCH__ || 'main';
-    var url = 'https://raw.githubusercontent.com/SWAssistant1/SWAssistant/' + branch + '/' + path + '?t=' + Date.now();
+    var url = 'https://raw.githubusercontent.com/uncun/SWAssistant/' + branch + '/' + path + '?t=' + Date.now();
     $.get(url, function (code) {
         window[loadedFlagName] = true;
         var script = document.createElement('script');

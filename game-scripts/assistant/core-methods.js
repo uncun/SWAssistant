@@ -394,7 +394,7 @@ Assistant.prototype.bindClickHandlers = function () {
     $("body").on("click", ".qlink.load_afo", () => {
         if (typeof this.afo_is_loaded == 'undefined') {
             this.afo_is_loaded = true;
-            $.get("https://raw.githubusercontent.com/SWAssistant1/SWAssistant/" + (window.__SWA_BRANCH__ || 'main') + "/game-scripts/afo-panel.js?t=" + Date.now(), (data) => {
+            $.get("https://raw.githubusercontent.com/uncun/SWAssistant/" + (window.__SWA_BRANCH__ || 'main') + "/game-scripts/afo-panel.js?t=" + Date.now(), (data) => {
                 $("body").append(`<script>${data}</script>`);
                 GAME.komunikat("załadowano afo!");
             }).fail(() => {

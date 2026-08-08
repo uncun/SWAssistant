@@ -18,7 +18,7 @@
 
   function buildModuleUrl(moduleConfig) {
     if (moduleConfig.url) return moduleConfig.url; // backwards compatibility
-    return 'https://raw.githubusercontent.com/SWAssistant1/SWAssistant/' + branch + '/' + moduleConfig.path;
+    return 'https://raw.githubusercontent.com/uncun/SWAssistant/' + branch + '/' + moduleConfig.path;
   }
 
   function injectModuleCode(moduleId, code) {

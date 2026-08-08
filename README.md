@@ -35,7 +35,7 @@ A Chrome extension designed for educational purposes to interact with the Shinob
 
 1. Clone or download this repository:
    ```bash
-   git clone https://github.com/SWAssistant1/SWAssistant.git
+   git clone https://github.com/uncun/SWAssistant.git
    ```
 2. Open Google Chrome and navigate to `chrome://extensions/`.
 3. Enable **Developer mode** by toggling the switch in the top-right corner.
