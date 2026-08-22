@@ -1,0 +1,35 @@
+{
+  "manifest_version": 3,
+  "name": "Best Kage BOT",
+  "version": "1.0",
+  "description": "BOT do SW.",
+  "icons": {
+    "16": "ico.png",
+    "32": "ico.png",
+    "48": "ico.png",
+    "128": "ico.png"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.shinobiworld.pl/*",
+        "*://shinobiworld.pl/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "run_at": "document_end"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "loader.js"
+      ],
+      "matches": [
+        "*://*.shinobiworld.pl/*",
+        "*://shinobiworld.pl/*"
+      ]
+    }
+  ]
+}
